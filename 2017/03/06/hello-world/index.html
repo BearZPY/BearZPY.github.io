@@ -24,7 +24,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0097A7">
+    <meta name="theme-color" content="#FF4081">
     <meta name="author" content="BearZPY">
     <meta name="description" content="null">
     <meta name="keywords" content="null">
@@ -73,7 +73,7 @@
   }
 
   a {
-    color: #00838F;
+    color: #FF4081;
   }
 
   .mdl-card__media,
@@ -83,13 +83,13 @@
   #scheme-Paradox .sidebar_archives-count,
   #scheme-Paradox .sidebar-colored .sidebar-header,
   #scheme-Paradox .sidebar-colored .sidebar-badge{
-    background-color: #0097A7 !important;
+    background-color: #3F51B5 !important;
   }
 
   /* Sidebar User Drop Down Menu Text Color */
   #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
   #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
-    color: #0097A7 !important;
+    color: #3F51B5 !important;
   }
 
   #post_entry-right-info,
@@ -102,29 +102,29 @@
   .sidebar-colored .sidebar-nav > .open > a:hover,
   .sidebar-colored .sidebar-nav > .open > a:focus,
   #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
-    color: #0097A7 !important;
+    color: #3F51B5 !important;
   }
 
   .toTop {
-    background: #757575 !important;
+    background: #FF4081 !important;
   }
 
   .material-layout .material-post>.material-nav,
   .material-layout .material-index>.material-nav,
   .material-nav a {
-    color: #757575;
+    color: #FF4081;
   }
 
   #scheme-Paradox .MD-burger-layer {
-    background-color: #757575;
+    background-color: #FF4081;
   }
 
   #scheme-Paradox #post-toc-trigger-btn {
-    color: #757575;
+    color: #FF4081;
   }
 
   .post-toc a:hover {
-    color: #00838F;
+    color: #FF4081;
     text-decoration: underline;
   }
 </style>
@@ -134,7 +134,7 @@
 
     <style>
       body{
-        background-color: #F5F5F5;
+        background-color: #C5CAE9;
       }
 
       /* blog_info bottom background */
@@ -303,6 +303,15 @@
     -->
 
     <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACZUlEQVR42u3aQXLDIBAEQP//08kDUpJnWAkrrtbJVbERzYHdDLx+vvp54eHh4eHh4eHhPYz3ip/D4f789ej7R2MevWVtbnh4eHh7eG+22uA755jzMZPPxeLi4eHhbeSdb9z56/Nycr7Rt3PDw8PD+y+8dutvW208PDy8b+IdId+EBXmsgIeHh/d4XvIP/3lhSEj52z+QteDh4eHFvPyQaf/nred7eHh4eAFvcqw1X4L2uCuaIR4eHt7NvHwjbhvuScAxmg8eHh7eA3hrwcSkcc/DjlFKjYeHh7fEayeRH3q1oW0e+BaFAQ8PD+82XjKV/KBrPubowgEeHh7eFt6khW3HuZa9WPfw8PDwBrz22CkJHeYxx6g44eHh4X2U114RWDviSt5bjImHh4d3My8fLp9WG/Xm0cMoxsXDw8O7iJc3wS2sjTPamSzejMDDw8O7iBddZgpC3uS3a78qxsHDw8P7EK9tcNea4E0tNR4eHt5tvHabbp/7igoeHh7eTl7eXidPG0Cshb9vFhEPDw/vZl6yNefbet6O59FDHvji4eHh7ee1bfTk8CwvG+3i4uHh4X2W14YRdXAQLG59mQAPDw9vI689fGrB7YWAxQsHeHh4eDfz5odYeZCxNt1RYcDDw8O7gTfZjpMmOG+Lrwov8PDw8PbwJsVgLbqtw9l86fHw8PA28toA4qq4ti1Ub4oTHh4e3oN57YaevCVp4jcVBjw8PLxLeW0ByJvp9oCtvnSFh4eHdykvmXQSQCRRb/vbTTEuHh4e3g0HYJPCkIPbywR4eHh4O3nf9+Dh4eHh4eHh4T3g+QUP8aWB3ZMjGAAAAABJRU5ErkJggg==">
+        </ul>
     
 
     <!-- Tags (bookmark) -->
@@ -475,15 +484,6 @@
     <li class="dropdown">
         <ul id="settings-dropdown" class="dropdown-menu">
             
-                <li>
-                    <a href="#" target="_blank" title="Email Me">
-                        
-                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
-                        
-                        Email Me
-                    </a>
-                </li>
-            
         </ul>
     </li>
 
@@ -519,6 +519,21 @@
     
 
     <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
     
 
     <!-- Pages  -->
