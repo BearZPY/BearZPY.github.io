@@ -10,7 +10,7 @@
     
     <title>
         
-            分类: hello world | 
+            投资计算-01 | 
         
         BearZPY Blog
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#FF4081">
     <meta name="author" content="BearZPY">
     <meta name="description" content="null">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,金融,投资,基金,对冲基金">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://bearzpy.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="分类: hello world | BearZPY Blog">
+    <meta property="og:title" content="投资计算-01 | BearZPY Blog">
     <meta property="og:description" content="null">
-    
+    <meta property="og:article:tag" content="金融"> <meta property="og:article:tag" content="投资"> <meta property="og:article:tag" content="基金"> <meta property="og:article:tag" content="对冲基金"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -208,93 +208,227 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
 
-    <!-- Normal Post -->
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常见基金种类"><span class="post-toc-number">1.</span> <span class="post-toc-text">常见基金种类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#交易所交易基金（ETFs，Exchange-Trade-Funds）"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">交易所交易基金（ETFs，Exchange-Trade Funds）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#共同基金-（Mutual-Funds）"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">共同基金 （Mutual Funds）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对冲基金-（Hedge-Funds）"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">对冲基金 （Hedge Funds）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三种基金流动性和透明度的比较："><span class="post-toc-number">1.4.</span> <span class="post-toc-text">三种基金流动性和透明度的比较：</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Hidden Page -->
+    <div class="material-post_container">
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/06/hello-world/">Hello World</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            Welcome to Hexo
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/06/hello-world/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/user.jpg" width="44px" height="44px" alt="BearZPY's avatar">
-            </div>
-            <div>
-                <strong>BearZPY</strong>
-                <span>3月 06, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/hello-world/">hello world</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
 </script>
 
+        
     
+            <p class="article-headline-p">
+                投资计算-01
+            </p>
+        </div>
+
+
+
+
+
+                
+                  <!-- Paradox Post Info -->
+                  <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/user.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>BearZPY</strong>
+        <span>3月 08, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADkElEQVR42u3aS27jMBAFQN//0jPbATJR3usWBQUorgzHpsjyotOfzx/rn/VBgAMHDhw4cODAgQPHizk+8fr6rf9sHeyQv/7uuflfo7vgwIEDB44DHD+EosvLJ+8kOyQcs3P+cEIcOHDgwHGMIw+NyScTlO92uN4zx412w4EDBw4cL+BIPp8Ey+urzsIzDhw4cOD4vRxJYS4v282C6IsCLQ4cOHDgGBXU8uSqTdiSMmJeanyoVooDBw4cONYDDe9//eh8Bw4cOHDg+MLRrrYhlDeiNmMTqxvhwIEDB45bOfJAlZcC72o+5Qne6ls4cODAgeMAx77JNGs+5Y2lWXoWPRcHDhw4cBzg2IwOtCMLm6SxLQ6uUjgcOHDgwLHgaMcFkrQtf+d6hzZVS7Bw4MCBA8dpjjwxy6/Ulu3aNGz2s+HAgQMHjtMc9zac8jGFWdCdhdh6vgMHDhw4cCw4Zk2gNjDPinrtz5O3ynDgwIEDx2mOWRNoM2TQBtRNk2zVhcOBAwcOHKMUblPCu61INwrPeQjHgQMHDhzPcLTHastzd40yzAqXUUsMBw4cOHDcytFCzMqFs+LgLM1Lkj0cOHDgwPEMxwYlf3x+3HbMIi9i4sCBAweOJznyq7bjBXeNLOTh+YZAiwMHDhw4Rhx5M6m9ZD420YbwdrihCLQ4cODAgWPB0Rbs8hJhm/i1Kd/s/WKgAQcOHDhw3MTRDhxsBumS4bm2dNii4MCBAweOExyzMbXZ8EG+fxuY8/1x4MCBA8dpjjx0bQLq/qrJPu2/EThw4MCB4wTH7CizULcZVticrU7hcODAgQPHmiN/cHKU62bVJmwnJy9G6HDgwIEDxwGOWXGtHXeYDR/krG0CiQMHDhw4nufYBL82kG8C/Cyc48CBAweO0xwtyibxy0uKm5GF6HY4cODAgeMYR55KzQ53HfA2jahVSwwHDhw4cBzjaBs8bSLXJlr5DnkDDAcOHDhwnOZoV3KUvPHTDkNsfp4ohcOBAwcOHGuOWaCafbJtJm1KgasUDgcOHDhwrDlmwTVvU+XcSdJ1cyMKBw4cOHAc48gD2KxEmAfa9qp5EogDBw4cON7MkadJbdqWj1m0pcB6vgMHDhw4cDzOsSkgtqXDDSsOHDhw4HieY1aASwJqMprQPn0DigMHDhw4TnPM2kJ5ga8dfZu1o2bhFgcOHDhw3Mth4cCBAwcOHDhw4MCB42XrL+55AMmAz9M+AAAAAElFTkSuQmCC">
+        </ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/基金/">基金</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/对冲基金/">对冲基金</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/投资/">投资</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/金融/">金融</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=投资计算-01&url=https://bearzpy.github.io//2017/03/08/金融/投资组合学习/投资计算-01/index.html&via=BearZPY" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://bearzpy.github.io//2017/03/08/金融/投资组合学习/投资计算-01/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://bearzpy.github.io//2017/03/08/金融/投资组合学习/投资计算-01/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://bearzpy.github.io//2017/03/08/金融/投资组合学习/投资计算-01/index.html&title=投资计算-01" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=BearZPY Blog&title=投资计算-01&summary=null&pics=https://bearzpy.github.io/img/favicon.png&url=https://bearzpy.github.io/2017/03/08/金融/投资组合学习/投资计算-01/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
 </div>
+
+                
+
+                <!-- Post Hidden -->
+                <div id="post-content">
+                    <p>私有文章，暂不公开</p>
+                </div>
+
+                
+
+                <!-- Post Comments -->
+                
+
+
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/07/git/使用git clean清理工程文件/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
 
 
                     
@@ -365,7 +499,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a>
             </ul>
         </li>
         
@@ -383,7 +517,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/hello-world/">hello world<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/hexo/">hexo<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/金融/">金融<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         

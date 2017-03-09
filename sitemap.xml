@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://bearzpy.github.io/2017/03/07/%E4%BD%BF%E7%94%A8git%20clean%E6%B8%85%E7%90%86%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/</loc>
+    <loc>https://bearzpy.github.io/2017/03/08/%E9%87%91%E8%9E%8D/%E6%8A%95%E8%B5%84%E7%BB%84%E5%90%88%E5%AD%A6%E4%B9%A0/%E6%8A%95%E8%B5%84%E8%AE%A1%E7%AE%97-01/</loc>
     
-    <lastmod>2017-03-07T15:50:50.608Z</lastmod>
+    <lastmod>2017-03-09T07:58:11.384Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://bearzpy.github.io/2017/03/06/hello-world/</loc>
+    <loc>https://bearzpy.github.io/2017/03/07/git/%E4%BD%BF%E7%94%A8git%20clean%E6%B8%85%E7%90%86%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/</loc>
     
-    <lastmod>2017-03-07T07:21:07.830Z</lastmod>
+    <lastmod>2017-03-08T06:20:41.937Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://bearzpy.github.io/2017/03/06/hexo/hello-world/</loc>
+    
+    <lastmod>2017-03-08T05:24:41.950Z</lastmod>
     
   </url>
   

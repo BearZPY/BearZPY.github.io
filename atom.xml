@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://bearzpy.github.io/"/>
-  <updated>2017-03-07T15:50:50.608Z</updated>
+  <updated>2017-03-09T07:58:11.384Z</updated>
   <id>https://bearzpy.github.io/</id>
   
   <author>
@@ -16,15 +16,57 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>使用git clean清理工程文件</title>
-    <link href="https://bearzpy.github.io/2017/03/07/%E4%BD%BF%E7%94%A8git%20clean%E6%B8%85%E7%90%86%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/"/>
-    <id>https://bearzpy.github.io/2017/03/07/使用git clean清理工程文件/</id>
-    <published>2017-03-07T11:03:00.000Z</published>
-    <updated>2017-03-07T15:50:50.608Z</updated>
+    <title>投资计算-01</title>
+    <link href="https://bearzpy.github.io/2017/03/08/%E9%87%91%E8%9E%8D/%E6%8A%95%E8%B5%84%E7%BB%84%E5%90%88%E5%AD%A6%E4%B9%A0/%E6%8A%95%E8%B5%84%E8%AE%A1%E7%AE%97-01/"/>
+    <id>https://bearzpy.github.io/2017/03/08/金融/投资组合学习/投资计算-01/</id>
+    <published>2017-03-08T06:01:20.000Z</published>
+    <updated>2017-03-09T07:58:11.384Z</updated>
     
-    <content type="html"><![CDATA[<p>清理工程里无用的文件，方便复制移动及备份。</p>
+    <content type="html"><![CDATA[<p>投资的回报取决于你所管理的投资组合和该组合的收益表现。  </p>
 <hr>
-<h2 id="git-clean"><a href="#git-clean" class="headerlink" title="git clean"></a>git clean</h2><p>工程代码在编译的时候往往会生产很多的文件，在项目需要移动复制或者备份的时候这些文件是无用的，所以大部分IDE都提供了clean工程的功能， 但是有时候IDE提供的功能并不能满足我们的需求，所以往往需要使用其他的清理工具来完成我们的要求（例如编写 Windows 下的clean bat执行文件）。<br>这篇文章主要介绍使用git clean来给工程瘦身的方法。<br>例如Android studio（2.2.3） 编译时在build文件夹下生成了几十MB的mockable-android-XX.jar。然而AS提供的clean并没有清除这些文件， 导致clean后的工程还是占用了很大的体积。</p>
+<p>本文用来记录学习《关于交易策略的机器学习》时的理解，该课程是由佐治亚（乔治亚， Georgia Tech）理工学院的Tucker Balch教授设计，由Udacity提供，目的是教导学生如何成为一个投资组合经理（portfolio manager）。我学习的目的是为了拥有一个自己的股票交易软件系统。课程所教授的知识是以美国市场为基础，部分知识点会与中国大陆不同。</p>
+<h2 id="常见基金种类"><a href="#常见基金种类" class="headerlink" title="常见基金种类"></a>常见基金种类</h2><p>基金的种类有很多种，以下三种是最常见的：</p>
+<h3 id="交易所交易基金（ETFs，Exchange-Trade-Funds）"><a href="#交易所交易基金（ETFs，Exchange-Trade-Funds）" class="headerlink" title="交易所交易基金（ETFs，Exchange-Trade Funds）"></a>交易所交易基金（ETFs，Exchange-Trade Funds）</h3><p>绝大多数ETF的指数成分是股票，也有基于固定收益证券、债券、商品和货币的ETF。</p>
+<h3 id="共同基金-（Mutual-Funds）"><a href="#共同基金-（Mutual-Funds）" class="headerlink" title="共同基金 （Mutual Funds）"></a>共同基金 （Mutual Funds）</h3><p>信托基金的一种，是由专业金融从业者管理，向社会投资者公开募集资金以投资于证券市场的营利性的公司型证券投资基金。</p>
+<h3 id="对冲基金-（Hedge-Funds）"><a href="#对冲基金-（Hedge-Funds）" class="headerlink" title="对冲基金 （Hedge Funds）"></a>对冲基金 （Hedge Funds）</h3><p>又称避险基金或套利基金，其最初目的为透过套期保值（Hedging）避免损失。目前，对冲基金早已失去风险“对冲”的内涵，相反的，现在人们普遍认为对冲基金实际是基于最新的投资理论和极其复杂的金融市场操作技巧，充分利用各种金融衍生产品的杠杆效用，承担高风险、追求高收益的投资模式。</p>
+<h3 id="三种基金流动性和透明度的比较："><a href="#三种基金流动性和透明度的比较：" class="headerlink" title="三种基金流动性和透明度的比较："></a>三种基金流动性和透明度的比较：</h3><ul>
+<li>ETFs：可以每天看到它的价格，可以像股票一样买卖，ETFs相当于一些股票的集合。ETFs会公开他们所持有的股票，所以它是相当透明的。它也是可以当天买卖的，所以它也有很强的流动性。</li>
+<li>共同基金：共同基金与ETFs有点类似，他们类似的目标和机制，比如战胜S&amp;P500大盘股 。不同的是只能在每天结束的时候进行买卖共同基金，他们每季度才会透露一次持有了哪些股票，所以他们的流动性较低，也相对不透明。</li>
+<li>对冲基金：对冲基金比共同基金更不透明，流动性更差。买入对冲基金需要签订秘密条约，且很难退出，一般资金需要存放几个月到几年，提取时往往不能一次全取出来。他们不需要向外界披露所持有的股票，甚至是基金的投资人。他们通常会向客户描述他们的策略等，以鼓励客户投资。</li>
+</ul>
+<hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;投资的回报取决于你所管理的投资组合和该组合的收益表现。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;本文用来记录学习《关于交易策略的机器学习》时的理解，该课程是由佐治亚（乔治亚， Georgia Tech）理工学院的Tucker Balch教授设计，由Udacity提供，目的是教导学生如何
+    
+    </summary>
+    
+      <category term="金融" scheme="https://bearzpy.github.io/categories/%E9%87%91%E8%9E%8D/"/>
+    
+    
+      <category term="金融" scheme="https://bearzpy.github.io/tags/%E9%87%91%E8%9E%8D/"/>
+    
+      <category term="投资" scheme="https://bearzpy.github.io/tags/%E6%8A%95%E8%B5%84/"/>
+    
+      <category term="基金" scheme="https://bearzpy.github.io/tags/%E5%9F%BA%E9%87%91/"/>
+    
+      <category term="对冲基金" scheme="https://bearzpy.github.io/tags/%E5%AF%B9%E5%86%B2%E5%9F%BA%E9%87%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用git clean清理工程文件</title>
+    <link href="https://bearzpy.github.io/2017/03/07/git/%E4%BD%BF%E7%94%A8git%20clean%E6%B8%85%E7%90%86%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/"/>
+    <id>https://bearzpy.github.io/2017/03/07/git/使用git clean清理工程文件/</id>
+    <published>2017-03-07T11:03:22.000Z</published>
+    <updated>2017-03-08T06:20:41.937Z</updated>
+    
+    <content type="html"><![CDATA[<p>工程代码在编译的时候往往会生产很多的文件，在项目需要移动复制或者备份的时候这些文件是无用的，所以大部分IDE都提供了clean工程的功能， 但是有时候IDE提供的功能并不能满足我们的需求，所以往往需要使用其他的清理工具来完成我们的要求（例如编写 Windows 下的clean bat执行文件）。这里主要介绍使用git clean来给工程瘦身的方法。  </p>
+<h2 id="git-clean"><a href="#git-clean" class="headerlink" title="git clean"></a>git clean</h2><p>使用情景：Android studio（2.2.3） 编译时在build文件夹下生成了几十MB的mockable-android-XX.jar。然而AS提供的clean并没有清除这些文件， 导致clean后的工程还是占用了很大的体积。</p>
 <h4 id="使用前提"><a href="#使用前提" class="headerlink" title="使用前提"></a>使用前提</h4><p>项目需要使用git来管理，且重要的文件已经用git记录追踪。</p>
 <h4 id="命令介绍"><a href="#命令介绍" class="headerlink" title="命令介绍"></a>命令介绍</h4><p>git clean 用于清理git根目录下所有没有被track的文件和文件夹<br>使用 git clean -h 获取命令的帮助手册。<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_help.png" alt="help document"></p>
 <p>常用参数介绍：  </p>
@@ -56,9 +98,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;清理工程里无用的文件，方便复制移动及备份。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;git-clean&quot;&gt;&lt;a href=&quot;#git-clean&quot; class=&quot;headerlink&quot; title=&quot;git clean&quot;&gt;&lt;/a&gt;git clean&lt;/h2&gt;&lt;p&gt;工程代码在编译的
+      &lt;p&gt;工程代码在编译的时候往往会生产很多的文件，在项目需要移动复制或者备份的时候这些文件是无用的，所以大部分IDE都提供了clean工程的功能， 但是有时候IDE提供的功能并不能满足我们的需求，所以往往需要使用其他的清理工具来完成我们的要求（例如编写 Windows 下的clea
     
     </summary>
     
@@ -75,10 +115,10 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://bearzpy.github.io/2017/03/06/hello-world/"/>
-    <id>https://bearzpy.github.io/2017/03/06/hello-world/</id>
+    <link href="https://bearzpy.github.io/2017/03/06/hexo/hello-world/"/>
+    <id>https://bearzpy.github.io/2017/03/06/hexo/hello-world/</id>
     <published>2017-03-06T07:51:50.108Z</published>
-    <updated>2017-03-07T07:21:07.830Z</updated>
+    <updated>2017-03-08T05:24:41.950Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
@@ -101,12 +141,10 @@
     
     </summary>
     
-      <category term="hello world" scheme="https://bearzpy.github.io/categories/hello-world/"/>
+      <category term="hexo" scheme="https://bearzpy.github.io/categories/hexo/"/>
     
     
       <category term="hexo" scheme="https://bearzpy.github.io/tags/hexo/"/>
-    
-      <category term="hello" scheme="https://bearzpy.github.io/tags/hello/"/>
     
   </entry>
   
