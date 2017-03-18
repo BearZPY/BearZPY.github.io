@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://bearzpy.github.io/"/>
-  <updated>2017-03-09T07:58:11.384Z</updated>
+  <updated>2017-03-16T08:13:23.006Z</updated>
   <id>https://bearzpy.github.io/</id>
   
   <author>
@@ -16,45 +16,183 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>投资计算-01</title>
-    <link href="https://bearzpy.github.io/2017/03/08/%E9%87%91%E8%9E%8D/%E6%8A%95%E8%B5%84%E7%BB%84%E5%90%88%E5%AD%A6%E4%B9%A0/%E6%8A%95%E8%B5%84%E8%AE%A1%E7%AE%97-01/"/>
-    <id>https://bearzpy.github.io/2017/03/08/金融/投资组合学习/投资计算-01/</id>
-    <published>2017-03-08T06:01:20.000Z</published>
-    <updated>2017-03-09T07:58:11.384Z</updated>
+    <title>Android全屏</title>
+    <link href="https://bearzpy.github.io/2017/03/16/Android/%E5%85%A8%E5%B1%8F/"/>
+    <id>https://bearzpy.github.io/2017/03/16/Android/全屏/</id>
+    <published>2017-03-16T08:12:23.000Z</published>
+    <updated>2017-03-16T08:13:23.006Z</updated>
     
-    <content type="html"><![CDATA[<p>投资的回报取决于你所管理的投资组合和该组合的收益表现。  </p>
-<hr>
-<p>本文用来记录学习《关于交易策略的机器学习》时的理解，该课程是由佐治亚（乔治亚， Georgia Tech）理工学院的Tucker Balch教授设计，由Udacity提供，目的是教导学生如何成为一个投资组合经理（portfolio manager）。我学习的目的是为了拥有一个自己的股票交易软件系统。课程所教授的知识是以美国市场为基础，部分知识点会与中国大陆不同。</p>
-<h2 id="常见基金种类"><a href="#常见基金种类" class="headerlink" title="常见基金种类"></a>常见基金种类</h2><p>基金的种类有很多种，以下三种是最常见的：</p>
-<h3 id="交易所交易基金（ETFs，Exchange-Trade-Funds）"><a href="#交易所交易基金（ETFs，Exchange-Trade-Funds）" class="headerlink" title="交易所交易基金（ETFs，Exchange-Trade Funds）"></a>交易所交易基金（ETFs，Exchange-Trade Funds）</h3><p>绝大多数ETF的指数成分是股票，也有基于固定收益证券、债券、商品和货币的ETF。</p>
-<h3 id="共同基金-（Mutual-Funds）"><a href="#共同基金-（Mutual-Funds）" class="headerlink" title="共同基金 （Mutual Funds）"></a>共同基金 （Mutual Funds）</h3><p>信托基金的一种，是由专业金融从业者管理，向社会投资者公开募集资金以投资于证券市场的营利性的公司型证券投资基金。</p>
-<h3 id="对冲基金-（Hedge-Funds）"><a href="#对冲基金-（Hedge-Funds）" class="headerlink" title="对冲基金 （Hedge Funds）"></a>对冲基金 （Hedge Funds）</h3><p>又称避险基金或套利基金，其最初目的为透过套期保值（Hedging）避免损失。目前，对冲基金早已失去风险“对冲”的内涵，相反的，现在人们普遍认为对冲基金实际是基于最新的投资理论和极其复杂的金融市场操作技巧，充分利用各种金融衍生产品的杠杆效用，承担高风险、追求高收益的投资模式。</p>
-<h3 id="三种基金流动性和透明度的比较："><a href="#三种基金流动性和透明度的比较：" class="headerlink" title="三种基金流动性和透明度的比较："></a>三种基金流动性和透明度的比较：</h3><ul>
-<li>ETFs：可以每天看到它的价格，可以像股票一样买卖，ETFs相当于一些股票的集合。ETFs会公开他们所持有的股票，所以它是相当透明的。它也是可以当天买卖的，所以它也有很强的流动性。</li>
-<li>共同基金：共同基金与ETFs有点类似，他们类似的目标和机制，比如战胜S&amp;P500大盘股 。不同的是只能在每天结束的时候进行买卖共同基金，他们每季度才会透露一次持有了哪些股票，所以他们的流动性较低，也相对不透明。</li>
-<li>对冲基金：对冲基金比共同基金更不透明，流动性更差。买入对冲基金需要签订秘密条约，且很难退出，一般资金需要存放几个月到几年，提取时往往不能一次全取出来。他们不需要向外界披露所持有的股票，甚至是基金的投资人。他们通常会向客户描述他们的策略等，以鼓励客户投资。</li>
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+    
+      <category term="JNI" scheme="https://bearzpy.github.io/tags/JNI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android入门-01 初识布局</title>
+    <link href="https://bearzpy.github.io/2017/03/14/google%20study%20jams/Android%20%E5%85%A5%E9%97%A8-01/"/>
+    <id>https://bearzpy.github.io/2017/03/14/google study jams/Android 入门-01/</id>
+    <published>2017-03-14T13:08:38.000Z</published>
+    <updated>2017-03-17T16:59:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前学习 Android 开发的过程都是用到什么学习什么，这样下来基础还是比较薄弱的没有系统的学习过，刚好看到了 Google 官方的 StudyJams 活动，也想重新认识一下 Android 开发，且记录下学习的过程。  </p>
+<p><a href="http://www.studyjamscn.com/" target="_blank" rel="external">Google StudyJams 官网</a></p>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>View 简单的说就手机上能看到的内容，是生活中最常见的，也是 Android 开发中最先需要接触的。  </p>
+<h3 id="View-的相关概念"><a href="#View-的相关概念" class="headerlink" title="View 的相关概念"></a>View 的相关概念</h3><p>View 是一个屏幕用来展示内容的长方形。（ 类似于展示照片的相框 ）<br>屏幕上显示出的界面是由许多 Views 组合而成的，这种组合成为布局（ Layout ）。<br>屏幕展示给用户的查看操作的界面称为用户界面（ User Interface ）简称UI。  </p>
+<h3 id="最常见的三种-Views-："><a href="#最常见的三种-Views-：" class="headerlink" title="最常见的三种 Views ："></a>最常见的三种 Views ：</h3><p>都使用驼峰式命名（ CamelCase ）：单词间不空格，每个单词首字母大写，其余小写。</p>
+<ul>
+<li>TextView 展示文字，如图上 A，B 组件。</li>
+<li>ImageView 展示图片，如图上 C 组件。</li>
+<li>Button 获取用户操作，如图上 D， E 组件。   </li>
 </ul>
-<hr>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/SelectViewsExample.png" alt="youtube image"></p>
+<h3 id="根据要求调节View的样式"><a href="#根据要求调节View的样式" class="headerlink" title="根据要求调节View的样式"></a>根据要求调节View的样式</h3><h4 id="XML-和-XMLV-相关概念"><a href="#XML-和-XMLV-相关概念" class="headerlink" title="XML 和 XMLV 相关概念"></a>XML 和 XMLV 相关概念</h4><p>在Android开发中布局文件是用 XML 编写的。<br>XML 是可扩展标记语言。<br>XMLV 就 XML 可视化器，用来把 XML 语音转换成界面显示。<br>国内可访问的在线 XMLV ： <a href="http://v.studyjams.cn/" target="_blank" rel="external">Android XMLV</a></p>
+<h4 id="TextVeiw-布局示例"><a href="#TextVeiw-布局示例" class="headerlink" title="TextVeiw 布局示例"></a>TextVeiw 布局示例</h4><p>TextView 显示效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/TextViewExample.png" alt="TextView image"></p>
+<p>XML  代码  </p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
+  <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Hi there!<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">android:</span>textSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>36sp<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">android:</span>background</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#ccddff<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+</code></pre>
+<p>XML 常见属性</p>
+<ul>
+<li>android:text 显示文本内容到 View 上。</li>
+<li>android:layout_width 控制 View 的宽度， wrap_content 将 View 的宽度设定为刚好容纳需要显示文本的宽度。</li>
+<li>android:layout_height 控制 View 的高度， wrap_content 将 View 的高度设定为刚好容纳需要显示文本的高度。</li>
+<li>android:textSize 设置显示文本的大小， 使用 sp 单位 。</li>
+<li>android:background 设置 View 的背景颜色， 即图中阴影部分。</li>
+<li>android:textStyle 设置字体显示的样式，italic 表示斜体，bold 表示加粗。</li>
+<li>android:textAllCaps 设置文字是否全大写，Button 中不设置默认全大写。  </li>
+</ul>
+<p>注：  </p>
+<ul>
+<li>单位 dp 是密度无关像素（ density independent pixels ）， 使用 dp 可以在不同分辨率的屏幕上以相应的比例显示，更好的适配不同规格的屏幕。同时也可以更好的规定 UI 标准。 例如触摸类 View 长宽要大于等于 48 dp 。   </li>
+<li>单位 sp 与 dp 相似，并且比例无关，适用于字体。设置字体可以直接设置 sp 值。或者设置 textAppearance ，把应用字体大小与系统字体大小统一。<br>android:textAppearance=”?android:attr/textAppearanceSmall”</li>
+</ul>
+<h4 id="ImageView-布局示例"><a href="#ImageView-布局示例" class="headerlink" title="ImageView 布局示例"></a>ImageView 布局示例</h4><p>ImageView 显示效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/ImageView.png" alt="ImageView image"></p>
+<p>XML 代码</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ImageView</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@drawable/ocean<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+</code></pre>
+<p>XML 属性</p>
+<ul>
+<li>match_parent 代表将父 View 界面填充满。</li>
+<li>android:src 填入 ImageView 使用的图片地址。</li>
+</ul>
+<p>可以看出来，图片被压缩了，显示在屏幕中间，这个显示并没有达到我们的要求，我们可以使用 android:ScaleType 来修改图片的显示方式。ScaleType 设定的值可以从 Android 开发者官网获取：<a href="https://developer.android.com/reference/android/widget/ImageView.ScaleType.html" target="_blank" rel="external">ImageView.ScaleType 属性</a> 。<br>这里分别展示一下参数 center， centerCrop 的效果。  </p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ImageView</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@drawable/ocean<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>scaleType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+</code></pre>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/ImageViewCenter.png" alt="ImageViewCenter "></p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ImageView</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@drawable/ocean<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>scaleType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>centerCrop<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+</code></pre>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/ImageViewCenterCrop.png" alt="ImageViewCenterCrop "></p>
+<p>可以看到在使用 centerCrop 属性后，在屏幕的边界处没有任何的白边或者空余，这种情况下称为无边界图片，在打印技术中叫做全出血打印。</p>
+<h3 id="确定-View-在屏幕中的位置"><a href="#确定-View-在屏幕中的位置" class="headerlink" title="确定 View 在屏幕中的位置"></a>确定 View 在屏幕中的位置</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前学习 Android 开发的过程都是用到什么学习什么，这样下来基础还是比较薄弱的没有系统的学习过，刚好看到了 Google 官方的 StudyJams 活动，也想重新认识一下 Android 开发，且记录下学习的过程。  &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://
+    
+    </summary>
+    
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+    
+      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
+    
+      <category term="StudyJams" scheme="https://bearzpy.github.io/tags/StudyJams/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在Android中使用JNI</title>
+    <link href="https://bearzpy.github.io/2017/03/14/Android/%E5%9C%A8Android%E4%B8%AD%E4%BD%BF%E7%94%A8JNI/"/>
+    <id>https://bearzpy.github.io/2017/03/14/Android/在Android中使用JNI/</id>
+    <published>2017-03-14T09:08:43.000Z</published>
+    <updated>2017-03-14T09:09:02.646Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hello JNI！</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;投资的回报取决于你所管理的投资组合和该组合的收益表现。  &lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;本文用来记录学习《关于交易策略的机器学习》时的理解，该课程是由佐治亚（乔治亚， Georgia Tech）理工学院的Tucker Balch教授设计，由Udacity提供，目的是教导学生如何
+      &lt;p&gt;Hello JNI！&lt;/p&gt;
+
     
     </summary>
     
-      <category term="金融" scheme="https://bearzpy.github.io/categories/%E9%87%91%E8%9E%8D/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
     
     
-      <category term="金融" scheme="https://bearzpy.github.io/tags/%E9%87%91%E8%9E%8D/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
-      <category term="投资" scheme="https://bearzpy.github.io/tags/%E6%8A%95%E8%B5%84/"/>
+      <category term="JNI" scheme="https://bearzpy.github.io/tags/JNI/"/>
     
-      <category term="基金" scheme="https://bearzpy.github.io/tags/%E5%9F%BA%E9%87%91/"/>
+  </entry>
+  
+  <entry>
+    <title>如何对其他APP进行备份与恢复</title>
+    <link href="https://bearzpy.github.io/2017/03/13/Android/%E5%A6%82%E4%BD%95%E5%AF%B9%E5%85%B6%E4%BB%96APP%E8%BF%9B%E8%A1%8C%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/"/>
+    <id>https://bearzpy.github.io/2017/03/13/Android/如何对其他APP进行备份与恢复/</id>
+    <published>2017-03-13T06:05:07.000Z</published>
+    <updated>2017-03-13T06:06:02.557Z</updated>
     
-      <category term="对冲基金" scheme="https://bearzpy.github.io/tags/%E5%AF%B9%E5%86%B2%E5%9F%BA%E9%87%91/"/>
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+    
+      <category term="备份" scheme="https://bearzpy.github.io/tags/%E5%A4%87%E4%BB%BD/"/>
+    
+      <category term="恢复" scheme="https://bearzpy.github.io/tags/%E6%81%A2%E5%A4%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何在APP中安装卸载其他APP</title>
+    <link href="https://bearzpy.github.io/2017/03/13/Android/%E5%A6%82%E4%BD%95%E5%9C%A8APP%E4%B8%AD%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD%E5%85%B6%E4%BB%96APP/"/>
+    <id>https://bearzpy.github.io/2017/03/13/Android/如何在APP中安装卸载其他APP/</id>
+    <published>2017-03-13T05:50:57.000Z</published>
+    <updated>2017-03-13T06:05:49.813Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+    
+      <category term="静默安装卸载" scheme="https://bearzpy.github.io/tags/%E9%9D%99%E9%BB%98%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD/"/>
+    
+      <category term="安装卸载" scheme="https://bearzpy.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD/"/>
     
   </entry>
   
@@ -63,7 +201,7 @@
     <link href="https://bearzpy.github.io/2017/03/07/git/%E4%BD%BF%E7%94%A8git%20clean%E6%B8%85%E7%90%86%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/"/>
     <id>https://bearzpy.github.io/2017/03/07/git/使用git clean清理工程文件/</id>
     <published>2017-03-07T11:03:22.000Z</published>
-    <updated>2017-03-08T06:20:41.937Z</updated>
+    <updated>2017-03-13T06:07:03.639Z</updated>
     
     <content type="html"><![CDATA[<p>工程代码在编译的时候往往会生产很多的文件，在项目需要移动复制或者备份的时候这些文件是无用的，所以大部分IDE都提供了clean工程的功能， 但是有时候IDE提供的功能并不能满足我们的需求，所以往往需要使用其他的清理工具来完成我们的要求（例如编写 Windows 下的clean bat执行文件）。这里主要介绍使用git clean来给工程瘦身的方法。  </p>
 <h2 id="git-clean"><a href="#git-clean" class="headerlink" title="git clean"></a>git clean</h2><p>使用情景：Android studio（2.2.3） 编译时在build文件夹下生成了几十MB的mockable-android-XX.jar。然而AS提供的clean并没有清除这些文件， 导致clean后的工程还是占用了很大的体积。</p>
@@ -92,9 +230,7 @@
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_xd.png" alt="help document"></p>
 <pre class=" language-bash"><code class="language-bash">$ <span class="token function">git</span> clean -fxd
 </code></pre>
-<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_fxd.png" alt="help document"></p>
-<hr>
-]]></content>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_fxd.png" alt="help document"></h2>]]></content>
     
     <summary type="html">
     
