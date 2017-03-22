@@ -1,28 +1,401 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>BearZPY Blog</title>
-  
-  <link href="/atom.xml" rel="self"/>
-  
-  <link href="https://bearzpy.github.io/"/>
-  <updated>2017-03-22T02:42:06.380Z</updated>
-  <id>https://bearzpy.github.io/</id>
-  
-  <author>
-    <name>BearZPY</name>
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!-- 
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.0 -->
+
+    <!-- Title -->
     
-  </author>
-  
-  <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Android入门-1B 视图组 ViewGroups</title>
-    <link href="https://bearzpy.github.io/2017/03/21/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1B%20%E8%A7%86%E5%9B%BE%E7%BB%84%20ViewGroups/"/>
-    <id>https://bearzpy.github.io/2017/03/21/google study jams/Android入门-1B 视图组 ViewGroups/</id>
-    <published>2017-03-21T10:33:12.000Z</published>
-    <updated>2017-03-22T02:42:06.380Z</updated>
+    <title>
+        
+            Android入门-1B 视图组 ViewGroups | 
+        
+        BearZPY Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#FF4081">
+    <meta name="author" content="BearZPY">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null,Android,Google,StudyJams,ViewGroups">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="BearZPY Blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://bearzpy.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Android入门-1B 视图组 ViewGroups | BearZPY Blog">
+    <meta property="og:description" content="null">
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Google"> <meta property="og:article:tag" content="StudyJams"> <meta property="og:article:tag" content="ViewGroups"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #FF4081;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #3F51B5 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #3F51B5 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #3F51B5 !important;
+  }
+
+  .toTop {
+    background: #FF4081 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #FF4081;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #FF4081;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #FF4081;
+  }
+
+  .post-toc a:hover {
+    color: #FF4081;
+    text-decoration: underline;
+  }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #C5CAE9;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/queue.js"></script>
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
     
-    <content type="html"><![CDATA[<p><a href="http://www.studyjamscn.com/" target="_blank" rel="external">Google StudyJams 官网</a></p>
+
+    
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#视图组-ViewGroup"><span class="post-toc-number">1.</span> <span class="post-toc-text">视图组 ViewGroup</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线性布局-LinearLayout"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">线性布局 LinearLayout</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#LinearLayout-布局示例"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">LinearLayout 布局示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#LinearLayout-权重示例"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">LinearLayout 权重示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#LinearLayout-布局重力示例"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">LinearLayout 布局重力示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#相对布局-RelativeLayout"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">相对布局 RelativeLayout</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RelativeLayout-布局示例"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">RelativeLayout 布局示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RelativeLayout-实际使用"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">RelativeLayout 实际使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设定内外边距"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">设定内外边距</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内外边距布局示例"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">内外边距布局示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内外边距实际使用示例"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">内外边距实际使用示例</span></a></li></ol></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Android入门-1B 视图组 ViewGroups
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/user.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>BearZPY</strong>
+        <span>3月 21, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADc0lEQVR42u3aQW7cMAwF0Nz/0u02QBv3f1IauMDzauA4lvhmwSHFr1+ub9cXAhw4cODAgQMHDhw4XszxFV9/eVF8//ud5L+en/lpb7NYcODAgQPHDY5/pKI4vDzU5zCeIZJdFbHgwIEDB45rHM8JLElmbcA3oOsVceDAgQPHCzjaBDm7s+fDgQMHDhz/F0deYuXpeVZG4sCBAweOd3IkW8kLtjykBGJzDHaxV4oDBw4cONYDDe///NH5Dhw4cODA8QdHe0ULjAqzPIkm6bmICAcOHDhwHOVoW3ifbPy1BPn+ceDAgQPHPY68QJoNH8yKw82wQn4fBw4cOHDc5shDykuy5zSZ3J+ViMkXiQMHDhw47nHMyqS2dXijsdgmfhw4cODAcZsjD6A9OmrLwhzr7AEVDhw4cOD4DEe+6U0xtknAG3QcOHDgwHGPY3b4lNxvk2Ibxr5diAMHDhw47nHsBw72b8vfeQoOBw4cOHDc5rjBdKrYOztUhwMHDhw4bnO0xdWwDRcPKLTHVKsvDwcOHDhwXODID5xyuM2oXFvytYdkOHDgwIHjHsesGNtsdFbazX4WRO/HgQMHDhwXOPZDcm2DbzbE0Db+6oEGHDhw4MBxiKNt4bVYbTMxH6HbF6I4cODAgeMsR95iy4+L2q3PnmxLtR/3jwMHDhw4jnLMwmhHHG6PTcz2jwMHDhw4bnDMyrDZMVXb8mvLvLwhiAMHDhw4PsmRLJCHnTQK2wZiu4fi2AkHDhw4cBzi2Cx86sgqp29TaX3shAMHDhw41hz5ENvzM/kxVYK7SfkHmoM4cODAgWPB0W53M6jdJuBk4Hv2owEHDhw4cNzgqEeWR2MELdmN4bwo0eLAgQMHjkMcm5bcqSGGJOwNcTTQgAMHDhw4LnDkYSeB7Tny8nLWasSBAwcOHJ/haBfOi72Wrx22q1fEgQMHDhxHOdorH6TLAziV5g80B3HgwIEDx9Fjp1lrL0/S7VBC3oJs18WBAwcOHLc5kuTafj4FPUvVxftx4MCBA8c1js0QWztS0FImWLP948CBAweON3BstpX/NU/AbfrHgQMHDhxv40i2tR+ka1nbZI8DBw4cOG5zJM3BaETgUIMvH1DIV8SBAwcOHJ/haJPWrLXXDkC0bzuWaHHgwIEDx4LDhQMHDhw4cODAgQMHjpddvwFHZs4X/Azs+QAAAABJRU5ErkJggg==">
+        </ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Google/">Google</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/StudyJams/">StudyJams</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/ViewGroups/">ViewGroups</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Android入门-1B 视图组 ViewGroups&url=https://bearzpy.github.io//2017/03/21/google study jams/Android入门-1B 视图组 ViewGroups/index.html&via=BearZPY" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://bearzpy.github.io//2017/03/21/google study jams/Android入门-1B 视图组 ViewGroups/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://bearzpy.github.io//2017/03/21/google study jams/Android入门-1B 视图组 ViewGroups/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://bearzpy.github.io//2017/03/21/google study jams/Android入门-1B 视图组 ViewGroups/index.html&title=Android入门-1B 视图组 ViewGroups" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=BearZPY Blog&title=Android入门-1B 视图组 ViewGroups&summary=null&pics=https://bearzpy.github.io/img/favicon.png&url=https://bearzpy.github.io/2017/03/21/google study jams/Android入门-1B 视图组 ViewGroups/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p><a href="http://www.studyjamscn.com/" target="_blank" rel="external">Google StudyJams 官网</a></p>
 <h2 id="视图组-ViewGroup"><a href="#视图组-ViewGroup" class="headerlink" title="视图组 ViewGroup"></a>视图组 ViewGroup</h2><p>ViewGroup 是可以包含其他视图（子 View）的特殊视图。ViewGroup 是布局和视图容器的基类，布局文件是由 ViewGroup 拓展出来的。我们使用布局组合控制各个 View 在屏幕上显示的位置。  </p>
 <p>常见布局 layout ：</p>
 <ul>
@@ -290,298 +663,353 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>修改完的效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/relativeLayout_zhihu2.png" alt="relativeLayout_zhihu2 ">  </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;http://www.studyjamscn.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Google StudyJams 官网&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;视图组-ViewGroup&quot;&gt;&lt;a href=&quot;#视图组-Vie
-    
-    </summary>
-    
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
-    
-      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
-    
-      <category term="StudyJams" scheme="https://bearzpy.github.io/tags/StudyJams/"/>
-    
-      <category term="ViewGroups" scheme="https://bearzpy.github.io/tags/ViewGroups/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android全屏</title>
-    <link href="https://bearzpy.github.io/2017/03/16/Android/%E5%85%A8%E5%B1%8F/"/>
-    <id>https://bearzpy.github.io/2017/03/16/Android/全屏/</id>
-    <published>2017-03-16T08:12:23.000Z</published>
-    <updated>2017-03-16T08:13:23.006Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
-    
-      <category term="JNI" scheme="https://bearzpy.github.io/tags/JNI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android入门-1A 初识 View</title>
-    <link href="https://bearzpy.github.io/2017/03/14/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1A%20%E5%88%9D%E8%AF%86%20View/"/>
-    <id>https://bearzpy.github.io/2017/03/14/google study jams/Android入门-1A 初识 View/</id>
-    <published>2017-03-14T13:08:38.000Z</published>
-    <updated>2017-03-21T10:34:20.878Z</updated>
-    
-    <content type="html"><![CDATA[<p>之前学习 Android 开发的过程都是用到什么学习什么，这样下来基础还是比较薄弱的没有系统的学习过，刚好看到了 Google 官方的 StudyJams 活动，也想重新认识一下 Android 开发，且记录下学习的过程。  </p>
-<p><a href="http://www.studyjamscn.com/" target="_blank" rel="external">Google StudyJams 官网</a></p>
-<h2 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h2><p>View 简单的说就手机上能看到的内容，是生活中最常见的，也是 Android 开发中最先需要接触的。  </p>
-<h3 id="View-的相关概念"><a href="#View-的相关概念" class="headerlink" title="View 的相关概念"></a>View 的相关概念</h3><p>View 是一个屏幕用来展示内容的长方形。（ 类似于展示照片的相框 ）<br>屏幕上显示出的界面是由许多 Views 组合而成的，这种组合成为布局（ Layout ）。<br>屏幕展示给用户的查看操作的界面称为用户界面（ User Interface ）简称UI。  </p>
-<h3 id="最常见的三种-Views-："><a href="#最常见的三种-Views-：" class="headerlink" title="最常见的三种 Views ："></a>最常见的三种 Views ：</h3><p>都使用驼峰式命名（ CamelCase ）：单词间不空格，每个单词首字母大写，其余小写。</p>
-<ul>
-<li>TextView 展示文字，如图上 A，B 组件。</li>
-<li>ImageView 展示图片，如图上 C 组件。</li>
-<li>Button 获取用户操作，如图上 D， E 组件。   </li>
-</ul>
-<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/SelectViewsExample.png" alt="youtube image"></p>
-<h3 id="根据要求调节View的样式"><a href="#根据要求调节View的样式" class="headerlink" title="根据要求调节View的样式"></a>根据要求调节View的样式</h3><h4 id="XML-和-XMLV-相关概念"><a href="#XML-和-XMLV-相关概念" class="headerlink" title="XML 和 XMLV 相关概念"></a>XML 和 XMLV 相关概念</h4><p>在Android开发中布局文件是用 XML 编写的。<br>XML 是可扩展标记语言。<br>XMLV 就 XML 可视化器，用来把 XML 语言转换成界面显示。<br>国内可访问的在线 XMLV ： <a href="http://v.studyjams.cn/" target="_blank" rel="external">Android XMLV</a></p>
-<h4 id="TextVeiw-布局示例"><a href="#TextVeiw-布局示例" class="headerlink" title="TextVeiw 布局示例"></a>TextVeiw 布局示例</h4><p>TextView 显示效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/TextViewExample.png" alt="TextView image"></p>
-<p>XML  代码  </p>
-<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
-  <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Hi there!<span class="token punctuation">"</span></span>
-  <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
-  <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
-  <span class="token attr-name"><span class="token namespace">android:</span>textSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>36sp<span class="token punctuation">"</span></span>
-  <span class="token attr-name"><span class="token namespace">android:</span>background</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#ccddff<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-</code></pre>
-<p>XML 常见属性</p>
-<ul>
-<li>android:text 显示文本内容到 View 上。</li>
-<li>android:layout_width 控制 View 的宽度， wrap_content 将 View 的宽度设定为刚好容纳需要显示文本的宽度。</li>
-<li>android:layout_height 控制 View 的高度， wrap_content 将 View 的高度设定为刚好容纳需要显示文本的高度。</li>
-<li>android:textSize 设置显示文本的大小， 使用 sp 单位 。</li>
-<li>android:background 设置 View 的背景颜色， 即图中阴影部分。</li>
-<li>android:textStyle 设置字体显示的样式，italic 表示斜体，bold 表示加粗。</li>
-<li>android:textAllCaps 设置文字是否全大写，Button 中不设置默认全大写。  </li>
-</ul>
-<p>注：  </p>
-<ul>
-<li>单位 dp 是密度无关像素（ density independent pixels ）， 使用 dp 可以在不同分辨率的屏幕上以相应的比例显示，更好的适配不同规格的屏幕。同时也可以更好的规定 UI 标准。 例如触摸类 View 长宽要大于等于 48 dp 。   </li>
-<li>单位 sp 与 dp 相似，并且比例无关，适用于字体。设置字体可以直接设置 sp 值。或者设置 textAppearance ，把应用字体大小与系统字体大小统一。<br>android:textAppearance=”?android:attr/textAppearanceSmall”</li>
-</ul>
-<h4 id="ImageView-布局示例"><a href="#ImageView-布局示例" class="headerlink" title="ImageView 布局示例"></a>ImageView 布局示例</h4><p>ImageView 显示效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/ImageView.png" alt="ImageView image"></p>
-<p>XML 代码</p>
-<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ImageView</span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@drawable/ocean<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-</code></pre>
-<p>XML 属性</p>
-<ul>
-<li>match_parent 代表将父 View 界面填充满。</li>
-<li>android:src 填入 ImageView 使用的图片地址。</li>
-</ul>
-<p>可以看出来，图片被压缩了，显示在屏幕中间，这个显示并没有达到我们的要求，我们可以使用 android:ScaleType 来修改图片的显示方式。ScaleType 设定的值可以从 Android 开发者官网获取：<a href="https://developer.android.com/reference/android/widget/ImageView.ScaleType.html" target="_blank" rel="external">ImageView.ScaleType 属性</a> 。<br>这里分别展示一下参数 center， centerCrop 的效果。  </p>
-<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ImageView</span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@drawable/ocean<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>scaleType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-</code></pre>
-<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/ImageViewCenter.png" alt="ImageViewCenter "></p>
-<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ImageView</span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@drawable/ocean<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>scaleType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>centerCrop<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-</code></pre>
-<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/ImageViewCenterCrop.png" alt="ImageViewCenterCrop "></p>
-<p>可以看到在使用 centerCrop 属性后，在屏幕的边界处没有任何的白边或者空余，这种情况下称为无边界图片，在打印技术中叫做全出血打印。</p>
-<h3 id="确定-View-在屏幕中的位置"><a href="#确定-View-在屏幕中的位置" class="headerlink" title="确定 View 在屏幕中的位置"></a>确定 View 在屏幕中的位置</h3><p>如果一个 View 包含了其他 View ，这个 View 被称为父 View。如果如果一个 View 被其他 View 包含，这个 View 被称为子 View。父 View 可以控制子 View 的位置。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;之前学习 Android 开发的过程都是用到什么学习什么，这样下来基础还是比较薄弱的没有系统的学习过，刚好看到了 Google 官方的 StudyJams 活动，也想重新认识一下 Android 开发，且记录下学习的过程。  &lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://
-    
-    </summary>
-    
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
-    
-      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
-    
-      <category term="StudyJams" scheme="https://bearzpy.github.io/tags/StudyJams/"/>
-    
-      <category term="View" scheme="https://bearzpy.github.io/tags/View/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在Android中使用JNI</title>
-    <link href="https://bearzpy.github.io/2017/03/14/Android/%E5%9C%A8Android%E4%B8%AD%E4%BD%BF%E7%94%A8JNI/"/>
-    <id>https://bearzpy.github.io/2017/03/14/Android/在Android中使用JNI/</id>
-    <published>2017-03-14T09:08:43.000Z</published>
-    <updated>2017-03-14T09:09:02.646Z</updated>
-    
-    <content type="html"><![CDATA[<p>Hello JNI！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Hello JNI！&lt;/p&gt;
 
     
-    </summary>
+
     
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
     
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+        <a href="/2017/03/16/Android/全屏/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
-      <category term="JNI" scheme="https://bearzpy.github.io/tags/JNI/"/>
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/user.jpg" alt="BearZPY's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        965006619@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
     
-  </entry>
-  
-  <entry>
-    <title>如何对其他APP进行备份与恢复</title>
-    <link href="https://bearzpy.github.io/2017/03/13/Android/%E5%A6%82%E4%BD%95%E5%AF%B9%E5%85%B6%E4%BB%96APP%E8%BF%9B%E8%A1%8C%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/"/>
-    <id>https://bearzpy.github.io/2017/03/13/Android/如何对其他APP进行备份与恢复/</id>
-    <published>2017-03-13T06:05:07.000Z</published>
-    <updated>2017-03-13T06:06:02.557Z</updated>
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
     
-    <summary type="html">
+
+    <!-- Archives  -->
     
-    </summary>
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
+            </ul>
+        </li>
+        
     
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+
+    <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/hexo/">hexo<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+
+    <!-- Pages  -->
     
-      <category term="备份" scheme="https://bearzpy.github.io/tags/%E5%A4%87%E4%BB%BD/"/>
+        <li>
+            <a href="/tags" title="标签">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签
+            </a>
+        </li>
+        
     
-      <category term="恢复" scheme="https://bearzpy.github.io/tags/%E6%81%A2%E5%A4%8D/"/>
+
+    <!-- Article Number  -->
     
-  </entry>
-  
-  <entry>
-    <title>如何在APP中安装卸载其他APP</title>
-    <link href="https://bearzpy.github.io/2017/03/13/Android/%E5%A6%82%E4%BD%95%E5%9C%A8APP%E4%B8%AD%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD%E5%85%B6%E4%BB%96APP/"/>
-    <id>https://bearzpy.github.io/2017/03/13/Android/如何在APP中安装卸载其他APP/</id>
-    <published>2017-03-13T05:50:57.000Z</published>
-    <updated>2017-03-13T06:05:49.813Z</updated>
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
     
-    <summary type="html">
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
     
-    </summary>
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
     
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+
+    <!-- Facebook -->
     
+
+    <!-- Google + -->
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+
+    <!-- Weibo -->
     
-      <category term="静默安装卸载" scheme="https://bearzpy.github.io/tags/%E9%9D%99%E9%BB%98%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD/"/>
+
+    <!-- Instagram -->
     
-      <category term="安装卸载" scheme="https://bearzpy.github.io/tags/%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD/"/>
+
+    <!-- Tumblr -->
     
-  </entry>
-  
-  <entry>
-    <title>使用git clean清理工程文件</title>
-    <link href="https://bearzpy.github.io/2017/03/07/git/%E4%BD%BF%E7%94%A8git%20clean%E6%B8%85%E7%90%86%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/"/>
-    <id>https://bearzpy.github.io/2017/03/07/git/使用git clean清理工程文件/</id>
-    <published>2017-03-07T11:03:22.000Z</published>
-    <updated>2017-03-13T06:07:03.639Z</updated>
+
+    <!-- Github -->
     
-    <content type="html"><![CDATA[<p>工程代码在编译的时候往往会生产很多的文件，在项目需要移动复制或者备份的时候这些文件是无用的，所以大部分IDE都提供了clean工程的功能， 但是有时候IDE提供的功能并不能满足我们的需求，所以往往需要使用其他的清理工具来完成我们的要求（例如编写 Windows 下的clean bat执行文件）。这里主要介绍使用git clean来给工程瘦身的方法。  </p>
-<h2 id="git-clean"><a href="#git-clean" class="headerlink" title="git clean"></a>git clean</h2><p>使用情景：Android studio（2.2.3） 编译时在build文件夹下生成了几十MB的mockable-android-XX.jar。然而AS提供的clean并没有清除这些文件， 导致clean后的工程还是占用了很大的体积。</p>
-<h4 id="使用前提"><a href="#使用前提" class="headerlink" title="使用前提"></a>使用前提</h4><p>项目需要使用git来管理，且重要的文件已经用git记录追踪。</p>
-<h4 id="命令介绍"><a href="#命令介绍" class="headerlink" title="命令介绍"></a>命令介绍</h4><p>git clean 用于清理git根目录下所有没有被track的文件和文件夹<br>使用 git clean -h 获取命令的帮助手册。<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_help.png" alt="help document"></p>
-<p>常用参数介绍：  </p>
-<ol>
-<li>-n  打印出需要清理的文件和文件夹（不会真的删除）</li>
-<li>-f  强制删除（并不是删除文件的意思）</li>
-<li>-d 删除整个文件夹（包括文件，-n 不会显示文件夹里面的文件）</li>
-<li>-x 对.gitignore文件中忽略的文件及文件夹进行清理（不加上-d参数的话只能清理文件）</li>
-</ol>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>使用git clean清除时最好先加上-n参数查看清理的对象，如果清理文件夹的话，需要明确文件夹里是否有重要的文件数据，避免误删。<br>-f 是强制删除，可以在-xd删除失败的时候加上。<br>不希望删除的文件加入git管理（add，commit）就可以了。</p>
-<h4 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h4><p>列举了清理Android Studio构建的APP项目TodoList所使用的指令输入和打印输出。</p>
-<pre class=" language-bash"><code class="language-bash">$ <span class="token function">git</span> clean -nd
-</code></pre>
-<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_nd.png" alt="help document"></p>
-<pre class=" language-bash"><code class="language-bash">$ <span class="token function">git</span> clean -nx
-</code></pre>
-<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_nx.png" alt="help document"></p>
-<pre class=" language-bash"><code class="language-bash">$ <span class="token function">git</span> clean -nxd
-</code></pre>
-<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_nxd.png" alt="help document"></p>
-<pre class=" language-bash"><code class="language-bash">$ <span class="token function">git</span> clean -xd
-</code></pre>
-<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_xd.png" alt="help document"></p>
-<pre class=" language-bash"><code class="language-bash">$ <span class="token function">git</span> clean -fxd
-</code></pre>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_fxd.png" alt="help document"></h2>]]></content>
+        <a href="https://github.com/BearZPY" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
     
-    <summary type="html">
+
+    <!-- LinkedIn -->
     
-      &lt;p&gt;工程代码在编译的时候往往会生产很多的文件，在项目需要移动复制或者备份的时候这些文件是无用的，所以大部分IDE都提供了clean工程的功能， 但是有时候IDE提供的功能并不能满足我们的需求，所以往往需要使用其他的清理工具来完成我们的要求（例如编写 Windows 下的clea
+
+    <!-- Zhihu -->
     
-    </summary>
+
+    <!-- Bilibili -->
     
-      <category term="git" scheme="https://bearzpy.github.io/categories/git/"/>
+
+    <!-- Telegram -->
     
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;BearZPY Blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
     
-      <category term="git" scheme="https://bearzpy.github.io/tags/git/"/>
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
     
-      <category term="clean project" scheme="https://bearzpy.github.io/tags/clean-project/"/>
-    
-      <category term="android studio" scheme="https://bearzpy.github.io/tags/android-studio/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://bearzpy.github.io/2017/03/06/hexo/hello-world/"/>
-    <id>https://bearzpy.github.io/2017/03/06/hexo/hello-world/</id>
-    <published>2017-03-06T07:51:50.108Z</published>
-    <updated>2017-03-08T05:24:41.950Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
-      <category term="hexo" scheme="https://bearzpy.github.io/categories/hexo/"/>
-    
-    
-      <category term="hexo" scheme="https://bearzpy.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-</feed>
+</html>

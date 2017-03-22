@@ -10,7 +10,7 @@
     
     <title>
         
-            Android入门-01 初识布局 | 
+            Android入门-1A 初识 View | 
         
         BearZPY Blog
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#FF4081">
     <meta name="author" content="BearZPY">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,Android,Google,StudyJams">
+    <meta name="keywords" content="null,Android,Google,StudyJams,View">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://bearzpy.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Android入门-01 初识布局 | BearZPY Blog">
+    <meta property="og:title" content="Android入门-1A 初识 View | BearZPY Blog">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Google"> <meta property="og:article:tag" content="StudyJams"> 
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Google"> <meta property="og:article:tag" content="StudyJams"> <meta property="og:article:tag" content="View"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -234,7 +234,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#View"><span class="post-toc-number">1.</span> <span class="post-toc-text">View</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#View-的相关概念"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">View 的相关概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最常见的三种-Views-："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">最常见的三种 Views ：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#根据要求调节View的样式"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">根据要求调节View的样式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#XML-和-XMLV-相关概念"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">XML 和 XMLV 相关概念</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#TextVeiw-布局示例"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">TextVeiw 布局示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ImageView-布局示例"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">ImageView 布局示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#确定-View-在屏幕中的位置"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">确定 View 在屏幕中的位置</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#视图-View"><span class="post-toc-number">1.</span> <span class="post-toc-text">视图 View</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#View-的相关概念"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">View 的相关概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最常见的三种-Views-："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">最常见的三种 Views ：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#根据要求调节View的样式"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">根据要求调节View的样式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#XML-和-XMLV-相关概念"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">XML 和 XMLV 相关概念</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#TextVeiw-布局示例"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">TextVeiw 布局示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ImageView-布局示例"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">ImageView 布局示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#确定-View-在屏幕中的位置"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">确定 View 在屏幕中的位置</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -270,7 +270,7 @@
         
     
             <p class="article-headline-p">
-                Android入门-01 初识布局
+                Android入门-1A 初识 View
             </p>
         </div>
 
@@ -310,7 +310,7 @@
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
             <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAACy0lEQVR42u3aQVIDMQwEwPz/0/CAwDIjL6nEbp9SFNl1+4DQyI+vI9cDGxsbGxsbGxsb+y3Zj3g9f+v58w8vC575/Ln9nWjP2NjY2Fuz//jTH8BywPXRJN+d7RkbGxv7BPZK8fj1Zb9ssX3CSsHDxsbGxp6xk/agbVqwsbGxse9iJy1EUtLycAobGxsb+65QqY1+rluR/GjaA8LGxsY+jZ0PTd/n80vn29jY2NhvzG5XGzAlA4PZgKHeOTY2Nvam7LwwRP/uL1+yyd9bjx+wsbGxN2XP4p52rR/N+pgBGxsbe1d20kjMrtEkW08Gxi14mKVhY2Njfyw7aQySA8ojoVmrMztKbGxs7JPZ123DdfG4NzBqD/2GQS82Njb2h7PbNiDfSj5UaMfD0c+xsbGxN2W3gX5bzP6jURleFcLGxsbemp0PYqPLMaPIKS9sw+tE2NjY2Fuz20aivZSTH1ZbnIojxsbGxt6UnW/rhmYg/taLsjRsbGzsrdn5P/2zQ2wZs6EFNjY29gnslYKRNy0tdaWlGXZg2NjY2B/LTgKdIoIfNSHtTvIgCRsbG/sEdvL6V44T8us+eSHExsbG3pt9vfXZyuP+tl1ZGidgY2Njb82ejQTysH69zVi5MISNjY29NzsJaO4KldqRwEojhI2NjX0mu93iymBgpWh9jRY2Njb2CeykUK0Ma/NSlARP9WADGxsb+xh2G/e3JWdWkGbjBGxsbOwz2W0Jia7LLIdKN7Q02NjY2Juy62gmuRyzXBST9yZtCTY2NvYJ7LYwzErO9XG0Ze+2QS82Njb2Ruy2kVjZ7kqo1A6YsbGxsU9jJwFNHve0h9s+vx4AY2NjY2OXm5hFTrNYKipp2NjY2Ng3MZJC1Q6Jo+dgY2NjH8BuA5312GjlgPKDwMbGxj6BvRLcrJe9dnjclk9sbGzsvdnnLGxsbGxsbGxsbOy3Wd8c8exvOXCoHAAAAABJRU5ErkJggg==">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADj0lEQVR42u3aS1IcMRAFQO5/aXvrCOzhvSqpGRypFdE0GilnUdTn45f1x/pAgAMHDhw4cODAgQPHG3N8xOsvG/3j+eed8/dfv/n6bLO74MCBAweOGxxfhKLRNZLjJs+TnTd3wYEDBw4c9zhmx2rD6ix4b87z+lQ4cODAgePdOJLwloTePJDjwIEDB47/j+OLDyhLeLNE8XUKhwMHDhw43oFj1hDaXDgPtO0/AQ/VSnHgwIEDx3qg4f1/fnS+AwcOHDhwfOJoVxJQTxX+8mC/uhEOHDhw4DjKkQeqtpk0Q9k3qOrz48CBAweOCxx5WS0p9u2Tw82wQv4cBw4cOHB8F0eSXA2PEjxvg2ub5uHAgQMHjrMcs6QrgZi9n1wpJ45ugQMHDhw4LnC0Yex1aa9tGuWlwBnosYEGHDhw4MAxGpXbH/FUgW/THivSRRw4cODA8QjH5oPzQHu2NJkkfkWtFAcOHDhwjDjaRCtP/GYton0gr8fycODAgQPHBY5ZMJu1iIaJ1tGhOhw4cODA8QxHHiyTBK9N/2bvHCga4sCBAweOoxzHxgLi1KsNz3nTqx19wIEDBw4cNzhmJbxZYym5TJ7m5V9GMdCAAwcOHDjWHG0jZ4bSvtOerR2qwIEDBw4cT3KcvXae/rWNpTZtGwZaHDhw4MCxSOHqjRbja7MiY15GTL5UHDhw4MBxj6MdZcsLf21alV9sMzCBAwcOHDie4ciZZmne2cCccx+YHMSBAwcOHOXUcV74awtzSRMrD/DJzodrpThw4MCB41DOkge/pIR3o/A3KwUWxUEcOHDgwDHiSA40GxdoEdvLXCkO4sCBAweOQxyb4lqbniXtpfx6bXEwCrQ4cODAgeMQR56S5W2hWYrVhuf2a8OBAwcOHE9yJIML+6NsksB88CL6Wxw4cODA8QhHPrLWXnjWlNoMUuDAgQMHju/iSA7aDqud2jkvQbb/BODAgQMHjrMc7dqMOMxaWbMkbVgcxIEDBw4ca442ULXDEMdKeIdCcpTC4cCBAweONcfsKG0hrw2Eebr4uhE1HGjAgQMHDhxrjlkAa9O/ungX/DbfEwcOHDhw/CyO2ZhdXmpsE8LDo3I4cODAgeMyx6x1lCdaLdxsbA4HDhw4cNzjmBXyZoMLm6G6YRHwRtsJBw4cOHCsBxrypCs5dL5n3spqByZw4MCBA8dZDgsHDhw4cODAgQMHDhxvtn4DwLp8hWJeYt0AAAAASUVORK5CYII=">
         </ul>
     
 
@@ -322,7 +322,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Google/">Google</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/StudyJams/">StudyJams</a>
+        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Google/">Google</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/StudyJams/">StudyJams</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/View/">View</a>
     </ul>
     
 
@@ -341,7 +341,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Android入门-01 初识布局&url=https://bearzpy.github.io//2017/03/14/google study jams/Android 入门-01/index.html&via=BearZPY" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Android入门-1A 初识 View&url=https://bearzpy.github.io//2017/03/14/google study jams/Android入门-1A 初识 View/index.html&via=BearZPY" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -350,7 +350,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://bearzpy.github.io//2017/03/14/google study jams/Android 入门-01/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://bearzpy.github.io//2017/03/14/google study jams/Android入门-1A 初识 View/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -359,7 +359,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://bearzpy.github.io//2017/03/14/google study jams/Android 入门-01/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://bearzpy.github.io//2017/03/14/google study jams/Android入门-1A 初识 View/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -368,7 +368,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://bearzpy.github.io//2017/03/14/google study jams/Android 入门-01/index.html&title=Android入门-01 初识布局" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://bearzpy.github.io//2017/03/14/google study jams/Android入门-1A 初识 View/index.html&title=Android入门-1A 初识 View" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -377,7 +377,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=BearZPY Blog&title=Android入门-01 初识布局&summary=null&pics=https://bearzpy.github.io/img/favicon.png&url=https://bearzpy.github.io/2017/03/14/google study jams/Android 入门-01/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=BearZPY Blog&title=Android入门-1A 初识 View&summary=null&pics=https://bearzpy.github.io/img/favicon.png&url=https://bearzpy.github.io/2017/03/14/google study jams/Android入门-1A 初识 View/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -397,7 +397,7 @@
     
         <p>之前学习 Android 开发的过程都是用到什么学习什么，这样下来基础还是比较薄弱的没有系统的学习过，刚好看到了 Google 官方的 StudyJams 活动，也想重新认识一下 Android 开发，且记录下学习的过程。  </p>
 <p><a href="http://www.studyjamscn.com/" target="_blank" rel="external">Google StudyJams 官网</a></p>
-<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>View 简单的说就手机上能看到的内容，是生活中最常见的，也是 Android 开发中最先需要接触的。  </p>
+<h2 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h2><p>View 简单的说就手机上能看到的内容，是生活中最常见的，也是 Android 开发中最先需要接触的。  </p>
 <h3 id="View-的相关概念"><a href="#View-的相关概念" class="headerlink" title="View 的相关概念"></a>View 的相关概念</h3><p>View 是一个屏幕用来展示内容的长方形。（ 类似于展示照片的相框 ）<br>屏幕上显示出的界面是由许多 Views 组合而成的，这种组合成为布局（ Layout ）。<br>屏幕展示给用户的查看操作的界面称为用户界面（ User Interface ）简称UI。  </p>
 <h3 id="最常见的三种-Views-："><a href="#最常见的三种-Views-：" class="headerlink" title="最常见的三种 Views ："></a>最常见的三种 Views ：</h3><p>都使用驼峰式命名（ CamelCase ）：单词间不空格，每个单词首字母大写，其余小写。</p>
 <ul>
@@ -406,7 +406,7 @@
 <li>Button 获取用户操作，如图上 D， E 组件。   </li>
 </ul>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/SelectViewsExample.png" alt="youtube image"></p>
-<h3 id="根据要求调节View的样式"><a href="#根据要求调节View的样式" class="headerlink" title="根据要求调节View的样式"></a>根据要求调节View的样式</h3><h4 id="XML-和-XMLV-相关概念"><a href="#XML-和-XMLV-相关概念" class="headerlink" title="XML 和 XMLV 相关概念"></a>XML 和 XMLV 相关概念</h4><p>在Android开发中布局文件是用 XML 编写的。<br>XML 是可扩展标记语言。<br>XMLV 就 XML 可视化器，用来把 XML 语音转换成界面显示。<br>国内可访问的在线 XMLV ： <a href="http://v.studyjams.cn/" target="_blank" rel="external">Android XMLV</a></p>
+<h3 id="根据要求调节View的样式"><a href="#根据要求调节View的样式" class="headerlink" title="根据要求调节View的样式"></a>根据要求调节View的样式</h3><h4 id="XML-和-XMLV-相关概念"><a href="#XML-和-XMLV-相关概念" class="headerlink" title="XML 和 XMLV 相关概念"></a>XML 和 XMLV 相关概念</h4><p>在Android开发中布局文件是用 XML 编写的。<br>XML 是可扩展标记语言。<br>XMLV 就 XML 可视化器，用来把 XML 语言转换成界面显示。<br>国内可访问的在线 XMLV ： <a href="http://v.studyjams.cn/" target="_blank" rel="external">Android XMLV</a></p>
 <h4 id="TextVeiw-布局示例"><a href="#TextVeiw-布局示例" class="headerlink" title="TextVeiw 布局示例"></a>TextVeiw 布局示例</h4><p>TextView 显示效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/TextViewExample.png" alt="TextView image"></p>
 <p>XML  代码  </p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
@@ -459,7 +459,8 @@
 </code></pre>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/ImageViewCenterCrop.png" alt="ImageViewCenterCrop "></p>
 <p>可以看到在使用 centerCrop 属性后，在屏幕的边界处没有任何的白边或者空余，这种情况下称为无边界图片，在打印技术中叫做全出血打印。</p>
-<h3 id="确定-View-在屏幕中的位置"><a href="#确定-View-在屏幕中的位置" class="headerlink" title="确定 View 在屏幕中的位置"></a>确定 View 在屏幕中的位置</h3>
+<h3 id="确定-View-在屏幕中的位置"><a href="#确定-View-在屏幕中的位置" class="headerlink" title="确定 View 在屏幕中的位置"></a>确定 View 在屏幕中的位置</h3><p>如果一个 View 包含了其他 View ，这个 View 被称为父 View。如果如果一个 View 被其他 View 包含，这个 View 被称为子 View。父 View 可以控制子 View 的位置。</p>
+
     
 
     
@@ -579,7 +580,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">7</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
             </ul>
         </li>
         
@@ -597,7 +598,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/hexo/">hexo<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/hexo/">hexo<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
