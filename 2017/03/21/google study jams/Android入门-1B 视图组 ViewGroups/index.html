@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#FF4081">
     <meta name="author" content="BearZPY">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,Android,Google,StudyJams,ViewGroups">
+    <meta name="keywords" content="null,Android,Google,StudyJams,ViewGroups,LinearLayout,RelativeLayout,layout_padding,layout_margin">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -50,7 +50,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Android入门-1B 视图组 ViewGroups | BearZPY Blog">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Google"> <meta property="og:article:tag" content="StudyJams"> <meta property="og:article:tag" content="ViewGroups"> 
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Google"> <meta property="og:article:tag" content="StudyJams"> <meta property="og:article:tag" content="ViewGroups"> <meta property="og:article:tag" content="LinearLayout"> <meta property="og:article:tag" content="RelativeLayout"> <meta property="og:article:tag" content="layout_padding"> <meta property="og:article:tag" content="layout_margin"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -322,7 +322,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Google/">Google</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/StudyJams/">StudyJams</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/ViewGroups/">ViewGroups</a>
+        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Google/">Google</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/LinearLayout/">LinearLayout</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/RelativeLayout/">RelativeLayout</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/StudyJams/">StudyJams</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/ViewGroups/">ViewGroups</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/layout-margin/">layout_margin</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/layout-padding/">layout_padding</a>
     </ul>
     
 
@@ -578,7 +578,8 @@
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
 </code></pre>
-<p>显示效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/relativeLayout_zhihu1.png" alt="relativeLayout_zhihu1 "><br>可以看见整个界面显示效果并不好，左侧的 View 都贴合在一起，View 的界限不容易辨识，为了得到更好的显示效果，我们需要引入内外边距的概念，将 View 之间分割开来。</p>
+<p>显示效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/relativeLayout_zhihu1.png" alt="relativeLayout_zhihu1 ">    </p>
+<p>可以看见整个界面显示效果并不好，左侧的 View 都贴合在一起，View 的界限不容易辨识，为了得到更好的显示效果，我们需要引入内外边距的概念，将 View 之间分割开来。</p>
 <h3 id="设定内外边距"><a href="#设定内外边距" class="headerlink" title="设定内外边距"></a>设定内外边距</h3><p>内边距 padding 可用于以特定数量的像素弥补视图的内容，内边距告诉视图，在绘制视图自身时，要比所含内容大多少。<br>外边距 margin 定义了视图周围需要留出的空白区域(由父视图处理)，它决定了组件间的距离。<br>内边距和外边距在视图本身背景颜色为透明时，效果是相同的。但是如果该视图是可以触摸的，那么内边距会增加视图的触摸范围，而外边距则不会。本质上内边距留出的部分属于原视图，而外边距留出的部分属于父视图，我们需要根据具体情况选择使用内边距还是外边距。  </p>
 <h4 id="内外边距布局示例"><a href="#内外边距布局示例" class="headerlink" title="内外边距布局示例"></a>内外边距布局示例</h4><p>示例分别给两个 TextView 加上 16 dp 的 padding 和 margin 属性， 并加上不同背景颜色用以区分，可以更加方便的看出内外边距的不同。    </p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
@@ -686,6 +687,14 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
+        <a href="/2017/03/23/Python/用 Python 批量处理图片/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
@@ -775,7 +784,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">9</span></a>
             </ul>
         </li>
         
@@ -793,7 +802,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/hexo/">hexo<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/hexo/">hexo<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
