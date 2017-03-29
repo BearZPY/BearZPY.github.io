@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://bearzpy.github.io/"/>
-  <updated>2017-03-24T00:45:42.411Z</updated>
+  <updated>2017-03-29T01:57:55.220Z</updated>
   <id>https://bearzpy.github.io/</id>
   
   <author>
@@ -14,6 +14,146 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android入门-1C 生日贺卡应用</title>
+    <link href="https://bearzpy.github.io/2017/03/27/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1C%20%E7%94%9F%E6%97%A5%E8%B4%BA%E5%8D%A1%E5%BA%94%E7%94%A8%20/"/>
+    <id>https://bearzpy.github.io/2017/03/27/google study jams/Android入门-1C 生日贺卡应用 /</id>
+    <published>2017-03-27T07:17:02.000Z</published>
+    <updated>2017-03-29T01:57:55.220Z</updated>
+    
+    <content type="html"><![CDATA[<p>StudyJams 推广的 1C 课程的第一个小应用， 这里介绍了几种编写方式及相应效果。</p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/sj_logo.png" alt="sj_logo"></p>
+<p><a href="http://www.studyjamscn.com/" target="_blank" rel="external">Google StudyJams 官网</a></p>
+<h2 id="生日贺卡应用"><a href="#生日贺卡应用" class="headerlink" title="生日贺卡应用"></a>生日贺卡应用</h2><h3 id="最终的应用界面"><a href="#最终的应用界面" class="headerlink" title="最终的应用界面"></a>最终的应用界面</h3><p>界面设计选择隐藏了系统的状态栏，导航栏和应用的 action bar，使用相对布局，还添加部分 java 代码让应用进入沉浸式模式（Immersive Mode），在手机上显示的更有整体感。</p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_final_imageview_fullsreen_code.png" alt="RelativeLayout_final_imageview_fullsreen_code"></p>
+<h3 id="相对布局基本界面"><a href="#相对布局基本界面" class="headerlink" title="相对布局基本界面"></a>相对布局基本界面</h3><p>RelativeLayout 上把 Views 设置到相同的区域后会发生重叠的效果 ，XML 中先列出的 View 处于下方，后列出的 View 处于上方，这种重叠方式可以被我们使用以组合成我们需要的界面。对于相对简单的布局，我们可以使用多种方式来组合我们的界面，下面以两段文本和一张图片演示。</p>
+<h4 id="使用-ImageView-布局"><a href="#使用-ImageView-布局" class="headerlink" title="使用 ImageView 布局"></a>使用 ImageView 布局</h4><p>使用两个 TextView 和一个 ImageView 来布局。先列出 ImageView 选择  centerCrop 属性铺满 RelativeLayout 布局，再分别配置两个 TextView 的属性，分别置于左上角和右下角，这个时候 TextView 就都呈现在 ImageView 的上方，再增加 padding 属性进行调整。</p>
+<p>XML 代码：</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">xmlns:</span>tools</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/tools<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/activity_main<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">tools:</span>context</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.io.zhang.pengyu.greetingcrad.MainActivity<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ImageView</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>scaleType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>centerCrop<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@drawable/androidparty<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textColor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@color/colorAccent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textAppearance</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>?android:textAppearanceLarge<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>16dp<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Happy Birthday!<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textColor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@color/colorAccent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textAppearance</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>?android:textAppearanceMedium<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_alignParentBottom</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_alignParentEnd</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>16dp<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>From BearZPY!<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>显示效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_imageview.png" alt="RelativeLayout_imageview"></p>
+<h4 id="不使用-ImageView-布局"><a href="#不使用-ImageView-布局" class="headerlink" title="不使用 ImageView 布局"></a>不使用 ImageView 布局</h4><p>这里要提一个属性  <code>android:background=&quot;@drawable/androidparty&quot;</code> 这个属性可以为 View 和 View Group 增加背景，参数可以是颜色，也可以是图片。为 RelativeLayout 加上背景图片也能完成类似的布局，但是对背景图片的控制能力就不如 ImageView 了。</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">xmlns:</span>tools</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/tools<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/activity_main<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>background</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@drawable/androidparty<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">tools:</span>context</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.io.zhang.pengyu.greetingcrad.MainActivity<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textColor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@color/colorAccent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textAppearance</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>?android:textAppearanceLarge<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>16dp<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Happy Birthday!<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textColor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@color/colorAccent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textAppearance</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>?android:textAppearanceMedium<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_alignParentBottom</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_alignParentEnd</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>16dp<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>From BearZPY!<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>显示效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_background.png" alt="RelativeLayout_background"></p>
+<h4 id="修改主题隐藏状态栏和-action-bar"><a href="#修改主题隐藏状态栏和-action-bar" class="headerlink" title="修改主题隐藏状态栏和  action bar"></a>修改主题隐藏状态栏和  action bar</h4><p>主题是指对整个 Activity 或应用而不是对单个  View （如上例所示）应用的样式。 以主题形式应用样式时，Activity 或应用中的每个视图都将应用其支持的每个样式属性。   </p>
+<p>默认工程生成的活动 Activity 是继承的 AppCompatActivity 的，<code>MainActivity extends AppCompatActivity</code>。把 AppCompatActivity 修改成 Activity，因为我们后续配置的主题文件与 AppCompatActivity 不兼容。</p>
+<p>然后我们需要修改 AndroidManifest.xml 文件来修改整个 app 的主题。默认 app 的主题是  <code>android:theme=&quot;@style/AppTheme&quot;</code> , 这里修改成 <code>&quot;@android:style/Theme.NoTitleBar.Fullscreen&quot;</code> 就可以隐藏状态栏了，同时也没有了 action bar。  </p>
+<p>显示效果：<br>左图是 ImageView，右图是 background  </p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_imageview_fullsreen_theme.png" alt="RelativeLayout_imageview_fullsreen_theme">  <img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_background_fullsreen_theme.png" alt="RelativeLayout_background_fullsreen_theme"></p>
+<h4 id="隐藏状态栏，导航栏和-action-bar"><a href="#隐藏状态栏，导航栏和-action-bar" class="headerlink" title="隐藏状态栏，导航栏和  action bar"></a>隐藏状态栏，导航栏和  action bar</h4><p>上面是通过 theme 的方式隐藏状态栏，修改了 action bar，但是我们离全屏还差一个导航栏。这里我们要通过 java 代码的方式来修改，这个就更加方便了，在 MainActivity  中添加一段设置属性的代码就能达到这个效果（通过这种方式不需要去修改主题）。这个代码需要在 Android 5.0 上才能有效果，其实就是 material design 设计特性。<br>增加代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> android<span class="token punctuation">.</span>os<span class="token punctuation">.</span>Build<span class="token punctuation">;</span>
+<span class="token keyword">import</span> android<span class="token punctuation">.</span>os<span class="token punctuation">.</span>Bundle<span class="token punctuation">;</span>
+<span class="token keyword">import</span> android<span class="token punctuation">.</span>support<span class="token punctuation">.</span>v7<span class="token punctuation">.</span>app<span class="token punctuation">.</span>AppCompatActivity<span class="token punctuation">;</span>
+<span class="token keyword">import</span> android<span class="token punctuation">.</span>view<span class="token punctuation">.</span>View<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onWindowFocusChanged</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> hasFocus<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onWindowFocusChanged</span><span class="token punctuation">(</span>hasFocus<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>hasFocus <span class="token operator">&amp;&amp;</span> Build<span class="token punctuation">.</span>VERSION<span class="token punctuation">.</span>SDK_INT <span class="token operator">>=</span> <span class="token number">19</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            View decorView <span class="token operator">=</span> <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDecorView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            decorView<span class="token punctuation">.</span><span class="token function">setSystemUiVisibility</span><span class="token punctuation">(</span>
+                    View<span class="token punctuation">.</span>SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            <span class="token operator">|</span> View<span class="token punctuation">.</span>SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            <span class="token operator">|</span> View<span class="token punctuation">.</span>SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            <span class="token operator">|</span> View<span class="token punctuation">.</span>SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            <span class="token operator">|</span> View<span class="token punctuation">.</span>SYSTEM_UI_FLAG_FULLSCREEN
+                            <span class="token operator">|</span> View<span class="token punctuation">.</span>SYSTEM_UI_FLAG_IMMERSIVE_STICKY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>显示效果：</p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_imageview_fullsreen_code.png" alt="RelativeLayout_imageview_fullsreen_code">  <img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_background_fullsreen_code.png" alt="RelativeLayout_background_fullsreen_code"></p>
+<h3 id="使用线性布局"><a href="#使用线性布局" class="headerlink" title="使用线性布局"></a>使用线性布局</h3><p>线性布局其实也是能实现类似上面简单的界面的，但是可操作性比较弱，背景使用 background 属性配置，TextView 需要使用 gravity， layout_gravity， layout_weight 属性来组合，实现起来不如 RelativeLayout 方便，这里只展示下显示效果，就不贴相关代码了。</p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/LinearLayout_background_fullsreen_theme.png" alt="LinearLayout_background_fullsreen_theme"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;StudyJams 推广的 1C 课程的第一个小应用， 这里介绍了几种编写方式及相应效果。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jam
+    
+    </summary>
+    
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+    
+      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
+    
+      <category term="StudyJams" scheme="https://bearzpy.github.io/tags/StudyJams/"/>
+    
+  </entry>
   
   <entry>
     <title>用 Python 批量处理图片大小</title>
@@ -238,9 +378,10 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
     <link href="https://bearzpy.github.io/2017/03/21/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1B%20%E8%A7%86%E5%9B%BE%E7%BB%84%20ViewGroups/"/>
     <id>https://bearzpy.github.io/2017/03/21/google study jams/Android入门-1B 视图组 ViewGroups/</id>
     <published>2017-03-21T10:33:12.000Z</published>
-    <updated>2017-03-22T02:54:35.554Z</updated>
+    <updated>2017-03-28T09:18:47.861Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="http://www.studyjamscn.com/" target="_blank" rel="external">Google StudyJams 官网</a></p>
+    <content type="html"><![CDATA[<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/sj_logo.png" alt="sj_logo"></p>
+<p><a href="http://www.studyjamscn.com/" target="_blank" rel="external">Google StudyJams 官网</a></p>
 <h2 id="视图组-ViewGroup"><a href="#视图组-ViewGroup" class="headerlink" title="视图组 ViewGroup"></a>视图组 ViewGroup</h2><p>ViewGroup 是可以包含其他视图（子 View）的特殊视图。ViewGroup 是布局和视图容器的基类，布局文件是由 ViewGroup 拓展出来的。我们使用布局组合控制各个 View 在屏幕上显示的位置。  </p>
 <p>常见布局 layout ：</p>
 <ul>
@@ -513,8 +654,8 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;http://www.studyjamscn.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Google StudyJams 官网&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;视图组-ViewGroup&quot;&gt;&lt;a href=&quot;#视图组-Vie
+      &lt;p&gt;&lt;img src=&quot;https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/sj_logo.png&quot; alt=&quot;sj_logo&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://
     
     </summary>
     
@@ -564,9 +705,10 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
     <link href="https://bearzpy.github.io/2017/03/14/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1A%20%E5%88%9D%E8%AF%86%20View/"/>
     <id>https://bearzpy.github.io/2017/03/14/google study jams/Android入门-1A 初识 View/</id>
     <published>2017-03-14T13:08:38.000Z</published>
-    <updated>2017-03-21T10:34:20.878Z</updated>
+    <updated>2017-03-28T09:18:50.232Z</updated>
     
-    <content type="html"><![CDATA[<p>之前学习 Android 开发的过程都是用到什么学习什么，这样下来基础还是比较薄弱的没有系统的学习过，刚好看到了 Google 官方的 StudyJams 活动，也想重新认识一下 Android 开发，且记录下学习的过程。  </p>
+    <content type="html"><![CDATA[<p>刚好看到了 Google 官方的 StudyJams 活动，也想知道 Google 是怎么推广 Android 技术的，就参加了。按活动要求提供学习笔记，记录如下。  </p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/sj_logo.png" alt="sj_logo"></p>
 <p><a href="http://www.studyjamscn.com/" target="_blank" rel="external">Google StudyJams 官网</a></p>
 <h2 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h2><p>View 简单的说就手机上能看到的内容，是生活中最常见的，也是 Android 开发中最先需要接触的。  </p>
 <h3 id="View-的相关概念"><a href="#View-的相关概念" class="headerlink" title="View 的相关概念"></a>View 的相关概念</h3><p>View 是一个屏幕用来展示内容的长方形。（ 类似于展示照片的相框 ）<br>屏幕上显示出的界面是由许多 Views 组合而成的，这种组合成为布局（ Layout ）。<br>屏幕展示给用户的查看操作的界面称为用户界面（ User Interface ）简称UI。  </p>
@@ -635,8 +777,8 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
     
     <summary type="html">
     
-      &lt;p&gt;之前学习 Android 开发的过程都是用到什么学习什么，这样下来基础还是比较薄弱的没有系统的学习过，刚好看到了 Google 官方的 StudyJams 活动，也想重新认识一下 Android 开发，且记录下学习的过程。  &lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://
+      &lt;p&gt;刚好看到了 Google 官方的 StudyJams 活动，也想知道 Google 是怎么推广 Android 技术的，就参加了。按活动要求提供学习笔记，记录如下。  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/BearZPY/blog-img
     
     </summary>
     
