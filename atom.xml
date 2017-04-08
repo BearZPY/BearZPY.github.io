@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://bearzpy.github.io/"/>
-  <updated>2017-04-08T07:23:59.585Z</updated>
+  <updated>2017-04-08T12:35:05.000Z</updated>
   <id>https://bearzpy.github.io/</id>
   
   <author>
@@ -20,44 +20,141 @@
     <link href="https://bearzpy.github.io/2017/04/06/gradle/gradle%E5%85%A5%E9%97%A8-01/"/>
     <id>https://bearzpy.github.io/2017/04/06/gradle/gradle入门-01/</id>
     <published>2017-04-06T10:39:10.000Z</published>
-    <updated>2017-04-08T07:23:59.585Z</updated>
+    <updated>2017-04-08T12:35:05.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h2><p>本篇文章主要通俗的讲述 Gradle 的基本知识点，帮助大家了解 Gradle。</p>
+    <content type="html"><![CDATA[<h2 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h2><p>本篇文章主要讲述 Gradle 的基本知识点，帮助大家了解 Gradle。</p>
 <h3 id="Gradle-背景知识"><a href="#Gradle-背景知识" class="headerlink" title="Gradle 背景知识"></a>Gradle 背景知识</h3><p>先介绍概念：</p>
 <blockquote>
 <p>Gradle 是一个基于 Apache Ant 和 Apache Maven 概念的项目自动化建构工具。它使用一种基于 Groovy 的特定领域语言来声明项目设置，而不是传统的 XML 。</p>
 </blockquote>
 <p>这个概念我们先不用去理解，只要知道 Gradle 是一个自动化构建工具就可以了。那么为什么我们在开发 Android 程序的时候需要去使用自动化构建工具呢？答案很简单，就是构建一个 Android 工程需要做很多重复性很高的事情，手动干这些事麻烦又浪费时间，所以我们选择让机器去做。好吧，我承认就是懒，聪明的开发者都愿意找一个正确，高效又能偷懒的方法。</p>
 <p>Gradle 是 Google I/O 2013 大会上发布的，用来替换 Ant 和 Maven 的新工具，替换旧工具的原因当然是它们不能让开发者继续开心的懒下去了。</p>
-<p>简单讲一下 Ant，Maven 和 Gradle 的关系，这个不懂也没关系。Ant 可以自动化打包，但是许多东西要手动加。Maven 也可以自动化打包，还能帮下载你需要的东西，但是它的逻辑策略写起来很麻烦。两个工具都不大好用，为了能开心的偷懒，Gradle 应运而生。Gradle 集成了上面的功能用起来很方便，在大陆上大家觉得不好用是因为某种不可描述的原因，不是工具自身的问题。</p>
+<p>简单讲一下 Ant，Maven 和 Gradle 的关系，这是个题外话。Ant 可以自动化打包，但是许多东西要手动下载添加。Maven 既可以自动化打包，也能帮下载你需要的东西，但是它的逻辑策略写起来很麻烦。两个工具都不大好用，为了能开心的偷懒，Gradle 应运而生。Gradle 集成了上面的功能，非常方别开发使用，但由于某些网络问题，导致初学者使用起来体验并不好。</p>
 <h3 id="Gradle-文件结构"><a href="#Gradle-文件结构" class="headerlink" title="Gradle 文件结构"></a>Gradle 文件结构</h3><p>Android Studio 创建 Android 工程的时候会创建许多文件，这让不熟悉的人分不清楚不同文件的意义，这里我们先介绍一个最简单的 Gradle 结构，如下图。</p>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/gradle_mimi_unit.png" alt="gradle_mimi_unit"></p>
 <p>这个结构一共有 5 个文件。其中 build.gradle 是我们需要编写的 Gradle 的脚本文件，另外四个文件组成了一个 Gradle 中的重要结构：Gradle Wrapper（Gradle 封装器）。</p>
-<h4 id="Gradle-Wrapper"><a href="#Gradle-Wrapper" class="headerlink" title="Gradle Wrapper"></a>Gradle Wrapper</h4><p>不同的开发者可能使用不同版本的 Gradle 来构建 Android项目，多人开发的时候使用用不同版本的构建工具，可能出现莫名其妙的问题。大家也都遇到过某个软件在这个电脑上没问题，在另外的电脑上有问题的情况吧。Gradle 封装器就是用来解决这个问题的，每一个封装器都绑定了一个特定版本的 Gradle，当你运行 Gradle 命令的时候，它会先下载相应的 Gradle 版本，并使用这个版本来执行构建。这是个很棒的功能，但是因为某种不可描述的原因，在大陆上下载不下来，导致了很多新手都栽在了这里。这里就不讲述怎么下 Gradle 了，网上很多这方面的资料。</p>
-<p>为了完整起见，不要删除 Gradle 封装器里的文件，这里介绍一下封装器里文件的功能</p>
+<h4 id="Gradle-Wrapper"><a href="#Gradle-Wrapper" class="headerlink" title="Gradle Wrapper"></a>Gradle Wrapper</h4><p>不同的开发者可能使用不同版本的 Gradle 来构建 Android 项目，多人开发的时候使用不同版本的构建工具，可能出现莫名其妙的问题。大家也都遇到过某个软件在这个电脑上没问题，在另外的电脑上有问题的情况吧。Gradle 封装器就是用来解决这个问题的，每一个封装器都绑定了一个特定版本的 Gradle，当你运行 Gradle 命令的时候，它会先下载相应的 Gradle 版本，并使用这个版本来执行构建，这样就避免了环境不统一的问题。这是个很棒的功能，但由于某些网络问题，下载会超时，导致了很多新手都栽在了这里。这里就不讲述怎么下 Gradle 了，网上很多这方面的资料。</p>
+<p>为了完整起见，不要删除 Gradle 封装器里的文件或改变目录结构，这里介绍一下封装器里文件的功能</p>
 <ul>
 <li>gradlew （Unix Shell 脚本）</li>
 <li>gradlew.bat （Windows 批处理文件）</li>
-<li>gradle/wrapper/gradle-wrapper.jar （JAR 包）</li>
+<li>gradle/wrapper/gradle-wrapper.jar （Jar 包）</li>
 <li>gradle/wrapper/gradle-wrapper.properties （封装器属性）  </li>
 </ul>
-<p>Gradle 版本会被下载到用户目录下的 .gradle/wrapper/dists 中。<br>查看 gradle-wrapper.properties 文件可以看到当前工程使用的 gradle 版本号。  </p>
+<p>Gradle 版本会被下载到用户目录下的 .gradle/wrapper/dists 中。<br>查看 gradle-wrapper.properties 文件可以看到当前封装器使用的 gradle 版本号。  </p>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/gradle_wrapper_properties.png" alt="gradle_wrapper_properties"></p>
-<p>Unix Shell 环境下使用 gradlew<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/unix_shell.png" alt="unix_shell"></p>
-<p>Windows 环境下使用 gradlew.bat<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/windows_cmd.png" alt="windows_cmd"></p>
+<p>Unix Shell 环境下使用 gradlew 命令<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/unix_shell.png" alt="unix_shell"></p>
+<p>Windows 环境下使用 gradlew.bat  命令<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/windows_cmd.png" alt="windows_cmd"></p>
 <h4 id="build-gradle"><a href="#build-gradle" class="headerlink" title="build.gradle"></a>build.gradle</h4><p>build.gradle 是构建所需要的脚本文件，这里给一个最简单的示例。</p>
-<p>文件内容，输出 Hello World。</p>
+<p>新建了一个名为 hello 的任务，输出 Hello World。</p>
 <pre class=" language-java"><code class="language-java">task hello <span class="token punctuation">{</span>
-    print <span class="token string">"Hello World!\n"</span>
+    println <span class="token string">"Hello World!"</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>执行 gradlew.bat hello 就能看见 Hello World 输出在控制台上了。</p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/task_hello.png" alt="task_hello"></p>
+<h3 id="Android-Studio-里的-Gradle"><a href="#Android-Studio-里的-Gradle" class="headerlink" title="Android Studio 里的 Gradle"></a>Android Studio 里的 Gradle</h3><p>这里新建一个空的工程，来介绍 Gradle 的作用。</p>
+<h4 id="工程目录"><a href="#工程目录" class="headerlink" title="工程目录"></a>工程目录</h4><p>Android Studio 是按项目建立的，项目里面可以有不同的 app 模块，简单的说一个项目可以编出几个不同的 app 软件。</p>
+<p>项目目录界面如下<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/android_project.png" alt="android_project"></p>
+<p>下面介绍目录中 build.gradle 和 Gradle 封装器之外的部分。</p>
+<ul>
+<li>.gradle 文件夹下放的是 Gradle 构建时的记录信息，无需关心</li>
+<li>.idea 是 Android Studio 工程记录信息，无需关心</li>
+<li>app 存放对于的模块文件，这里就是我们开发的app</li>
+<li>build 存放的是 Gradle 在构建项目的时候生产的文件</li>
+<li>.gitignore 是版本控制忽略文件，和 Gradle 无关</li>
+<li>MyApplication.iml 生成文件，无需关心</li>
+<li>local.properties 存放的 SDK，NDK 在本机上的目录</li>
+<li>gradle.properties 存放的是整个项目 Gradle 的配置文件</li>
+<li>settings.gradle 存放的是这个项目包括那些模块，当前只包括一个 app 模块</li>
+</ul>
+<h4 id="项目构建脚本"><a href="#项目构建脚本" class="headerlink" title="项目构建脚本"></a>项目构建脚本</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span>
+
+buildscript <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// 配置构建脚本</span>
+    repositories <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// 添加远程依赖库</span>
+        <span class="token function">jcenter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// JCenter 仓库</span>
+    <span class="token punctuation">}</span>
+    dependencies <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 配置构建依赖插件</span>
+        <span class="token comment" spellcheck="true">// 声明了一个 构建 Android 的 Gradle 插件</span>
+        <span class="token comment" spellcheck="true">// Gradle 本身是构建不了 Android 的</span>
+        classpath <span class="token string">'com.android.tools.build:gradle:2.2.3'</span> 
+
+        <span class="token comment" spellcheck="true">// NOTE: Do not place your application dependencies here; they belong</span>
+        <span class="token comment" spellcheck="true">// in the individual module build.gradle files</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+allprojects <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 配置整个项目</span>
+    <span class="token comment" spellcheck="true">// Android 开发经常需要用一些支持库，这些支持库都有专门的网路存放地，供开发中下载</span>
+    repositories <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 添加远程依赖库 </span>
+        <span class="token function">jcenter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// JCenter 仓库 </span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+task <span class="token function">clean</span><span class="token punctuation">(</span>type<span class="token operator">:</span> Delete<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// clean 任务清理构建生成的文件</span>
+    delete rootProject<span class="token punctuation">.</span>buildDir  <span class="token comment" spellcheck="true">// 删除 build 文件夹</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="模块目录"><a href="#模块目录" class="headerlink" title="模块目录"></a>模块目录</h4><p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/android_module.png" alt="android_module"></p>
+<ul>
+<li>build 存放着编译生成的文件</li>
+<li>libs 放的是模块编译需要使用的库文件</li>
+<li>src 放着源码和资源文件</li>
+<li>.gitignore 是版本控制忽略文件，和 Gradle 无关</li>
+<li>app.iml 生成文件，无需关心</li>
+<li>build.gradle 是模块构建脚本</li>
+<li>proguard-rules.pro 是模块混淆规则，防止 app 被破解的</li>
+</ul>
+<h4 id="模块构建脚本"><a href="#模块构建脚本" class="headerlink" title="模块构建脚本"></a>模块构建脚本</h4><pre class=" language-java"><code class="language-java">apply plugin<span class="token operator">:</span> <span class="token string">'com.android.application'</span>  <span class="token comment" spellcheck="true">// 标明这个脚本是编译 android 应用程序用的</span>
+
+android <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// 编译 apk 文件配置</span>
+    compileSdkVersion <span class="token number">25</span>  <span class="token comment" spellcheck="true">// SDK 版本号 API 25</span>
+    buildToolsVersion <span class="token string">"25.0.2"</span> <span class="token comment" spellcheck="true">// 使用的编译工具的版本号</span>
+    defaultConfig <span class="token punctuation">{</span>
+        applicationId <span class="token string">"com.io.bearzpy.myapplication"</span> <span class="token comment" spellcheck="true">// 表明 APP 在系统中的唯一 ID</span>
+        minSdkVersion <span class="token number">19</span>  <span class="token comment" spellcheck="true">// 兼顾最老的系统版本</span>
+        targetSdkVersion <span class="token number">25</span> <span class="token comment" spellcheck="true">// 经过充分测试的版本</span>
+        versionCode <span class="token number">1</span>  <span class="token comment" spellcheck="true">// 代码版本给系统实际区分不同版本</span>
+        versionName <span class="token string">"1.0"</span> <span class="token comment" spellcheck="true">// 版本名字给人区分不同版本</span>
+        <span class="token comment" spellcheck="true">// 使用单元测试框架</span>
+        testInstrumentationRunner <span class="token string">"android.support.test.runner.AndroidJUnitRunner"</span>
+    <span class="token punctuation">}</span>
+    buildTypes <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 构建变量</span>
+        release <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 发布版本</span>
+            <span class="token comment" spellcheck="true">// 这一部分是防止应用被人破解的</span>
+            minifyEnabled <span class="token boolean">false</span> <span class="token comment" spellcheck="true">// 控制是否运行混淆的</span>
+            <span class="token comment" spellcheck="true">// 混淆规则设置</span>
+            proguardFiles <span class="token function">getDefaultProguardFile</span><span class="token punctuation">(</span><span class="token string">'proguard-android.txt'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'proguard-rules.pro'</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+dependencies <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 添加依赖</span>
+    <span class="token comment" spellcheck="true">// 导入 libs 文件夹下所有的 jar 包</span>
+    compile <span class="token function">fileTree</span><span class="token punctuation">(</span>dir<span class="token operator">:</span> <span class="token string">'libs'</span><span class="token punctuation">,</span> include<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'*.jar'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// 测试应用接口的依赖</span>
+    <span class="token function">androidTestCompile</span><span class="token punctuation">(</span><span class="token string">'com.android.support.test.espresso:espresso-core:2.2.2'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        exclude group<span class="token operator">:</span> <span class="token string">'com.android.support'</span><span class="token punctuation">,</span> module<span class="token operator">:</span> <span class="token string">'support-annotations'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// 兼容低版本系统的依赖</span>
+    compile <span class="token string">'com.android.support:appcompat-v7:25.2.0'</span>
+    <span class="token comment" spellcheck="true">// 单元测试的依赖</span>
+    testCompile <span class="token string">'junit:junit:4.12'</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="依赖库管理"><a href="#依赖库管理" class="headerlink" title="依赖库管理"></a>依赖库管理</h4><p>开发者经常会使用一些已有的现成的，可以直接拿来用的解决方案，这极大的提高了开发效率，也着实让他们能够偷懒了，但是这也造成了一些问题。比如当你同时使用这个两个方案解决不同的事情，这两个方案共用了同一个依赖库，但是却使用了不同的版本，这会为我们的程序带来意外的问题。Gradle 拥有解决依赖冲突的能力，它可以自动下载使用合适的版本，尽量帮开发者解决依赖库冲突问题，如果它解决不了，也会报个错给你。</p>
+<h4 id="编译不同的-app-版本"><a href="#编译不同的-app-版本" class="headerlink" title="编译不同的 app 版本"></a>编译不同的 app 版本</h4><p>实际开发中，开发者往往要准备好几个版本，比如调试版本，发布版本，不同手机厂商使用的版本，都考开发者手动准备也是很费力且容易出错的。Gradle 也提供了构建多版本的功能。例如，模块构建脚本中的构建变量增加了 release 版本，我们可以在 Android Studio 的 Build Variants 里面选则 release 版本，再次编译生成的就是 release 版本了。同理，我们也可以在构建脚本中添加其他的版本，比如付费版本和免费版本等等。</p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/release.png" alt="release"></p>
+<h4 id="Gradle-是怎么工作的"><a href="#Gradle-是怎么工作的" class="headerlink" title="Gradle 是怎么工作的"></a>Gradle 是怎么工作的</h4><p>每一个 Gradle 需要完成的工作都是一个任务，这些任务之间有着先后顺序，相互依赖的关系，而 Android 应用程序的构建需要许多这样的任务。Android Studio 有 Gradle 的控制面板可以查看当前项目有哪些任务。</p>
+<p>这是一个空的项目所拥有的任务，可以看到项目本身有相当多的任务，对应的模块还有相当多的任务。<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/gradle_contol.png" alt="gradle_contol"></p>
+<p>选择一个任务双击可以运行，这里以 build 为例，Run 面板中可以看到所有被执行的任务：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/build_task.png" alt="build_task"></p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>每当我们修改完程序之后都需要进行编译，然而编译需要这么多的步骤，如果每次都要手动去进行编译，即使能保证人工不出错，所耗费的时间也相当的大，所以有了自动化构建工具。我们在 Android Studio 中点一个 Run 就能完成的工作，实际上由自动化构建工具帮我们处理很多重复的劳动。而当旧的自动化构建工具不能满足我们的需求时，必然会有开发者去更新自动化构建工具，这也是 Android Studio 和 Gradle 成为 Android 开发使用的主流工具的原因。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Gradle&quot;&gt;&lt;a href=&quot;#Gradle&quot; class=&quot;headerlink&quot; title=&quot;Gradle&quot;&gt;&lt;/a&gt;Gradle&lt;/h2&gt;&lt;p&gt;本篇文章主要通俗的讲述 Gradle 的基本知识点，帮助大家了解 Gradle。&lt;/p&gt;
-&lt;h3 id=&quot;G
+      &lt;h2 id=&quot;Gradle&quot;&gt;&lt;a href=&quot;#Gradle&quot; class=&quot;headerlink&quot; title=&quot;Gradle&quot;&gt;&lt;/a&gt;Gradle&lt;/h2&gt;&lt;p&gt;本篇文章主要讲述 Gradle 的基本知识点，帮助大家了解 Gradle。&lt;/p&gt;
+&lt;h3 id=&quot;Grad
     
     </summary>
     
