@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://bearzpy.github.io/"/>
-  <updated>2017-03-29T01:57:55.220Z</updated>
+  <updated>2017-04-08T07:23:59.585Z</updated>
   <id>https://bearzpy.github.io/</id>
   
   <author>
@@ -14,6 +14,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Gradle 基础介绍</title>
+    <link href="https://bearzpy.github.io/2017/04/06/gradle/gradle%E5%85%A5%E9%97%A8-01/"/>
+    <id>https://bearzpy.github.io/2017/04/06/gradle/gradle入门-01/</id>
+    <published>2017-04-06T10:39:10.000Z</published>
+    <updated>2017-04-08T07:23:59.585Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h2><p>本篇文章主要通俗的讲述 Gradle 的基本知识点，帮助大家了解 Gradle。</p>
+<h3 id="Gradle-背景知识"><a href="#Gradle-背景知识" class="headerlink" title="Gradle 背景知识"></a>Gradle 背景知识</h3><p>先介绍概念：</p>
+<blockquote>
+<p>Gradle 是一个基于 Apache Ant 和 Apache Maven 概念的项目自动化建构工具。它使用一种基于 Groovy 的特定领域语言来声明项目设置，而不是传统的 XML 。</p>
+</blockquote>
+<p>这个概念我们先不用去理解，只要知道 Gradle 是一个自动化构建工具就可以了。那么为什么我们在开发 Android 程序的时候需要去使用自动化构建工具呢？答案很简单，就是构建一个 Android 工程需要做很多重复性很高的事情，手动干这些事麻烦又浪费时间，所以我们选择让机器去做。好吧，我承认就是懒，聪明的开发者都愿意找一个正确，高效又能偷懒的方法。</p>
+<p>Gradle 是 Google I/O 2013 大会上发布的，用来替换 Ant 和 Maven 的新工具，替换旧工具的原因当然是它们不能让开发者继续开心的懒下去了。</p>
+<p>简单讲一下 Ant，Maven 和 Gradle 的关系，这个不懂也没关系。Ant 可以自动化打包，但是许多东西要手动加。Maven 也可以自动化打包，还能帮下载你需要的东西，但是它的逻辑策略写起来很麻烦。两个工具都不大好用，为了能开心的偷懒，Gradle 应运而生。Gradle 集成了上面的功能用起来很方便，在大陆上大家觉得不好用是因为某种不可描述的原因，不是工具自身的问题。</p>
+<h3 id="Gradle-文件结构"><a href="#Gradle-文件结构" class="headerlink" title="Gradle 文件结构"></a>Gradle 文件结构</h3><p>Android Studio 创建 Android 工程的时候会创建许多文件，这让不熟悉的人分不清楚不同文件的意义，这里我们先介绍一个最简单的 Gradle 结构，如下图。</p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/gradle_mimi_unit.png" alt="gradle_mimi_unit"></p>
+<p>这个结构一共有 5 个文件。其中 build.gradle 是我们需要编写的 Gradle 的脚本文件，另外四个文件组成了一个 Gradle 中的重要结构：Gradle Wrapper（Gradle 封装器）。</p>
+<h4 id="Gradle-Wrapper"><a href="#Gradle-Wrapper" class="headerlink" title="Gradle Wrapper"></a>Gradle Wrapper</h4><p>不同的开发者可能使用不同版本的 Gradle 来构建 Android项目，多人开发的时候使用用不同版本的构建工具，可能出现莫名其妙的问题。大家也都遇到过某个软件在这个电脑上没问题，在另外的电脑上有问题的情况吧。Gradle 封装器就是用来解决这个问题的，每一个封装器都绑定了一个特定版本的 Gradle，当你运行 Gradle 命令的时候，它会先下载相应的 Gradle 版本，并使用这个版本来执行构建。这是个很棒的功能，但是因为某种不可描述的原因，在大陆上下载不下来，导致了很多新手都栽在了这里。这里就不讲述怎么下 Gradle 了，网上很多这方面的资料。</p>
+<p>为了完整起见，不要删除 Gradle 封装器里的文件，这里介绍一下封装器里文件的功能</p>
+<ul>
+<li>gradlew （Unix Shell 脚本）</li>
+<li>gradlew.bat （Windows 批处理文件）</li>
+<li>gradle/wrapper/gradle-wrapper.jar （JAR 包）</li>
+<li>gradle/wrapper/gradle-wrapper.properties （封装器属性）  </li>
+</ul>
+<p>Gradle 版本会被下载到用户目录下的 .gradle/wrapper/dists 中。<br>查看 gradle-wrapper.properties 文件可以看到当前工程使用的 gradle 版本号。  </p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/gradle_wrapper_properties.png" alt="gradle_wrapper_properties"></p>
+<p>Unix Shell 环境下使用 gradlew<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/unix_shell.png" alt="unix_shell"></p>
+<p>Windows 环境下使用 gradlew.bat<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/windows_cmd.png" alt="windows_cmd"></p>
+<h4 id="build-gradle"><a href="#build-gradle" class="headerlink" title="build.gradle"></a>build.gradle</h4><p>build.gradle 是构建所需要的脚本文件，这里给一个最简单的示例。</p>
+<p>文件内容，输出 Hello World。</p>
+<pre class=" language-java"><code class="language-java">task hello <span class="token punctuation">{</span>
+    print <span class="token string">"Hello World!\n"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>执行 gradlew.bat hello 就能看见 Hello World 输出在控制台上了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Gradle&quot;&gt;&lt;a href=&quot;#Gradle&quot; class=&quot;headerlink&quot; title=&quot;Gradle&quot;&gt;&lt;/a&gt;Gradle&lt;/h2&gt;&lt;p&gt;本篇文章主要通俗的讲述 Gradle 的基本知识点，帮助大家了解 Gradle。&lt;/p&gt;
+&lt;h3 id=&quot;G
+    
+    </summary>
+    
+      <category term="Gradle" scheme="https://bearzpy.github.io/categories/Gradle/"/>
+    
+    
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+    
+      <category term="Gradle" scheme="https://bearzpy.github.io/tags/Gradle/"/>
+    
+  </entry>
   
   <entry>
     <title>Android入门-1C 生日贺卡应用</title>
@@ -677,26 +732,6 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
       <category term="layout_padding" scheme="https://bearzpy.github.io/tags/layout-padding/"/>
     
       <category term="layout_margin" scheme="https://bearzpy.github.io/tags/layout-margin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android全屏</title>
-    <link href="https://bearzpy.github.io/2017/03/16/Android/%E5%85%A8%E5%B1%8F/"/>
-    <id>https://bearzpy.github.io/2017/03/16/Android/全屏/</id>
-    <published>2017-03-16T08:12:23.000Z</published>
-    <updated>2017-03-16T08:13:23.006Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
-    
-      <category term="JNI" scheme="https://bearzpy.github.io/tags/JNI/"/>
     
   </entry>
   
