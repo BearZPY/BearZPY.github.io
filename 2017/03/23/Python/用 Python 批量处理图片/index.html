@@ -574,11 +574,16 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
 <span class="token keyword">def</span> <span class="token function">find_last_point</span><span class="token punctuation">(</span>file_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
     position <span class="token operator">=</span> <span class="token number">0</span>
     temp <span class="token operator">=</span> <span class="token number">0</span>
+    i <span class="token operator">=</span> <span class="token number">0</span>
     <span class="token keyword">while</span> temp <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
         temp <span class="token operator">=</span> file_path<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span>
         <span class="token keyword">if</span> temp <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-            position <span class="token operator">=</span> temp
-            file_path <span class="token operator">=</span> file_path<span class="token punctuation">[</span> temp <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+            <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+              position <span class="token operator">=</span> position <span class="token operator">+</span> temp
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+              position <span class="token operator">=</span> position <span class="token operator">+</span> temp <span class="token operator">+</span> <span class="token number">1</span>
+            file_path <span class="token operator">=</span> file_path<span class="token punctuation">[</span>temp<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+            i <span class="token operator">=</span> <span class="token number">1</span>
     <span class="token keyword">return</span> position
 
 
@@ -705,7 +710,7 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">9</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
             </ul>
         </li>
         
@@ -723,7 +728,7 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/hexo/">hexo<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
