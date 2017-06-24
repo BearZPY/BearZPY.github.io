@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://bearzpy.github.io/"/>
-  <updated>2017-06-02T07:35:08.090Z</updated>
+  <updated>2017-06-24T02:30:23.920Z</updated>
   <id>https://bearzpy.github.io/</id>
   
   <author>
@@ -14,6 +14,117 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Gradle 生成 Jar 包</title>
+    <link href="https://bearzpy.github.io/2017/06/23/gradle/Gradle%20%E7%94%9F%E6%88%90%20Jar%20%E5%8C%85/"/>
+    <id>https://bearzpy.github.io/2017/06/23/gradle/Gradle 生成 Jar 包/</id>
+    <published>2017-06-23T08:04:43.000Z</published>
+    <updated>2017-06-24T02:30:23.920Z</updated>
+    
+    <content type="html"><![CDATA[<p>网上找到的在 Android Studio 里生成 jar 包的帖子，基本都是生成 aar，或者是使用第三方库，并不符和需求。项目中 Service 使用 AIDL，AIDL 的版本很难管理，所以需要把编译 AIDL 所生成的 class 文件打包成 jar 包，方便客户端使用和版本管理。</p>
+<h1 id="Gradle-生成-Jar-包"><a href="#Gradle-生成-Jar-包" class="headerlink" title="Gradle 生成 Jar 包"></a>Gradle 生成 Jar 包</h1><h2 id="需要打包的-class-目录"><a href="#需要打包的-class-目录" class="headerlink" title="需要打包的 class 目录"></a>需要打包的 class 目录</h2><p>Android Studio 编译生成的 class 是在对应的 Module 目录下的。   </p>
+<p>PATH: {Module}/build/intermediates/classes/{ProductFlavors}/{BuildVariant}/{PackageName}/</p>
+<ul>
+<li>Module: 模块名称。</li>
+<li>ProductFlavors: 产品风味，如果没定义这个量就没有这层目录。</li>
+<li>BuildVariant: 编译变量。</li>
+<li>PackageName: 需要打包的 class 的包名。</li>
+</ul>
+<h2 id="生成-Jar-包的目录"><a href="#生成-Jar-包的目录" class="headerlink" title="生成 Jar 包的目录"></a>生成 Jar 包的目录</h2><p>Gradle 打出的 Jar 包默认存放在对应的 {Module}/build/libs 文件夹下。</p>
+<h2 id="删除生成的-Jar-包"><a href="#删除生成的-Jar-包" class="headerlink" title="删除生成的 Jar 包"></a>删除生成的 Jar 包</h2><p>Gradle 生成 Jar 包的同时可以对 Jar 包进行命名，在命名上有版本号的区分，比如生成的 Jar 包名字为 CloudService-V1.0.2.jar。在删除旧的 Jar 包的时候如果版本号变了，以文件名查找删除可能就找不到该文件，所以可以选择将整个 libs 文件夹删除。</p>
+<p>任务 clearLibsDir 用来清理生成 Jar 包。</p>
+<pre class=" language-java"><code class="language-java">task <span class="token function">clearLibsDir</span><span class="token punctuation">(</span>type<span class="token operator">:</span> Delete<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    def libsDirPath <span class="token operator">=</span> <span class="token string">'build/libs'</span>
+    delete libsDirPath
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="对生成的-class-打包"><a href="#对生成的-class-打包" class="headerlink" title="对生成的 class 打包"></a>对生成的 class 打包</h2><p>在 {Module} 文件夹下的 build.gradle 中添加 clearLibsDir 任务和 makeJar 任务，同步后执行 makeJar 任务就能生成需要的 Jar 包，makeJar 任务依赖于 clearLibsDir 任务，所以每次生成 Jar 包的时候都会把先清除旧的 Jar 包。</p>
+<pre class=" language-java"><code class="language-java">task <span class="token function">makeJar</span><span class="token punctuation">(</span>type<span class="token operator">:</span> Jar<span class="token punctuation">,</span> dependsOn<span class="token operator">:</span> clearLibsDir<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 指定生成的 jar 包名称</span>
+    baseName <span class="token string">'CloudService-V1.0.2'</span>
+    <span class="token comment" spellcheck="true">// 制定需要打包的 class 文件目录</span>
+    <span class="token function">from</span><span class="token punctuation">(</span><span class="token string">'build/intermediates/classes/paid/release/com/io/bearzpy/cloudsdk/'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// 制定生成 jar 包的目录结构</span>
+    <span class="token function">into</span><span class="token punctuation">(</span><span class="token string">'com/io/bearzpy/cloudsdk/'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// 去掉 class 文件目录中不需要打包的目录和文件</span>
+    <span class="token comment" spellcheck="true">// exclude('main/', 'BuildConfig.class', 'R.class')</span>
+    <span class="token comment" spellcheck="true">// 去掉 R$ 开头的文件，去除资源文件</span>
+    <span class="token comment" spellcheck="true">// exclude{ it.name.startsWith('R$');}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;网上找到的在 Android Studio 里生成 jar 包的帖子，基本都是生成 aar，或者是使用第三方库，并不符和需求。项目中 Service 使用 AIDL，AIDL 的版本很难管理，所以需要把编译 AIDL 所生成的 class 文件打包成 jar 包，方便客户端
+    
+    </summary>
+    
+      <category term="Gradle" scheme="https://bearzpy.github.io/categories/Gradle/"/>
+    
+    
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+    
+      <category term="Gradle" scheme="https://bearzpy.github.io/tags/Gradle/"/>
+    
+      <category term="Android Studio" scheme="https://bearzpy.github.io/tags/Android-Studio/"/>
+    
+      <category term="Jar" scheme="https://bearzpy.github.io/tags/Jar/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ADB 常用指令</title>
+    <link href="https://bearzpy.github.io/2017/06/22/Android/ADB%20%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+    <id>https://bearzpy.github.io/2017/06/22/Android/ADB 常用指令/</id>
+    <published>2017-06-22T03:01:27.000Z</published>
+    <updated>2017-06-22T03:01:34.505Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+    
+      <category term="ADB" scheme="https://bearzpy.github.io/tags/ADB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用 git 指令</title>
+    <link href="https://bearzpy.github.io/2017/06/22/git/%E5%B8%B8%E7%94%A8%20git%20%E6%8C%87%E4%BB%A4/"/>
+    <id>https://bearzpy.github.io/2017/06/22/git/常用 git 指令/</id>
+    <published>2017-06-22T02:55:02.000Z</published>
+    <updated>2017-06-22T02:59:55.202Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="常用-git-指令"><a href="#常用-git-指令" class="headerlink" title="常用 git 指令"></a>常用 git 指令</h1><h4 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h4><ul>
+<li>git config –global user.name “xxx”</li>
+<li>git config –global user.email “xxx@xxx.com”</li>
+</ul>
+<h4 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h4><ul>
+<li>git init</li>
+</ul>
+<h4 id="建立空仓库"><a href="#建立空仓库" class="headerlink" title="建立空仓库"></a>建立空仓库</h4><ul>
+<li>git –bare init</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;常用-git-指令&quot;&gt;&lt;a href=&quot;#常用-git-指令&quot; class=&quot;headerlink&quot; title=&quot;常用 git 指令&quot;&gt;&lt;/a&gt;常用 git 指令&lt;/h1&gt;&lt;h4 id=&quot;配置用户信息&quot;&gt;&lt;a href=&quot;#配置用户信息&quot; class=&quot;head
+    
+    </summary>
+    
+      <category term="git" scheme="https://bearzpy.github.io/categories/git/"/>
+    
+    
+      <category term="git" scheme="https://bearzpy.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>自定义 Preference 字体颜色</title>
@@ -398,10 +509,10 @@ dependencies <span class="token punctuation">{</span>
   
   <entry>
     <title>Gradle 基础介绍</title>
-    <link href="https://bearzpy.github.io/2017/04/06/gradle/gradle%E5%85%A5%E9%97%A8-01/"/>
-    <id>https://bearzpy.github.io/2017/04/06/gradle/gradle入门-01/</id>
+    <link href="https://bearzpy.github.io/2017/04/06/gradle/Gradle%20%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://bearzpy.github.io/2017/04/06/gradle/Gradle 基础介绍/</id>
     <published>2017-04-06T10:39:10.000Z</published>
-    <updated>2017-04-08T12:35:05.000Z</updated>
+    <updated>2017-06-23T08:02:04.908Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h2><p>本篇文章主要讲述 Gradle 的基本知识点，帮助大家了解 Gradle。</p>
 <h3 id="Gradle-背景知识"><a href="#Gradle-背景知识" class="headerlink" title="Gradle 背景知识"></a>Gradle 背景知识</h3><p>先介绍概念：</p>
