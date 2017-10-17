@@ -234,7 +234,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ADB-常用指令"><span class="post-toc-number">1.</span> <span class="post-toc-text">ADB 常用指令</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -395,7 +395,25 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
+        <h1 id="ADB-常用指令"><a href="#ADB-常用指令" class="headerlink" title="ADB 常用指令"></a>ADB 常用指令</h1><ol>
+<li><p>PC 传文件到 Android</p>
+<p> <code>adb push ./thing.zip /storage/sdcard0/</code></p>
+</li>
+<li><p>PC 获取 Android 文件</p>
+<p> <code>adb pull /storage/sdcard0/thing.zip ./</code></p>
+</li>
+<li><p>启动指定 App 的指定 Activity</p>
+<p> <code>adb shell am start -n com.android.settings/com.android.settings.Settings</code></p>
+</li>
+<li><p>启动指定 App 的指定 Activity</p>
+<p> <code>adb shell am start -n com.android.settings/com.android.settings.Settings</code></p>
+</li>
+<li><p>关闭指定 App</p>
+<p> <code>adb shell am force-stop com.android.settings</code></p>
+</li>
+</ol>
+<hr>
+
     
 
     
@@ -515,7 +533,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
             </ul>
         </li>
         
@@ -533,7 +551,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         

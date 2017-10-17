@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://bearzpy.github.io/"/>
-  <updated>2017-06-24T02:30:23.920Z</updated>
+  <updated>2017-08-18T12:47:02.000Z</updated>
   <id>https://bearzpy.github.io/</id>
   
   <author>
@@ -16,27 +16,72 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title></title>
+    <link href="https://bearzpy.github.io/2017/10/13/review/"/>
+    <id>https://bearzpy.github.io/2017/10/13/review/</id>
+    <published>2017-10-13T09:17:46.417Z</published>
+    <updated>2017-08-18T12:47:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p>date: 2017-06-18 13:19:08</p>
+<ul>
+<li>ScrollView</li>
+<li>log.wtf</li>
+<li>todo</li>
+<li>res</li>
+<li>menu -&gt; android:orderInCategoty</li>
+<li>menu -&gt; app:showAsAction ifRoom</li>
+<li>URL</li>
+<li>uri</li>
+<li>HTTP</li>
+<li>UTF8-&gt;UTF16</li>
+<li>sandbox</li>
+<li>NetworkOnMainThreadException</li>
+<li><p>60FPS &lt; 17ms</p>
+</li>
+<li><p>AsyncTask Params, Progress, Result</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;date: 2017-06-18 13:19:08&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ScrollView&lt;/li&gt;
+&lt;li&gt;log.wtf&lt;/li&gt;
+&lt;li&gt;todo&lt;/li&gt;
+&lt;li&gt;res&lt;/li&gt;
+&lt;li&gt;menu -&amp;gt; android:orderInCat
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Gradle 生成 Jar 包</title>
     <link href="https://bearzpy.github.io/2017/06/23/gradle/Gradle%20%E7%94%9F%E6%88%90%20Jar%20%E5%8C%85/"/>
     <id>https://bearzpy.github.io/2017/06/23/gradle/Gradle 生成 Jar 包/</id>
     <published>2017-06-23T08:04:43.000Z</published>
-    <updated>2017-06-24T02:30:23.920Z</updated>
+    <updated>2017-10-13T09:49:40.875Z</updated>
     
-    <content type="html"><![CDATA[<p>网上找到的在 Android Studio 里生成 jar 包的帖子，基本都是生成 aar，或者是使用第三方库，并不符和需求。项目中 Service 使用 AIDL，AIDL 的版本很难管理，所以需要把编译 AIDL 所生成的 class 文件打包成 jar 包，方便客户端使用和版本管理。</p>
-<h1 id="Gradle-生成-Jar-包"><a href="#Gradle-生成-Jar-包" class="headerlink" title="Gradle 生成 Jar 包"></a>Gradle 生成 Jar 包</h1><h2 id="需要打包的-class-目录"><a href="#需要打包的-class-目录" class="headerlink" title="需要打包的 class 目录"></a>需要打包的 class 目录</h2><p>Android Studio 编译生成的 class 是在对应的 Module 目录下的。   </p>
-<p>PATH: {Module}/build/intermediates/classes/{ProductFlavors}/{BuildVariant}/{PackageName}/</p>
+    <content type="html"><![CDATA[<h1 id="Gradle-生成-Jar-包"><a href="#Gradle-生成-Jar-包" class="headerlink" title="Gradle 生成 Jar 包"></a>Gradle 生成 Jar 包</h1><p>网上找到的在 Android Studio 里生成 jar 包的帖子，基本都是生成 aar，或者是使用第三方库，并不符和需求。项目中 Service 使用 AIDL，AIDL 的版本很难管理，所以需要把编译 AIDL 所生成的 class 文件打包成 jar 包，方便客户端使用和版本管理。</p>
+<h2 id="需要打包的-class-目录"><a href="#需要打包的-class-目录" class="headerlink" title="需要打包的 class 目录"></a>需要打包的 class 目录</h2><p>Android Studio 编译生成的 class 是在对应的 Module 目录下的。  </p>
+<p>PATH: {Module}/build/intermediates/classes/{ProductFlavors}/{BuildType}/{PackageName}/</p>
 <ul>
 <li>Module: 模块名称。</li>
 <li>ProductFlavors: 产品风味，如果没定义这个量就没有这层目录。</li>
-<li>BuildVariant: 编译变量。</li>
+<li>BuildType: 构建类型。</li>
 <li>PackageName: 需要打包的 class 的包名。</li>
 </ul>
+<p>Build Type + Product Flavor = Build Variant</p>
 <h2 id="生成-Jar-包的目录"><a href="#生成-Jar-包的目录" class="headerlink" title="生成 Jar 包的目录"></a>生成 Jar 包的目录</h2><p>Gradle 打出的 Jar 包默认存放在对应的 {Module}/build/libs 文件夹下。</p>
 <h2 id="删除生成的-Jar-包"><a href="#删除生成的-Jar-包" class="headerlink" title="删除生成的 Jar 包"></a>删除生成的 Jar 包</h2><p>Gradle 生成 Jar 包的同时可以对 Jar 包进行命名，在命名上有版本号的区分，比如生成的 Jar 包名字为 CloudService-V1.0.2.jar。在删除旧的 Jar 包的时候如果版本号变了，以文件名查找删除可能就找不到该文件，所以可以选择将整个 libs 文件夹删除。</p>
 <p>任务 clearLibsDir 用来清理生成 Jar 包。</p>
 <pre class=" language-java"><code class="language-java">task <span class="token function">clearLibsDir</span><span class="token punctuation">(</span>type<span class="token operator">:</span> Delete<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    def libsDirPath <span class="token operator">=</span> <span class="token string">'build/libs'</span>
-    delete libsDirPath
+    delete <span class="token string">'build/libs'</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h2 id="对生成的-class-打包"><a href="#对生成的-class-打包" class="headerlink" title="对生成的 class 打包"></a>对生成的 class 打包</h2><p>在 {Module} 文件夹下的 build.gradle 中添加 clearLibsDir 任务和 makeJar 任务，同步后执行 makeJar 任务就能生成需要的 Jar 包，makeJar 任务依赖于 clearLibsDir 任务，所以每次生成 Jar 包的时候都会把先清除旧的 Jar 包。</p>
@@ -53,11 +98,12 @@
     <span class="token comment" spellcheck="true">// exclude{ it.name.startsWith('R$');}</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<hr>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;网上找到的在 Android Studio 里生成 jar 包的帖子，基本都是生成 aar，或者是使用第三方库，并不符和需求。项目中 Service 使用 AIDL，AIDL 的版本很难管理，所以需要把编译 AIDL 所生成的 class 文件打包成 jar 包，方便客户端
+      &lt;h1 id=&quot;Gradle-生成-Jar-包&quot;&gt;&lt;a href=&quot;#Gradle-生成-Jar-包&quot; class=&quot;headerlink&quot; title=&quot;Gradle 生成 Jar 包&quot;&gt;&lt;/a&gt;Gradle 生成 Jar 包&lt;/h1&gt;&lt;p&gt;网上找到的在 Android Stu
     
     </summary>
     
@@ -79,9 +125,33 @@
     <link href="https://bearzpy.github.io/2017/06/22/Android/ADB%20%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
     <id>https://bearzpy.github.io/2017/06/22/Android/ADB 常用指令/</id>
     <published>2017-06-22T03:01:27.000Z</published>
-    <updated>2017-06-22T03:01:34.505Z</updated>
+    <updated>2017-10-13T10:01:24.257Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="ADB-常用指令"><a href="#ADB-常用指令" class="headerlink" title="ADB 常用指令"></a>ADB 常用指令</h1><ol>
+<li><p>PC 传文件到 Android</p>
+<p> <code>adb push ./thing.zip /storage/sdcard0/</code></p>
+</li>
+<li><p>PC 获取 Android 文件</p>
+<p> <code>adb pull /storage/sdcard0/thing.zip ./</code></p>
+</li>
+<li><p>启动指定 App 的指定 Activity</p>
+<p> <code>adb shell am start -n com.android.settings/com.android.settings.Settings</code></p>
+</li>
+<li><p>启动指定 App 的指定 Activity</p>
+<p> <code>adb shell am start -n com.android.settings/com.android.settings.Settings</code></p>
+</li>
+<li><p>关闭指定 App</p>
+<p> <code>adb shell am force-stop com.android.settings</code></p>
+</li>
+</ol>
+<hr>
+]]></content>
     
     <summary type="html">
+    
+      &lt;h1 id=&quot;ADB-常用指令&quot;&gt;&lt;a href=&quot;#ADB-常用指令&quot; class=&quot;headerlink&quot; title=&quot;ADB 常用指令&quot;&gt;&lt;/a&gt;ADB 常用指令&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;PC 传文件到 Android&lt;/p&gt;
+&lt;p&gt; &lt;code&gt;adb pus
     
     </summary>
     
@@ -99,7 +169,7 @@
     <link href="https://bearzpy.github.io/2017/06/22/git/%E5%B8%B8%E7%94%A8%20git%20%E6%8C%87%E4%BB%A4/"/>
     <id>https://bearzpy.github.io/2017/06/22/git/常用 git 指令/</id>
     <published>2017-06-22T02:55:02.000Z</published>
-    <updated>2017-06-22T02:59:55.202Z</updated>
+    <updated>2017-07-14T02:37:13.492Z</updated>
     
     <content type="html"><![CDATA[<h1 id="常用-git-指令"><a href="#常用-git-指令" class="headerlink" title="常用 git 指令"></a>常用 git 指令</h1><h4 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h4><ul>
 <li>git config –global user.name “xxx”</li>
@@ -111,6 +181,7 @@
 <h4 id="建立空仓库"><a href="#建立空仓库" class="headerlink" title="建立空仓库"></a>建立空仓库</h4><ul>
 <li>git –bare init</li>
 </ul>
+<h4 id="git-清理工程命令"><a href="#git-清理工程命令" class="headerlink" title="git 清理工程命令"></a>git 清理工程命令</h4><p>git clean -nxfd 预览需要删除的文件<br>git clean -xfd  删除的文件</p>
 ]]></content>
     
     <summary type="html">
@@ -161,11 +232,11 @@
     <link href="https://bearzpy.github.io/2017/05/31/google%20study%20jams/Android%E5%85%A5%E9%97%A8-L4%20Firebase%20AdMob%20%E6%A8%AA%E5%B9%85%E5%B9%BF%E5%91%8A/"/>
     <id>https://bearzpy.github.io/2017/05/31/google study jams/Android入门-L4 Firebase AdMob 横幅广告/</id>
     <published>2017-05-31T06:56:42.000Z</published>
-    <updated>2017-06-02T05:36:55.499Z</updated>
+    <updated>2017-10-13T09:50:05.757Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Firebase"><a href="#Firebase" class="headerlink" title="Firebase"></a>Firebase</h2><p>Firebase 是一个用于开发移动应用和 Web 应用的开发平台，自从被 Google 收购后融合了 Google 的云服务。Firebase 的初始产品是一个实时数据库，它提供了一个 API，允许开发人员在多个客户端之间存储和同步数据。随着时间的推移，它已经扩大了产品线，成为一个完整的应用程序开发套件。</p>
-<h3 id="AdMob"><a href="#AdMob" class="headerlink" title="AdMob"></a>AdMob</h3><p>AdMob 覆盖 200 多个国家，是美国最大的移动广告平台。开发者可以直接使用 AdMob SDK 展示广告来获得收益，而无需与广告投放者沟通。</p>
-<h3 id="接入-AdMob-SDK"><a href="#接入-AdMob-SDK" class="headerlink" title="接入 AdMob SDK"></a>接入 AdMob SDK</h3><p>这里主要介绍如何使用横幅式广告。横幅广告：基本广告格式，在设备屏幕的顶部和底部展示。  </p>
+    <content type="html"><![CDATA[<h1 id="Firebase"><a href="#Firebase" class="headerlink" title="Firebase"></a>Firebase</h1><p>Firebase 是一个用于开发移动应用和 Web 应用的开发平台，自从被 Google 收购后融合了 Google 的云服务。Firebase 的初始产品是一个实时数据库，它提供了一个 API，允许开发人员在多个客户端之间存储和同步数据。随着时间的推移，它已经扩大了产品线，成为一个完整的应用程序开发套件。</p>
+<h2 id="AdMob"><a href="#AdMob" class="headerlink" title="AdMob"></a>AdMob</h2><p>AdMob 覆盖 200 多个国家，是美国最大的移动广告平台。开发者可以直接使用 AdMob SDK 展示广告来获得收益，而无需与广告投放者沟通。</p>
+<h2 id="接入-AdMob-SDK"><a href="#接入-AdMob-SDK" class="headerlink" title="接入 AdMob SDK"></a>接入 AdMob SDK</h2><p>这里主要介绍如何使用横幅式广告。横幅广告：基本广告格式，在设备屏幕的顶部和底部展示。  </p>
 <p>使用 AdMob SDK 主要有 4 个步骤：</p>
 <ul>
 <li>在 build.gradle 中添加依赖。</li>
@@ -174,7 +245,7 @@
 <li>在 activity 代码中添加加载代码。</li>
 </ul>
 <p>横幅式广告效果：<br><img src="https://raw.githubusercontent.com/BearZPY/blog-img-repository/master/google_study_jams/L4/admob_banner.png" alt="横幅式广告"></p>
-<h4 id="在-build-gradle-中添加依赖"><a href="#在-build-gradle-中添加依赖" class="headerlink" title="在 build.gradle 中添加依赖"></a>在 build.gradle 中添加依赖</h4><p>修改 Project 目录下的 build.gradle，在 buildscript 闭包里的 dependencies 闭包中增加 com.google.gms:google-services 的插件。</p>
+<h3 id="在-build-gradle-中添加依赖"><a href="#在-build-gradle-中添加依赖" class="headerlink" title="在 build.gradle 中添加依赖"></a>在 build.gradle 中添加依赖</h3><p>修改 Project 目录下的 build.gradle，在 buildscript 闭包里的 dependencies 闭包中增加 com.google.gms:google-services 的插件。</p>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span>
 
 buildscript <span class="token punctuation">{</span>
@@ -225,14 +296,14 @@ dependencies <span class="token punctuation">{</span>
     compile <span class="token string">'com.google.firebase:firebase-ads:10.2.1'</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="在-manifest-中声明权限"><a href="#在-manifest-中声明权限" class="headerlink" title="在 manifest 中声明权限"></a>在 manifest 中声明权限</h4><p>使用 AdMob 的应用本身需要有访问网络的权限，所以需要在 manifest 中声明如下权限。</p>
+<h3 id="在-manifest-中声明权限"><a href="#在-manifest-中声明权限" class="headerlink" title="在 manifest 中声明权限"></a>在 manifest 中声明权限</h3><p>使用 AdMob 的应用本身需要有访问网络的权限，所以需要在 manifest 中声明如下权限。</p>
 <pre class=" language-java"><code class="language-java">    <span class="token operator">&lt;</span>uses<span class="token operator">-</span>permission android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">"android.permission.ACCESS_NETWORK_STATE"</span><span class="token operator">/</span><span class="token operator">></span>
     <span class="token operator">&lt;</span>uses<span class="token operator">-</span>permission android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">"android.permission.INTERNET"</span><span class="token operator">/</span><span class="token operator">></span>
 </code></pre>
-<h4 id="在-layout-文件中添加布局"><a href="#在-layout-文件中添加布局" class="headerlink" title="在 layout 文件中添加布局"></a>在 layout 文件中添加布局</h4><p>横幅式广告只需要在布局文件中添加一个 AdView 就可以了，其中使用了 ads，需要声明命名空间，在根布局中添加 <code>xmlns:ads=&quot;http://schemas.android.com/apk/res-auto&quot;</code>。在 AdView 中，系统要求提供 layout_width 和 layout_height，可以将这两项都设置为 wrap_content。  </p>
+<h3 id="在-layout-文件中添加布局"><a href="#在-layout-文件中添加布局" class="headerlink" title="在 layout 文件中添加布局"></a>在 layout 文件中添加布局</h3><p>横幅式广告只需要在布局文件中添加一个 AdView 就可以了，其中使用了 ads，需要声明命名空间，在根布局中添加 <code>xmlns:ads=&quot;http://schemas.android.com/apk/res-auto&quot;</code>。在 AdView 中，系统要求提供 layout_width 和 layout_height，可以将这两项都设置为 wrap_content。  </p>
 <p>ads 参数意义：  </p>
 <ul>
-<li>adSize=”BANNER” 设置为横幅式广告。</li>
+<li>adSize=”BANNER” 设置为横幅式广告。  </li>
 <li>adUnitId 该参数是在请求广告时 AdView 使用的广告单元 ID，是用来和你的账户绑定的，下文会讲述如何获得该 ID。</li>
 </ul>
 <p>AdView 布局：</p>
@@ -246,20 +317,20 @@ dependencies <span class="token punctuation">{</span>
         ads<span class="token operator">:</span>adUnitId<span class="token operator">=</span><span class="token string">"@string/banner_ad_unit_id"</span><span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">/</span>com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>android<span class="token punctuation">.</span>gms<span class="token punctuation">.</span>ads<span class="token punctuation">.</span>AdView<span class="token operator">></span>
 </code></pre>
-<h4 id="在-activity-代码中添加加载代码"><a href="#在-activity-代码中添加加载代码" class="headerlink" title="在 activity 代码中添加加载代码"></a>在 activity 代码中添加加载代码</h4><ul>
-<li>定义全局变量 <code>private AdView mAdView;</code> </li>
+<h3 id="在-activity-代码中添加加载代码"><a href="#在-activity-代码中添加加载代码" class="headerlink" title="在 activity 代码中添加加载代码"></a>在 activity 代码中添加加载代码</h3><ul>
+<li>定义全局变量 <code>private AdView mAdView;</code></li>
 <li>在 OnCreate 中添加如下代码就能完成广告的加载。</li>
 </ul>
 <pre class=" language-java"><code class="language-java">    mAdView <span class="token operator">=</span> <span class="token punctuation">(</span>AdView<span class="token punctuation">)</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>adView<span class="token punctuation">)</span><span class="token punctuation">;</span>
     AdRequest adRequest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AdRequest<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     mAdView<span class="token punctuation">.</span><span class="token function">loadAd</span><span class="token punctuation">(</span>adRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="广告单元-ID"><a href="#广告单元-ID" class="headerlink" title="广告单元 ID"></a>广告单元 ID</h3><p>广告单元 ID 是在应用中占有位置的唯一标识符，用于显示广告。如果应用具有两个 Activity（例如，分别显示一个横幅），则需要提供两个广告单元，每个广告单元均具有自己的 ID。AdMob 广告单元 ID 的格式为 ca-app-pub-XXXXXXXXXXXXXXXX/NNNNNNNNNN</p>
+<h2 id="广告单元-ID"><a href="#广告单元-ID" class="headerlink" title="广告单元 ID"></a>广告单元 ID</h2><p>广告单元 ID 是在应用中占有位置的唯一标识符，用于显示广告。如果应用具有两个 Activity（例如，分别显示一个横幅），则需要提供两个广告单元，每个广告单元均具有自己的 ID。AdMob 广告单元 ID 的格式为 ca-app-pub-XXXXXXXXXXXXXXXX/NNNNNNNNNN</p>
 <p>若要使新应用显示广告，则需包括一个广告单元 ID。使用应用字符串资源文件（在 app/src/main/res/values/strings.xml 中）。</p>
-<h4 id="测试广告单元-ID"><a href="#测试广告单元-ID" class="headerlink" title="测试广告单元 ID"></a>测试广告单元 ID</h4><p><code>&lt;string name=&quot;banner_ad_unit_id&quot;&gt;ca-app-pub-3940256099942544/6300978111&lt;/string&gt;</code></p>
+<h3 id="测试广告单元-ID"><a href="#测试广告单元-ID" class="headerlink" title="测试广告单元 ID"></a>测试广告单元 ID</h3><p><code>&lt;string name=&quot;banner_ad_unit_id&quot;&gt;ca-app-pub-3940256099942544/6300978111&lt;/string&gt;</code></p>
 <p>注意，以上提供的广告单元 ID 仅供测试使用。它允许应用检索示例横幅广告并确保实现正确无误。在开发和测试应用时，应始终使用测试广告。 点击自己的实时广告违反 AdMob 政策。在开发和测试期间，请使用测试广告。如果确实需要在发布前呈现直播广告，请避免点击它们。如果点击直播广告，AdMob 帐户可能被禁用。</p>
-<h4 id="创建自己的广告单元-ID"><a href="#创建自己的广告单元-ID" class="headerlink" title="创建自己的广告单元 ID"></a>创建自己的广告单元 ID</h4><p>当前基于 AdMob 和 AdMob Beta 的版本，有两种不同的方法，具体参见<br><a href="https://support.google.com/admob/answer/7311346" target="_blank" rel="external">创建横幅广告单元</a>。</p>
-<h3 id="添加广告监听器"><a href="#添加广告监听器" class="headerlink" title="添加广告监听器"></a>添加广告监听器</h3><p>你可能会发现有时候你的广告不能正常显示出来，然而根据前文的信息你无法得知具体的原因，这时候我们可为 AdView 添加 AdListener，由此来确定 AdView 的状态。例如，当广告加载失败的时候 onAdFailedToLoad(int returnCode) 函数会被调用，我们可以根据 returnCode 来确定无法显示的原因。</p>
+<h3 id="创建自己的广告单元-ID"><a href="#创建自己的广告单元-ID" class="headerlink" title="创建自己的广告单元 ID"></a>创建自己的广告单元 ID</h3><p>当前基于 AdMob 和 AdMob Beta 的版本，有两种不同的方法，具体参见<br><a href="https://support.google.com/admob/answer/7311346" target="_blank" rel="external">创建横幅广告单元</a>。</p>
+<h2 id="添加广告监听器"><a href="#添加广告监听器" class="headerlink" title="添加广告监听器"></a>添加广告监听器</h2><p>你可能会发现有时候你的广告不能正常显示出来，然而根据前文的信息你无法得知具体的原因，这时候我们可为 AdView 添加 AdListener，由此来确定 AdView 的状态。例如，当广告加载失败的时候 onAdFailedToLoad(int returnCode) 函数会被调用，我们可以根据 returnCode 来确定无法显示的原因。</p>
 <p>AdListener 一共有 5 个函数可以由我们去实现：</p>
 <ul>
 <li>onAdClosed() 用户在点击广告后即将返回应用程序时调用。</li>
@@ -329,12 +400,12 @@ dependencies <span class="token punctuation">{</span>
    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
    mAdView<span class="token punctuation">.</span><span class="token function">loadAd</span><span class="token punctuation">(</span>adRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="注"><a href="#注" class="headerlink" title="注"></a>注</h3><p>有些时候广告可能显示不出来，可能是因为 GFW 导致的网络问题。</p>
+<h2 id="注"><a href="#注" class="headerlink" title="注"></a>注</h2><p>有些时候广告可能显示不出来，可能是因为 GFW 导致的网络问题。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Firebase&quot;&gt;&lt;a href=&quot;#Firebase&quot; class=&quot;headerlink&quot; title=&quot;Firebase&quot;&gt;&lt;/a&gt;Firebase&lt;/h2&gt;&lt;p&gt;Firebase 是一个用于开发移动应用和 Web 应用的开发平台，自从被 Google 收
+      &lt;h1 id=&quot;Firebase&quot;&gt;&lt;a href=&quot;#Firebase&quot; class=&quot;headerlink&quot; title=&quot;Firebase&quot;&gt;&lt;/a&gt;Firebase&lt;/h1&gt;&lt;p&gt;Firebase 是一个用于开发移动应用和 Web 应用的开发平台，自从被 Google 收
     
     </summary>
     
@@ -344,8 +415,6 @@ dependencies <span class="token punctuation">{</span>
       <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
       <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
-    
-      <category term="StudyJams" scheme="https://bearzpy.github.io/tags/StudyJams/"/>
     
       <category term="AdMob" scheme="https://bearzpy.github.io/tags/AdMob/"/>
     
@@ -358,11 +427,11 @@ dependencies <span class="token punctuation">{</span>
     <link href="https://bearzpy.github.io/2017/05/30/google%20study%20jams/Android%E5%85%A5%E9%97%A8-L3%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     <id>https://bearzpy.github.io/2017/05/30/google study jams/Android入门-L3 面向对象/</id>
     <published>2017-05-30T06:25:52.000Z</published>
-    <updated>2017-05-31T06:53:33.238Z</updated>
+    <updated>2017-10-13T09:50:05.757Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="为计分器添加-redo-和-undo"><a href="#为计分器添加-redo-和-undo" class="headerlink" title="为计分器添加 redo 和 undo"></a>为计分器添加 redo 和 undo</h2><h3 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h3><p>类是对某一类事物的描述，是抽象的、概念上的定义；对象是实际存在的该类事物的个体，因而也称实例（Instance）。类和对象就如同概念和实物之间的关系一样，类就好比是一个模板，而对象就是该模板下的一个实例。</p>
-<h3 id="redo-和-undo-涉及的内容"><a href="#redo-和-undo-涉及的内容" class="headerlink" title="redo 和 undo 涉及的内容"></a>redo 和 undo 涉及的内容</h3><p>redo 和 undo 涉及到的主要是 Team A 和 Team B 的分数变化。如果想记录下两只队伍的分数变化，就需要记录下用户的每次交互，需要注意的是两只队伍的分数变化是关联的不是独立的，所以需要一个表来记录下某一次的操作是针对哪只队伍以及操作的分数。</p>
-<h3 id="创建-History-类来记录每次操作的内容"><a href="#创建-History-类来记录每次操作的内容" class="headerlink" title="创建 History 类来记录每次操作的内容"></a>创建 History 类来记录每次操作的内容</h3><p>在用户每一次操作的时候都需要创建一个 History 类，用以保存操作对象，操作的变化值。  </p>
+    <content type="html"><![CDATA[<h1 id="为计分器添加-redo-和-undo"><a href="#为计分器添加-redo-和-undo" class="headerlink" title="为计分器添加 redo 和 undo"></a>为计分器添加 redo 和 undo</h1><h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p>类是对某一类事物的描述，是抽象的、概念上的定义；对象是实际存在的该类事物的个体，因而也称实例（Instance）。类和对象就如同概念和实物之间的关系一样，类就好比是一个模板，而对象就是该模板下的一个实例。</p>
+<h2 id="redo-和-undo-涉及的内容"><a href="#redo-和-undo-涉及的内容" class="headerlink" title="redo 和 undo 涉及的内容"></a>redo 和 undo 涉及的内容</h2><p>redo 和 undo 涉及到的主要是 Team A 和 Team B 的分数变化。如果想记录下两只队伍的分数变化，就需要记录下用户的每次交互，需要注意的是两只队伍的分数变化是关联的不是独立的，所以需要一个表来记录下某一次的操作是针对哪只队伍以及操作的分数。</p>
+<h2 id="创建-History-类来记录每次操作的内容"><a href="#创建-History-类来记录每次操作的内容" class="headerlink" title="创建 History 类来记录每次操作的内容"></a>创建 History 类来记录每次操作的内容</h2><p>在用户每一次操作的时候都需要创建一个 History 类，用以保存操作对象，操作的变化值。  </p>
 <p>History 类拥有的变量：</p>
 <ul>
 <li>type ：本次操作的队伍（A，B，A&amp;B）</li>
@@ -394,11 +463,17 @@ dependencies <span class="token punctuation">{</span>
     <span class="token punctuation">}</span>
 </code></pre>
 <h3 id="创建一个链表来保存-History-类"><a href="#创建一个链表来保存-History-类" class="headerlink" title="创建一个链表来保存 History 类"></a>创建一个链表来保存 History 类</h3><ol>
-<li>创建 History 的 ArrayList ：<br>private ArrayList<history> historyRecord = new ArrayList&lt;&gt;();</history></li>
-<li>增加一条历史记录：<br>historyRecord.add(new History(TEAM_A_FLAG,2,0));</li>
-<li>去除一条历史记录：<br>historyRecord.remove(i);</li>
+<li><p>创建 History 的 ArrayList ：</p>
+<p> <code>private ArrayList&lt;History&gt; historyRecord = new ArrayList&lt;&gt;();</code></p>
+</li>
+<li><p>增加一条历史记录：</p>
+<p> <code>historyRecord.add(new History(TEAM_A_FLAG,2,0));</code></p>
+</li>
+<li><p>去除一条历史记录：</p>
+<p> <code>historyRecord.remove(i);</code></p>
+</li>
 </ol>
-<h3 id="undo-实现"><a href="#undo-实现" class="headerlink" title="undo 实现"></a>undo 实现</h3><p>undo 操作读取 historyRecord 中最后一次加入的 History 类，通过判定 type 的值来判断是哪只队伍的操，操作 Team A 值为 1，操作 Team B 值为 2，其他 type 值代表操作 Team A&amp;B 。根据 type 把 changeScoreTeamA，changeScoreTeamB 反馈到 scoreTeamA，scoreTeamB上。undo 操作需要将 historyRecord 中当前存储位置 startIndex 减少 1，来保证新的记录能够正常的存在 historyRecord 中。</p>
+<h2 id="undo-实现"><a href="#undo-实现" class="headerlink" title="undo 实现"></a>undo 实现</h2><p>undo 操作读取 historyRecord 中最后一次加入的 History 类，通过判定 type 的值来判断是哪只队伍的操，操作 Team A 值为 1，操作 Team B 值为 2，其他 type 值代表操作 Team A&amp;B 。根据 type 把 changeScoreTeamA，changeScoreTeamB 反馈到 scoreTeamA，scoreTeamB上。undo 操作需要将 historyRecord 中当前存储位置 startIndex 减少 1，来保证新的记录能够正常的存在 historyRecord 中。</p>
 <pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">unDo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         History temp<span class="token punctuation">;</span>
         temp <span class="token operator">=</span> historyRecord<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>startIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -417,7 +492,7 @@ dependencies <span class="token punctuation">{</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="redo-实现"><a href="#redo-实现" class="headerlink" title="redo 实现"></a>redo 实现</h3><p>redo 操作读取 historyRecord 中上一次 undo 操作使用的 History 类，通过判定 type 的值来判断是哪只队伍的操，操作 Team A 值为 1，操作 Team B 值为 2，其他 type 值代表操作 Team A&amp;B 。根据 type 把 changeScoreTeamA，changeScoreTeamB 反馈到 scoreTeamA，scoreTeamB上。undo 操作需要将 historyRecord 中当前存储位置 startIndex 增加 1，来保证新的记录能够正常的存在 historyRecord 中。</p>
+<h2 id="redo-实现"><a href="#redo-实现" class="headerlink" title="redo 实现"></a>redo 实现</h2><p>redo 操作读取 historyRecord 中上一次 undo 操作使用的 History 类，通过判定 type 的值来判断是哪只队伍的操，操作 Team A 值为 1，操作 Team B 值为 2，其他 type 值代表操作 Team A&amp;B 。根据 type 把 changeScoreTeamA，changeScoreTeamB 反馈到 scoreTeamA，scoreTeamB上。undo 操作需要将 historyRecord 中当前存储位置 startIndex 增加 1，来保证新的记录能够正常的存在 historyRecord 中。</p>
 <pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">reDo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         startIndex<span class="token operator">++</span><span class="token punctuation">;</span>
         History temp<span class="token punctuation">;</span>
@@ -437,7 +512,7 @@ dependencies <span class="token punctuation">{</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="更新历史记录"><a href="#更新历史记录" class="headerlink" title="更新历史记录"></a>更新历史记录</h3><p>用户每一次操作都要更新 historyRecord，其中有一个情况要特殊处理，即 undo 操作后记录的储存位置 startIndex 并不在 historyRecord 的最后 endIndex 这个时候需要删除 startIndex 到 endIndex 之间的不再需要的历史记录。</p>
+<h2 id="更新历史记录"><a href="#更新历史记录" class="headerlink" title="更新历史记录"></a>更新历史记录</h2><p>用户每一次操作都要更新 historyRecord，其中有一个情况要特殊处理，即 undo 操作后记录的储存位置 startIndex 并不在 historyRecord 的最后 endIndex 这个时候需要删除 startIndex 到 endIndex 之间的不再需要的历史记录。</p>
 <pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">updateHistoryRecord</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> endIndex<span class="token punctuation">;</span> i <span class="token operator">></span> startIndex <span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             historyRecord<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -446,11 +521,12 @@ dependencies <span class="token punctuation">{</span>
         endIndex <span class="token operator">=</span> startIndex<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 </code></pre>
+<hr>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;为计分器添加-redo-和-undo&quot;&gt;&lt;a href=&quot;#为计分器添加-redo-和-undo&quot; class=&quot;headerlink&quot; title=&quot;为计分器添加 redo 和 undo&quot;&gt;&lt;/a&gt;为计分器添加 redo 和 undo&lt;/h2&gt;&lt;h3 id=&quot;类
+      &lt;h1 id=&quot;为计分器添加-redo-和-undo&quot;&gt;&lt;a href=&quot;#为计分器添加-redo-和-undo&quot; class=&quot;headerlink&quot; title=&quot;为计分器添加 redo 和 undo&quot;&gt;&lt;/a&gt;为计分器添加 redo 和 undo&lt;/h1&gt;&lt;h2 id=&quot;类
     
     </summary>
     
@@ -460,8 +536,6 @@ dependencies <span class="token punctuation">{</span>
       <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
       <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
-    
-      <category term="StudyJams" scheme="https://bearzpy.github.io/tags/StudyJams/"/>
     
   </entry>
   
@@ -470,13 +544,13 @@ dependencies <span class="token punctuation">{</span>
     <link href="https://bearzpy.github.io/2017/05/12/google%20study%20jams/Android%E5%85%A5%E9%97%A8-L2%20%E5%BA%94%E7%94%A8%E4%BA%A4%E4%BA%92/"/>
     <id>https://bearzpy.github.io/2017/05/12/google study jams/Android入门-L2 应用交互/</id>
     <published>2017-05-12T10:33:12.000Z</published>
-    <updated>2017-05-14T07:29:16.000Z</updated>
+    <updated>2017-10-13T09:50:05.757Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="应用交互"><a href="#应用交互" class="headerlink" title="应用交互"></a>应用交互</h2><p>用户界面是交互设计的结果的自然体现，想要一个好的交互设计首先需要一个好的用户界面。</p>
-<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p>OrderCoffee 和 CourtCounter APP 的界面:  </p>
+    <content type="html"><![CDATA[<h1 id="应用交互"><a href="#应用交互" class="headerlink" title="应用交互"></a>应用交互</h1><p>用户界面是交互设计的结果的自然体现，想要一个好的交互设计首先需要一个好的用户界面。</p>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>OrderCoffee 和 CourtCounter APP 的界面:  </p>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/L2/ordercoffee_add.png" alt="ordercoffee_add"><br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/L2/CourtCounter_all.png" alt="CourtCounter_all"></p>
-<h4 id="点击事件"><a href="#点击事件" class="headerlink" title="点击事件"></a>点击事件</h4><p>通过用户点击达成的操作并不一定需要使用 Button。例如，APP 里的增加和减少按键都是 ImageView，通过添加 OnClick 属性可以想 Button 一样添加点击相应事件一样可以实现 Button 的功能。许多 View 都可以添加 OnClick 属性来添加各自的点击事件，而且不同的 View 可以有不同的显示效果，合理设计使用可以增加交互感。</p>
-<h4 id="对当前不需要交互的功能进行处理"><a href="#对当前不需要交互的功能进行处理" class="headerlink" title="对当前不需要交互的功能进行处理"></a>对当前不需要交互的功能进行处理</h4><p>对当前不需要显示的 View 进行隐藏，比如 OrderCoffee APP 中当选择数目为 0 的时候，只需要显示增加按钮，显示按钮可以隐藏起来。通过设置 View 的可见属性可以达到这个效果。  使用 setVisibility 函数设置可见属性的值，其中 INVISIBLE 和 GONE 需要根据实际情况使用。</p>
+<h3 id="点击事件"><a href="#点击事件" class="headerlink" title="点击事件"></a>点击事件</h3><p>通过用户点击达成的操作并不一定需要使用 Button。例如，APP 里的增加和减少按键都是 ImageView，通过添加 OnClick 属性可以想 Button 一样添加点击相应事件一样可以实现 Button 的功能。许多 View 都可以添加 OnClick 属性来添加各自的点击事件，而且不同的 View 可以有不同的显示效果，合理设计使用可以增加交互感。</p>
+<h3 id="对当前不需要交互的功能进行处理"><a href="#对当前不需要交互的功能进行处理" class="headerlink" title="对当前不需要交互的功能进行处理"></a>对当前不需要交互的功能进行处理</h3><p>对当前不需要显示的 View 进行隐藏，比如 OrderCoffee APP 中当选择数目为 0 的时候，只需要显示增加按钮，显示按钮可以隐藏起来。通过设置 View 的可见属性可以达到这个效果。  使用 setVisibility 函数设置可见属性的值，其中 INVISIBLE 和 GONE 需要根据实际情况使用。</p>
 <ul>
 <li>View.VISIBLE 设置 View 可见</li>
 <li>View.GONE 设置 View 不可见，且 View 不再占据位置，会重新布局</li>
@@ -485,14 +559,14 @@ dependencies <span class="token punctuation">{</span>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/L2/ordercoffee.png" alt="ordercoffee"></p>
 <p>对应的 Button 也可以设置是否可见，但是有时候突然出现一个 Button 这样的用户体验会不好。Button 可以设置使能属性 ，Button 使能和失能的时候字体颜色是不一样的，便于用户区分。使用 setEnabled 方法设置 Button 是否使能 ture 使能，false 使能。例如，在 CourtCounter APP 中，当用户没有操作的时候 undo 和 redo 按键应该是不能点击的。</p>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/L2/CourtCounter.png" alt="CourtCounter"></p>
-<h4 id="不同状态下控件的状态"><a href="#不同状态下控件的状态" class="headerlink" title="不同状态下控件的状态"></a>不同状态下控件的状态</h4><p>在 OrderCoffee APP 中当用户选择 clear 或者 order 操作的时候，减少数目的按键应该重新设置为不可见。<br>在 CourtCounter APP 中，当用户点击 undo 按键的时候，redo 按键应该被使能，当 undo 到最早的操作里面，undo 按键应该被使能。   </p>
+<h3 id="不同状态下控件的状态"><a href="#不同状态下控件的状态" class="headerlink" title="不同状态下控件的状态"></a>不同状态下控件的状态</h3><p>在 OrderCoffee APP 中当用户选择 clear 或者 order 操作的时候，减少数目的按键应该重新设置为不可见。<br>在 CourtCounter APP 中，当用户点击 undo 按键的时候，redo 按键应该被使能，当 undo 到最早的操作里面，undo 按键应该被使能。   </p>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/L2/ordercoffee_success.png" alt="ordercoffee_success"><br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/L2/CourtCounter_undo.png" alt="CourtCounter_undo"><br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/L2/CourtCounter_redo.png" alt="CourtCounter_redo"></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;应用交互&quot;&gt;&lt;a href=&quot;#应用交互&quot; class=&quot;headerlink&quot; title=&quot;应用交互&quot;&gt;&lt;/a&gt;应用交互&lt;/h2&gt;&lt;p&gt;用户界面是交互设计的结果的自然体现，想要一个好的交互设计首先需要一个好的用户界面。&lt;/p&gt;
-&lt;h3 id=&quot;布局&quot;&gt;&lt;a h
+      &lt;h1 id=&quot;应用交互&quot;&gt;&lt;a href=&quot;#应用交互&quot; class=&quot;headerlink&quot; title=&quot;应用交互&quot;&gt;&lt;/a&gt;应用交互&lt;/h1&gt;&lt;p&gt;用户界面是交互设计的结果的自然体现，想要一个好的交互设计首先需要一个好的用户界面。&lt;/p&gt;
+&lt;h2 id=&quot;布局&quot;&gt;&lt;a h
     
     </summary>
     
@@ -503,7 +577,161 @@ dependencies <span class="token punctuation">{</span>
     
       <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
     
-      <category term="StudyJams" scheme="https://bearzpy.github.io/tags/StudyJams/"/>
+  </entry>
+  
+  <entry>
+    <title>自定义 View 绘制基础</title>
+    <link href="https://bearzpy.github.io/2017/04/22/Android%20View/%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E7%BB%98%E5%88%B6%E5%9F%BA%E7%A1%80/"/>
+    <id>https://bearzpy.github.io/2017/04/22/Android View/自定义 View 绘制基础/</id>
+    <published>2017-04-22T03:01:27.000Z</published>
+    <updated>2017-10-17T06:55:32.068Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="自定义-View"><a href="#自定义-View" class="headerlink" title="自定义 View"></a>自定义 View</h1><p>自定义控件继承于 View，我们按自己的需要复写其构造、onMeasure、onLayout、onTouchEvent、onDraw、onAttachedToWindow、onDetachedFromWindow 等方法。其中 onMeasure、onLayout、onDraw 这三个方法是 View 的核心方法。本篇主要涉及到 onDraw() 使用的 Canvas 的 drawXXX() 系列方法及 Paint 常用方法。</p>
+<h2 id="View-的构造函数"><a href="#View-的构造函数" class="headerlink" title="View 的构造函数"></a>View 的构造函数</h2><p>View 的构造函数有 4 个，一般情况下只要实现前三个。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 属性优先级：XML 定义 > XML 的 Style 定义 > defStyleAttr > defStyleRes > Theme</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyView</span> <span class="token keyword">extends</span> <span class="token class-name">View</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">// 代码中创建 View 时使用</span>
+    <span class="token keyword">public</span> <span class="token function">MyView</span><span class="token punctuation">(</span>Context context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 从 XML 加载 View 时使用</span>
+    <span class="token comment" spellcheck="true">// AttributeSet: 属性集，XML 内设置的内容</span>
+    <span class="token keyword">public</span> <span class="token function">MyView</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> AttributeSet attrs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> attrs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 主题中定义 View 的样式时使用</span>
+    <span class="token keyword">public</span> <span class="token function">MyView</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> AttributeSet attrs<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleAttr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> attrs<span class="token punctuation">,</span> defStyleAttr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 获取自定义属性</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 当 defStyleAttr 为 0 时使用</span>
+    <span class="token comment" spellcheck="true">// 最小 API 21</span>
+    <span class="token keyword">public</span> <span class="token function">MyView</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> AttributeSet attrs<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleAttr<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleRes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> attrs<span class="token punctuation">,</span> defStyleAttr<span class="token punctuation">,</span> defStyleRes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="onDraw-绘制基础"><a href="#onDraw-绘制基础" class="headerlink" title="onDraw() 绘制基础"></a>onDraw() 绘制基础</h2><p>自定义绘制的方式是重写绘制方法，其中最常用的是 onDraw()。我们需要提前创建好 Paint 对象，重写 onDraw() 方法，编写具体的绘制代码。在 Android 里，每个 View 都有一个自己的坐标系，彼此之间是不影响的。这个坐标系的原点是 View 左上角的那个点；水平方向是 x 轴，右正左负；竖直方向是 y 轴，下正上负。</p>
+<pre class=" language-java"><code class="language-java">    Paint paint <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Paint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onDraw</span><span class="token punctuation">(</span>Canvas canvas<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDraw</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 在坐标 (100, 100) 处画一段文字</span>
+        canvas<span class="token punctuation">.</span><span class="token function">drawText</span><span class="token punctuation">(</span><span class="token string">"Hello World!"</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> paint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="Canvas-常用方法"><a href="#Canvas-常用方法" class="headerlink" title="Canvas 常用方法"></a>Canvas 常用方法</h3><ul>
+<li><p>drawColor(@ColorInt int color)  </p>
+<p>  颜色填充，在整个绘制区域统一涂上指定的颜色。<br>  注：drawRGB，drawARGB 也能达到这个效果，一般用于在绘制之前设置底色，或者在绘制之后为界面设置半透明蒙版。</p>
+</li>
+<li><p>drawCircle(float centerX, float centerY, float radius, Paint paint)</p>
+<p>  画圆，centerX centerY 是圆心的坐标，第三个参数 radius 是圆的半径，单位都是像素，paint 提供基本信息之外的所有风格信息，例如颜色、线条粗细、阴影等。</p>
+</li>
+<li><p>drawRect(float left, float top, float right, float bottom, Paint paint)</p>
+<p>  画矩形，left, top, right, bottom 是矩形四条边的坐标。还有 drawRect(RectF rect, Paint paint) 和 drawRect(Rect rect, Paint paint) 两个重载方法。</p>
+</li>
+<li><p>drawPoint(float x, float y, Paint paint)</p>
+<p>  画点，x，y 是点的坐标，点的大小可以通过 paint.setStrokeWidth(width) 来设置；点的形状可以通过  paint.setStrokeCap(cap) 来设置。</p>
+</li>
+<li><p>drawOval(float left, float top, float right, float bottom, Paint paint)</p>
+<p>  画椭圆，只能绘制横着的或者竖着的椭圆，不能绘制斜的，left, top, right, bottom 是这个椭圆的左、上、右、下四个边界点的坐标。重载方法 drawOval(RectF rect, Paint paint)。</p>
+</li>
+<li><p>drawLine(float startX, float startY, float stopX, float stopY, Paint paint)</p>
+<p>  画线，startX, startY, stopX, stopY 分别是线的起点和终点坐标。drawLines(float[] pts, int offset, int count, Paint paint) / drawLines(float[] pts, Paint paint) 画线（批量）。</p>
+</li>
+<li><p>drawRoundRect(float left, float top, float right, float bottom, float rx, float ry, Paint paint)</p>
+<p>  画圆角矩形，重载方法 drawRoundRect(RectF rect, float rx, float ry, Paint paint)。</p>
+</li>
+<li><p>drawArc(float left, float top, float right, float bottom, float startAngle, float sweepAngle, boolean useCenter, Paint paint)</p>
+<p>  绘制弧形或扇形，drawArc() 是使用一个椭圆来描述弧形的。left, top, right, bottom 描述的是这个弧形所在的椭圆；startAngle 是弧形的起始角度（x 轴的正向，即正右的方向，是 0 度的位置；顺时针为正角度，逆时针为负角度），sweepAngle 是弧形划过的角度；useCenter 表示是否连接到圆心，如果不连接到圆心，就是弧形，如果连接到圆心，就是扇形。</p>
+</li>
+<li><p>drawBitmap(Bitmap bitmap, float left, float top, Paint paint)</p>
+<p>  画 Bitmap，left 和 top 是要把 bitmap 绘制到的位置坐标。</p>
+</li>
+<li><p>drawText(String text, float x, float y, Paint paint) 绘制文字</p>
+<p>  x 和 y 是绘制的起点坐标。</p>
+</li>
+</ul>
+<h3 id="Canvas-drawPath-自定义图形"><a href="#Canvas-drawPath-自定义图形" class="headerlink" title="Canvas.drawPath() 自定义图形"></a>Canvas.drawPath() 自定义图形</h3><p>drawPath() 可以绘制自定义图形，用于常用方法满足不了的时候，画出自定义图形。Path 有两类方法，一类是直接描述路径的，另一类是辅助的设置或计算。</p>
+<pre class=" language-java"><code class="language-java">    Paint paint <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Paint</span><span class="token punctuation">(</span>Paint<span class="token punctuation">.</span>ANTI_ALIAS_FLAG<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Path path <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Path</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">{</span>
+        path<span class="token punctuation">.</span><span class="token function">addCircle</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> Path<span class="token punctuation">.</span>Direction<span class="token punctuation">.</span>CW<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        path<span class="token punctuation">.</span><span class="token function">addCircle</span><span class="token punctuation">(</span><span class="token number">250</span><span class="token punctuation">,</span> <span class="token number">250</span><span class="token punctuation">,</span> <span class="token number">75</span><span class="token punctuation">,</span> Path<span class="token punctuation">.</span>Direction<span class="token punctuation">.</span>CCW<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        path<span class="token punctuation">.</span><span class="token function">setFillType</span><span class="token punctuation">(</span>Path<span class="token punctuation">.</span>FillType<span class="token punctuation">.</span>INVERSE_EVEN_ODD<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onDraw</span><span class="token punctuation">(</span>Canvas canvas<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDraw</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        paint<span class="token punctuation">.</span><span class="token function">setColor</span><span class="token punctuation">(</span>Color<span class="token punctuation">.</span>GRAY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        canvas<span class="token punctuation">.</span><span class="token function">drawPath</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> paint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="Path-直接描述路径"><a href="#Path-直接描述路径" class="headerlink" title="Path 直接描述路径"></a>Path 直接描述路径</h4><ol>
+<li><p>使用 addXxx() 添加子图形</p>
+<p> 添加时需要指定 dir 即画笔绘制的方向。路径方向有两种：顺时针 (CW clockwise) 和逆时针 (CCW counter-clockwise) 。对于普通情况，这个参数填 <code>Path.Direction.CW</code> 还是填 <code>Path.Direction.CCW</code> 没有影响。它只是在需要填充图形 (Paint.Style 为 FILL 或 FILL_AND_STROKE) ，并且图形出现自相交时，用于判断填充范围的。<br> eg：addCircle(float x, float y, float radius, Direction dir) 添加圆。</p>
+</li>
+<li><p>使用 xxxTo() 画线（直线或曲线）</p>
+<p> eg：lineTo(float x, float y) / rLineTo(float x, float y) 画直线，从当前位置向目标位置画一条直线， x 和 y 是目标位置的坐标。这两个方法的区别是，lineTo(x, y) 的参数是绝对坐标，而 rLineTo(x, y) 的参数是相对当前位置的相对坐标 （前缀 r 指的就是 relatively 「相对地」)。当前位置：所谓当前位置，即最后一次调用画 Path 的方法的终点位置。初始值为原点 (0, 0)。</p>
+</li>
+<li><p>close() 封闭当前子图形</p>
+<p> 它的作用是把当前的子图形封闭，即由当前位置向当前子图形的起点绘制一条直线。</p>
+</li>
+<li><p>moveTo(float x, float y) / rMoveTo(float x, float y)</p>
+<p> 移动到目标位置，设置图形的起点。</p>
+</li>
+<li><p>drawPath(path, paint)</p>
+<p> 画出图形  </p>
+</li>
+</ol>
+<h4 id="Path-辅助的设置或计算"><a href="#Path-辅助的设置或计算" class="headerlink" title="Path 辅助的设置或计算"></a>Path 辅助的设置或计算</h4><ol>
+<li><p>setFillType(Path.FillType ft)</p>
+<p> 设置填充方式<br> EVEN_ODD<br> WINDING （默认值）<br> INVERSE_EVEN_ODD<br> INVERSE_WINDING  </p>
+</li>
+</ol>
+<h3 id="Paint-常用方法"><a href="#Paint-常用方法" class="headerlink" title="Paint 常用方法"></a>Paint 常用方法</h3><ol>
+<li><p>setColor(int color)</p>
+<p> 用来设置绘制内容的颜色。</p>
+</li>
+<li><p>setStyle(Paint.Style style)</p>
+<p> 设置绘制模式：<br> Paint.Style.FILL：填充模式（默认）。<br> Paint.Style.STROKE：画线模式，勾边模式。<br> Paint.Style.FILL_AND_STROKE：两种模式都启用。</p>
+</li>
+<li><p>setStrokeWidth(float width)</p>
+<p> 设置线条的宽度，STROKE 和 FILL_AND_STROKE 模式下有效。</p>
+</li>
+<li><p>setAntiAlias(boolean aa)</p>
+<p> 动态设置抗锯齿，也可以创建时设置 Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG); 抗锯齿可以让边缘平滑，但也会让颜色失真。</p>
+</li>
+<li><p>setTextSize(float textSize)</p>
+<p> 设置文字大小。</p>
+</li>
+<li><p>setStrokeCap(Paint.Cap cap)</p>
+<p> 设置线条的形状：<br> Paint.Cap.ROUND 圆头，笔画以半圆形突出，中心位于路径的尽头。<br> Paint.Cap.SQUARE 方头，笔画以方形突出，中心位于路径的尽头。<br> Paint.Cap.BUTT 平头，不超过路径结束点。  </p>
+</li>
+</ol>
+<hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;自定义-View&quot;&gt;&lt;a href=&quot;#自定义-View&quot; class=&quot;headerlink&quot; title=&quot;自定义 View&quot;&gt;&lt;/a&gt;自定义 View&lt;/h1&gt;&lt;p&gt;自定义控件继承于 View，我们按自己的需要复写其构造、onMeasure、onLayout
+    
+    </summary>
+    
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+    
+      <category term="View" scheme="https://bearzpy.github.io/tags/View/"/>
     
   </entry>
   
@@ -512,20 +740,20 @@ dependencies <span class="token punctuation">{</span>
     <link href="https://bearzpy.github.io/2017/04/06/gradle/Gradle%20%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/"/>
     <id>https://bearzpy.github.io/2017/04/06/gradle/Gradle 基础介绍/</id>
     <published>2017-04-06T10:39:10.000Z</published>
-    <updated>2017-06-23T08:02:04.908Z</updated>
+    <updated>2017-10-13T09:50:05.757Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h2><p>本篇文章主要讲述 Gradle 的基本知识点，帮助大家了解 Gradle。</p>
-<h3 id="Gradle-背景知识"><a href="#Gradle-背景知识" class="headerlink" title="Gradle 背景知识"></a>Gradle 背景知识</h3><p>先介绍概念：</p>
+    <content type="html"><![CDATA[<h1 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h1><p>本篇文章主要讲述 Gradle 的基本知识点，帮助大家了解 Gradle。</p>
+<h2 id="Gradle-背景知识"><a href="#Gradle-背景知识" class="headerlink" title="Gradle 背景知识"></a>Gradle 背景知识</h2><p>先介绍概念：</p>
 <blockquote>
 <p>Gradle 是一个基于 Apache Ant 和 Apache Maven 概念的项目自动化建构工具。它使用一种基于 Groovy 的特定领域语言来声明项目设置，而不是传统的 XML 。</p>
 </blockquote>
 <p>这个概念我们先不用去理解，只要知道 Gradle 是一个自动化构建工具就可以了。那么为什么我们在开发 Android 程序的时候需要去使用自动化构建工具呢？答案很简单，就是构建一个 Android 工程需要做很多重复性很高的事情，手动干这些事麻烦又浪费时间，所以我们选择让机器去做。好吧，我承认就是懒，聪明的开发者都愿意找一个正确，高效又能偷懒的方法。</p>
 <p>Gradle 是 Google I/O 2013 大会上发布的，用来替换 Ant 和 Maven 的新工具，替换旧工具的原因当然是它们不能让开发者继续开心的懒下去了。</p>
 <p>简单讲一下 Ant，Maven 和 Gradle 的关系，这是个题外话。Ant 可以自动化打包，但是许多东西要手动下载添加。Maven 既可以自动化打包，也能帮下载你需要的东西，但是它的逻辑策略写起来很麻烦。两个工具都不大好用，为了能开心的偷懒，Gradle 应运而生。Gradle 集成了上面的功能，非常方别开发使用，但由于某些网络问题，导致初学者使用起来体验并不好。</p>
-<h3 id="Gradle-文件结构"><a href="#Gradle-文件结构" class="headerlink" title="Gradle 文件结构"></a>Gradle 文件结构</h3><p>Android Studio 创建 Android 工程的时候会创建许多文件，这让不熟悉的人分不清楚不同文件的意义，这里我们先介绍一个最简单的 Gradle 结构，如下图。</p>
+<h2 id="Gradle-文件结构"><a href="#Gradle-文件结构" class="headerlink" title="Gradle 文件结构"></a>Gradle 文件结构</h2><p>Android Studio 创建 Android 工程的时候会创建许多文件，这让不熟悉的人分不清楚不同文件的意义，这里我们先介绍一个最简单的 Gradle 结构，如下图。</p>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/gradle_mimi_unit.png" alt="gradle_mimi_unit"></p>
 <p>这个结构一共有 5 个文件。其中 build.gradle 是我们需要编写的 Gradle 的脚本文件，另外四个文件组成了一个 Gradle 中的重要结构：Gradle Wrapper（Gradle 封装器）。</p>
-<h4 id="Gradle-Wrapper"><a href="#Gradle-Wrapper" class="headerlink" title="Gradle Wrapper"></a>Gradle Wrapper</h4><p>不同的开发者可能使用不同版本的 Gradle 来构建 Android 项目，多人开发的时候使用不同版本的构建工具，可能出现莫名其妙的问题。大家也都遇到过某个软件在这个电脑上没问题，在另外的电脑上有问题的情况吧。Gradle 封装器就是用来解决这个问题的，每一个封装器都绑定了一个特定版本的 Gradle，当你运行 Gradle 命令的时候，它会先下载相应的 Gradle 版本，并使用这个版本来执行构建，这样就避免了环境不统一的问题。这是个很棒的功能，但由于某些网络问题，下载会超时，导致了很多新手都栽在了这里。这里就不讲述怎么下 Gradle 了，网上很多这方面的资料。</p>
+<h3 id="Gradle-Wrapper"><a href="#Gradle-Wrapper" class="headerlink" title="Gradle Wrapper"></a>Gradle Wrapper</h3><p>不同的开发者可能使用不同版本的 Gradle 来构建 Android 项目，多人开发的时候使用不同版本的构建工具，可能出现莫名其妙的问题。大家也都遇到过某个软件在这个电脑上没问题，在另外的电脑上有问题的情况吧。Gradle 封装器就是用来解决这个问题的，每一个封装器都绑定了一个特定版本的 Gradle，当你运行 Gradle 命令的时候，它会先下载相应的 Gradle 版本，并使用这个版本来执行构建，这样就避免了环境不统一的问题。这是个很棒的功能，但由于某些网络问题，下载会超时，导致了很多新手都栽在了这里。这里就不讲述怎么下 Gradle 了，网上很多这方面的资料。</p>
 <p>为了完整起见，不要删除 Gradle 封装器里的文件或改变目录结构，这里介绍一下封装器里文件的功能</p>
 <ul>
 <li>gradlew （Unix Shell 脚本）</li>
@@ -537,7 +765,7 @@ dependencies <span class="token punctuation">{</span>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/gradle_wrapper_properties.png" alt="gradle_wrapper_properties"></p>
 <p>Unix Shell 环境下使用 gradlew 命令<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/unix_shell.png" alt="unix_shell"></p>
 <p>Windows 环境下使用 gradlew.bat  命令<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/windows_cmd.png" alt="windows_cmd"></p>
-<h4 id="build-gradle"><a href="#build-gradle" class="headerlink" title="build.gradle"></a>build.gradle</h4><p>build.gradle 是构建所需要的脚本文件，这里给一个最简单的示例。</p>
+<h3 id="build-gradle"><a href="#build-gradle" class="headerlink" title="build.gradle"></a>build.gradle</h3><p>build.gradle 是构建所需要的脚本文件，这里给一个最简单的示例。</p>
 <p>新建了一个名为 hello 的任务，输出 Hello World。</p>
 <pre class=" language-java"><code class="language-java">task hello <span class="token punctuation">{</span>
     println <span class="token string">"Hello World!"</span>
@@ -545,8 +773,8 @@ dependencies <span class="token punctuation">{</span>
 </code></pre>
 <p>执行 gradlew.bat hello 就能看见 Hello World 输出在控制台上了。</p>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/task_hello.png" alt="task_hello"></p>
-<h3 id="Android-Studio-里的-Gradle"><a href="#Android-Studio-里的-Gradle" class="headerlink" title="Android Studio 里的 Gradle"></a>Android Studio 里的 Gradle</h3><p>这里新建一个空的工程，来介绍 Gradle 的作用。</p>
-<h4 id="工程目录"><a href="#工程目录" class="headerlink" title="工程目录"></a>工程目录</h4><p>Android Studio 是按项目建立的，项目里面可以有不同的 app 模块，简单的说一个项目可以编出几个不同的 app 软件。</p>
+<h2 id="Android-Studio-里的-Gradle"><a href="#Android-Studio-里的-Gradle" class="headerlink" title="Android Studio 里的 Gradle"></a>Android Studio 里的 Gradle</h2><p>这里新建一个空的工程，来介绍 Gradle 的作用。</p>
+<h3 id="工程目录"><a href="#工程目录" class="headerlink" title="工程目录"></a>工程目录</h3><p>Android Studio 是按项目建立的，项目里面可以有不同的 app 模块，简单的说一个项目可以编出几个不同的 app 软件。</p>
 <p>项目目录界面如下<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/android_project.png" alt="android_project"></p>
 <p>下面介绍目录中 build.gradle 和 Gradle 封装器之外的部分。</p>
 <ul>
@@ -560,7 +788,7 @@ dependencies <span class="token punctuation">{</span>
 <li>gradle.properties 存放的是整个项目 Gradle 的配置文件</li>
 <li>settings.gradle 存放的是这个项目包括那些模块，当前只包括一个 app 模块</li>
 </ul>
-<h4 id="项目构建脚本"><a href="#项目构建脚本" class="headerlink" title="项目构建脚本"></a>项目构建脚本</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span>
+<h3 id="项目构建脚本"><a href="#项目构建脚本" class="headerlink" title="项目构建脚本"></a>项目构建脚本</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span>
 
 buildscript <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// 配置构建脚本</span>
     repositories <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// 添加远程依赖库</span>
@@ -578,8 +806,8 @@ buildscript <span class="token punctuation">{</span>  <span class="token comment
 
 allprojects <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 配置整个项目</span>
     <span class="token comment" spellcheck="true">// Android 开发经常需要用一些支持库，这些支持库都有专门的网路存放地，供开发中下载</span>
-    repositories <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 添加远程依赖库 </span>
-        <span class="token function">jcenter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// JCenter 仓库 </span>
+    repositories <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 添加远程依赖库</span>
+        <span class="token function">jcenter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// JCenter 仓库</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
@@ -587,7 +815,7 @@ task <span class="token function">clean</span><span class="token punctuation">(<
     delete rootProject<span class="token punctuation">.</span>buildDir  <span class="token comment" spellcheck="true">// 删除 build 文件夹</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="模块目录"><a href="#模块目录" class="headerlink" title="模块目录"></a>模块目录</h4><p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/android_module.png" alt="android_module"></p>
+<h3 id="模块目录"><a href="#模块目录" class="headerlink" title="模块目录"></a>模块目录</h3><p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/android_module.png" alt="android_module"></p>
 <ul>
 <li>build 存放着编译生成的文件</li>
 <li>libs 放的是模块编译需要使用的库文件</li>
@@ -597,7 +825,7 @@ task <span class="token function">clean</span><span class="token punctuation">(<
 <li>build.gradle 是模块构建脚本</li>
 <li>proguard-rules.pro 是模块混淆规则，防止 app 被破解的</li>
 </ul>
-<h4 id="模块构建脚本"><a href="#模块构建脚本" class="headerlink" title="模块构建脚本"></a>模块构建脚本</h4><pre class=" language-java"><code class="language-java">apply plugin<span class="token operator">:</span> <span class="token string">'com.android.application'</span>  <span class="token comment" spellcheck="true">// 标明这个脚本是编译 android 应用程序用的</span>
+<h3 id="模块构建脚本"><a href="#模块构建脚本" class="headerlink" title="模块构建脚本"></a>模块构建脚本</h3><pre class=" language-java"><code class="language-java">apply plugin<span class="token operator">:</span> <span class="token string">'com.android.application'</span>  <span class="token comment" spellcheck="true">// 标明这个脚本是编译 android 应用程序用的</span>
 
 android <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// 编译 apk 文件配置</span>
     compileSdkVersion <span class="token number">25</span>  <span class="token comment" spellcheck="true">// SDK 版本号 API 25</span>
@@ -634,19 +862,20 @@ dependencies <span class="token punctuation">{</span> <span class="token comment
     testCompile <span class="token string">'junit:junit:4.12'</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="依赖库管理"><a href="#依赖库管理" class="headerlink" title="依赖库管理"></a>依赖库管理</h4><p>开发者经常会使用一些已有的现成的，可以直接拿来用的解决方案，这极大的提高了开发效率，也着实让他们能够偷懒了，但是这也造成了一些问题。比如当你同时使用这个两个方案解决不同的事情，这两个方案共用了同一个依赖库，但是却使用了不同的版本，这会为我们的程序带来意外的问题。Gradle 拥有解决依赖冲突的能力，它可以自动下载使用合适的版本，尽量帮开发者解决依赖库冲突问题，如果它解决不了，也会报个错给你。</p>
-<h4 id="编译不同的-app-版本"><a href="#编译不同的-app-版本" class="headerlink" title="编译不同的 app 版本"></a>编译不同的 app 版本</h4><p>实际开发中，开发者往往要准备好几个版本，比如调试版本，发布版本，不同手机厂商使用的版本，都考开发者手动准备也是很费力且容易出错的。Gradle 也提供了构建多版本的功能。例如，模块构建脚本中的构建变量增加了 release 版本，我们可以在 Android Studio 的 Build Variants 里面选则 release 版本，再次编译生成的就是 release 版本了。同理，我们也可以在构建脚本中添加其他的版本，比如付费版本和免费版本等等。</p>
+<h3 id="依赖库管理"><a href="#依赖库管理" class="headerlink" title="依赖库管理"></a>依赖库管理</h3><p>开发者经常会使用一些已有的现成的，可以直接拿来用的解决方案，这极大的提高了开发效率，也着实让他们能够偷懒了，但是这也造成了一些问题。比如当你同时使用这个两个方案解决不同的事情，这两个方案共用了同一个依赖库，但是却使用了不同的版本，这会为我们的程序带来意外的问题。Gradle 拥有解决依赖冲突的能力，它可以自动下载使用合适的版本，尽量帮开发者解决依赖库冲突问题，如果它解决不了，也会报个错给你。</p>
+<h3 id="编译不同的-app-版本"><a href="#编译不同的-app-版本" class="headerlink" title="编译不同的 app 版本"></a>编译不同的 app 版本</h3><p>实际开发中，开发者往往要准备好几个版本，比如调试版本，发布版本，不同手机厂商使用的版本，都考开发者手动准备也是很费力且容易出错的。Gradle 也提供了构建多版本的功能。例如，模块构建脚本中的构建变量增加了 release 版本，我们可以在 Android Studio 的 Build Variants 里面选则 release 版本，再次编译生成的就是 release 版本了。同理，我们也可以在构建脚本中添加其他的版本，比如付费版本和免费版本等等。</p>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/release.png" alt="release"></p>
-<h4 id="Gradle-是怎么工作的"><a href="#Gradle-是怎么工作的" class="headerlink" title="Gradle 是怎么工作的"></a>Gradle 是怎么工作的</h4><p>每一个 Gradle 需要完成的工作都是一个任务，这些任务之间有着先后顺序，相互依赖的关系，而 Android 应用程序的构建需要许多这样的任务。Android Studio 有 Gradle 的控制面板可以查看当前项目有哪些任务。</p>
+<h3 id="Gradle-是怎么工作的"><a href="#Gradle-是怎么工作的" class="headerlink" title="Gradle 是怎么工作的"></a>Gradle 是怎么工作的</h3><p>每一个 Gradle 需要完成的工作都是一个任务，这些任务之间有着先后顺序，相互依赖的关系，而 Android 应用程序的构建需要许多这样的任务。Android Studio 有 Gradle 的控制面板可以查看当前项目有哪些任务。</p>
 <p>这是一个空的项目所拥有的任务，可以看到项目本身有相当多的任务，对应的模块还有相当多的任务。<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/gradle_contol.png" alt="gradle_contol"></p>
 <p>选择一个任务双击可以运行，这里以 build 为例，Run 面板中可以看到所有被执行的任务：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/gradle/build_task.png" alt="build_task"></p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>每当我们修改完程序之后都需要进行编译，然而编译需要这么多的步骤，如果每次都要手动去进行编译，即使能保证人工不出错，所耗费的时间也相当的大，所以有了自动化构建工具。我们在 Android Studio 中点一个 Run 就能完成的工作，实际上由自动化构建工具帮我们处理很多重复的劳动。而当旧的自动化构建工具不能满足我们的需求时，必然会有开发者去更新自动化构建工具，这也是 Android Studio 和 Gradle 成为 Android 开发使用的主流工具的原因。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>每当我们修改完程序之后都需要进行编译，然而编译需要这么多的步骤，如果每次都要手动去进行编译，即使能保证人工不出错，所耗费的时间也相当的大，所以有了自动化构建工具。我们在 Android Studio 中点一个 Run 就能完成的工作，实际上由自动化构建工具帮我们处理很多重复的劳动。而当旧的自动化构建工具不能满足我们的需求时，必然会有开发者去更新自动化构建工具，这也是 Android Studio 和 Gradle 成为 Android 开发使用的主流工具的原因。</p>
+<hr>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Gradle&quot;&gt;&lt;a href=&quot;#Gradle&quot; class=&quot;headerlink&quot; title=&quot;Gradle&quot;&gt;&lt;/a&gt;Gradle&lt;/h2&gt;&lt;p&gt;本篇文章主要讲述 Gradle 的基本知识点，帮助大家了解 Gradle。&lt;/p&gt;
-&lt;h3 id=&quot;Grad
+      &lt;h1 id=&quot;Gradle&quot;&gt;&lt;a href=&quot;#Gradle&quot; class=&quot;headerlink&quot; title=&quot;Gradle&quot;&gt;&lt;/a&gt;Gradle&lt;/h1&gt;&lt;p&gt;本篇文章主要讲述 Gradle 的基本知识点，帮助大家了解 Gradle。&lt;/p&gt;
+&lt;h2 id=&quot;Grad
     
     </summary>
     
@@ -664,15 +893,12 @@ dependencies <span class="token punctuation">{</span> <span class="token comment
     <link href="https://bearzpy.github.io/2017/03/27/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1C%20%E7%94%9F%E6%97%A5%E8%B4%BA%E5%8D%A1%E5%BA%94%E7%94%A8%20/"/>
     <id>https://bearzpy.github.io/2017/03/27/google study jams/Android入门-1C 生日贺卡应用 /</id>
     <published>2017-03-27T07:17:02.000Z</published>
-    <updated>2017-03-29T13:16:25.000Z</updated>
+    <updated>2017-10-13T09:39:36.409Z</updated>
     
-    <content type="html"><![CDATA[<p>StudyJams 推广的 1C 课程的第一个小应用， 这里介绍了几种编写方式及相应效果。</p>
-<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/sj_logo.png" alt="sj_logo"></p>
-<p><a href="http://www.studyjamscn.com/" target="_blank" rel="external">Google StudyJams 官网</a></p>
-<h2 id="生日贺卡应用"><a href="#生日贺卡应用" class="headerlink" title="生日贺卡应用"></a>生日贺卡应用</h2><h3 id="最终的应用界面"><a href="#最终的应用界面" class="headerlink" title="最终的应用界面"></a>最终的应用界面</h3><p>界面设计选择隐藏了系统的状态栏，导航栏和应用的 action bar，使用相对布局，还添加部分 java 代码让应用进入沉浸式模式（Immersive Mode），在手机上显示的更有整体感。</p>
+    <content type="html"><![CDATA[<h1 id="生日贺卡应用"><a href="#生日贺卡应用" class="headerlink" title="生日贺卡应用"></a>生日贺卡应用</h1><h2 id="最终的应用界面"><a href="#最终的应用界面" class="headerlink" title="最终的应用界面"></a>最终的应用界面</h2><p>界面设计选择隐藏了系统的状态栏，导航栏和应用的 action bar，使用相对布局，还添加部分 java 代码让应用进入沉浸式模式（Immersive Mode），在手机上显示的更有整体感。</p>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_final_imageview_fullsreen_code.png" alt="RelativeLayout_final_imageview_fullsreen_code"></p>
-<h3 id="相对布局基本界面"><a href="#相对布局基本界面" class="headerlink" title="相对布局基本界面"></a>相对布局基本界面</h3><p>RelativeLayout 上把 Views 设置到相同的区域后会发生重叠的效果 ，XML 中先列出的 View 处于下方，后列出的 View 处于上方，这种重叠方式可以被我们使用以组合成我们需要的界面。对于相对简单的布局，我们可以使用多种方式来组合我们的界面，下面以两段文本和一张图片演示。</p>
-<h4 id="使用-ImageView-布局"><a href="#使用-ImageView-布局" class="headerlink" title="使用 ImageView 布局"></a>使用 ImageView 布局</h4><p>使用两个 TextView 和一个 ImageView 来布局。先列出 ImageView 选择  centerCrop 属性铺满 RelativeLayout 布局，再分别配置两个 TextView 的属性，分别置于左上角和右下角，这个时候 TextView 就都呈现在 ImageView 的上方，再增加 padding 属性进行调整。</p>
+<h2 id="相对布局基本界面"><a href="#相对布局基本界面" class="headerlink" title="相对布局基本界面"></a>相对布局基本界面</h2><p>RelativeLayout 上把 Views 设置到相同的区域后会发生重叠的效果 ，XML 中先列出的 View 处于下方，后列出的 View 处于上方，这种重叠方式可以被我们使用以组合成我们需要的界面。对于相对简单的布局，我们可以使用多种方式来组合我们的界面，下面以两段文本和一张图片演示。</p>
+<h3 id="使用-ImageView-布局"><a href="#使用-ImageView-布局" class="headerlink" title="使用 ImageView 布局"></a>使用 ImageView 布局</h3><p>使用两个 TextView 和一个 ImageView 来布局。先列出 ImageView 选择  centerCrop 属性铺满 RelativeLayout 布局，再分别配置两个 TextView 的属性，分别置于左上角和右下角，这个时候 TextView 就都呈现在 ImageView 的上方，再增加 padding 属性进行调整。</p>
 <p>XML 代码：</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
@@ -709,7 +935,7 @@ dependencies <span class="token punctuation">{</span> <span class="token comment
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>显示效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_imageview.png" alt="RelativeLayout_imageview"></p>
-<h4 id="不使用-ImageView-布局"><a href="#不使用-ImageView-布局" class="headerlink" title="不使用 ImageView 布局"></a>不使用 ImageView 布局</h4><p>这里要提一个属性  <code>android:background=&quot;@drawable/androidparty&quot;</code> 这个属性可以为 View 和 View Group 增加背景，参数可以是颜色，也可以是图片。为 RelativeLayout 加上背景图片也能完成类似的布局，但是对背景图片的控制能力就不如 ImageView 了。</p>
+<h3 id="不使用-ImageView-布局"><a href="#不使用-ImageView-布局" class="headerlink" title="不使用 ImageView 布局"></a>不使用 ImageView 布局</h3><p>这里要提一个属性  <code>android:background=&quot;@drawable/androidparty&quot;</code> 这个属性可以为 View 和 View Group 增加背景，参数可以是颜色，也可以是图片。为 RelativeLayout 加上背景图片也能完成类似的布局，但是对背景图片的控制能力就不如 ImageView 了。</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">xmlns:</span>tools</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/tools<span class="token punctuation">"</span></span>
@@ -740,12 +966,12 @@ dependencies <span class="token punctuation">{</span> <span class="token comment
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>显示效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_background.png" alt="RelativeLayout_background"></p>
-<h4 id="修改主题隐藏状态栏和-action-bar"><a href="#修改主题隐藏状态栏和-action-bar" class="headerlink" title="修改主题隐藏状态栏和  action bar"></a>修改主题隐藏状态栏和  action bar</h4><p>主题是指对整个 Activity 或应用而不是对单个  View （如上例所示）应用的样式。 以主题形式应用样式时，Activity 或应用中的每个视图都将应用其支持的每个样式属性。   </p>
+<h3 id="修改主题隐藏状态栏和-action-bar"><a href="#修改主题隐藏状态栏和-action-bar" class="headerlink" title="修改主题隐藏状态栏和  action bar"></a>修改主题隐藏状态栏和  action bar</h3><p>主题是指对整个 Activity 或应用而不是对单个  View （如上例所示）应用的样式。 以主题形式应用样式时，Activity 或应用中的每个视图都将应用其支持的每个样式属性。  </p>
 <p>默认工程生成的活动 Activity 是继承的 AppCompatActivity 的，<code>MainActivity extends AppCompatActivity</code>。把 AppCompatActivity 修改成 Activity，因为我们后续配置的主题文件与 AppCompatActivity 不兼容。</p>
 <p>然后我们需要修改 AndroidManifest.xml 文件来修改整个 app 的主题。默认 app 的主题是  <code>android:theme=&quot;@style/AppTheme&quot;</code> , 这里修改成 <code>&quot;@android:style/Theme.NoTitleBar.Fullscreen&quot;</code> 就可以隐藏状态栏了，同时也没有了 action bar。  </p>
 <p>显示效果：<br>左图是 ImageView，右图是 background  </p>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_imageview_fullsreen_theme.png" alt="RelativeLayout_imageview_fullsreen_theme">  <img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_background_fullsreen_theme.png" alt="RelativeLayout_background_fullsreen_theme"></p>
-<h4 id="隐藏状态栏，导航栏和-action-bar"><a href="#隐藏状态栏，导航栏和-action-bar" class="headerlink" title="隐藏状态栏，导航栏和  action bar"></a>隐藏状态栏，导航栏和  action bar</h4><p>上面是通过 theme 的方式隐藏状态栏，修改了 action bar，但是我们离全屏还差一个导航栏。这里我们要通过 java 代码的方式来修改，这个就更加方便了，在 MainActivity  中添加一段设置属性的代码就能达到这个效果（通过这种方式不需要去修改主题）。这个代码需要在 Android 5.0 上才能有效果，其实就是 material design 设计特性。<br>增加代码如下：</p>
+<h3 id="隐藏状态栏，导航栏和-action-bar"><a href="#隐藏状态栏，导航栏和-action-bar" class="headerlink" title="隐藏状态栏，导航栏和  action bar"></a>隐藏状态栏，导航栏和  action bar</h3><p>上面是通过 theme 的方式隐藏状态栏，修改了 action bar，但是我们离全屏还差一个导航栏。这里我们要通过 java 代码的方式来修改，这个就更加方便了，在 MainActivity  中添加一段设置属性的代码就能达到这个效果（通过这种方式不需要去修改主题）。这个代码需要在 Android 5.0 上才能有效果，其实就是 material design 设计特性。<br>增加代码如下：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> android<span class="token punctuation">.</span>os<span class="token punctuation">.</span>Build<span class="token punctuation">;</span>
 <span class="token keyword">import</span> android<span class="token punctuation">.</span>os<span class="token punctuation">.</span>Bundle<span class="token punctuation">;</span>
 <span class="token keyword">import</span> android<span class="token punctuation">.</span>support<span class="token punctuation">.</span>v7<span class="token punctuation">.</span>app<span class="token punctuation">.</span>AppCompatActivity<span class="token punctuation">;</span>
@@ -777,14 +1003,14 @@ dependencies <span class="token punctuation">{</span> <span class="token comment
 </code></pre>
 <p>显示效果：</p>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_imageview_fullsreen_code.png" alt="RelativeLayout_imageview_fullsreen_code">  <img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_background_fullsreen_code.png" alt="RelativeLayout_background_fullsreen_code"></p>
-<h3 id="使用线性布局"><a href="#使用线性布局" class="headerlink" title="使用线性布局"></a>使用线性布局</h3><p>线性布局其实也是能实现类似上面简单的界面的，但是可操作性比较弱，背景使用 background 属性配置，TextView 需要使用 gravity， layout_gravity， layout_weight 属性来组合，实现起来不如 RelativeLayout 方便，这里只展示下显示效果，就不贴相关代码了。</p>
+<h2 id="使用线性布局"><a href="#使用线性布局" class="headerlink" title="使用线性布局"></a>使用线性布局</h2><p>线性布局其实也是能实现类似上面简单的界面的，但是可操作性比较弱，背景使用 background 属性配置，TextView 需要使用 gravity， layout_gravity， layout_weight 属性来组合，实现起来不如 RelativeLayout 方便，这里只展示下显示效果，就不贴相关代码了。</p>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/LinearLayout_background_fullsreen_theme.png" alt="LinearLayout_background_fullsreen_theme"></p>
+<hr>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;StudyJams 推广的 1C 课程的第一个小应用， 这里介绍了几种编写方式及相应效果。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jam
+      &lt;h1 id=&quot;生日贺卡应用&quot;&gt;&lt;a href=&quot;#生日贺卡应用&quot; class=&quot;headerlink&quot; title=&quot;生日贺卡应用&quot;&gt;&lt;/a&gt;生日贺卡应用&lt;/h1&gt;&lt;h2 id=&quot;最终的应用界面&quot;&gt;&lt;a href=&quot;#最终的应用界面&quot; class=&quot;headerlink&quot; ti
     
     </summary>
     
@@ -795,8 +1021,6 @@ dependencies <span class="token punctuation">{</span> <span class="token comment
     
       <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
     
-      <category term="StudyJams" scheme="https://bearzpy.github.io/tags/StudyJams/"/>
-    
   </entry>
   
   <entry>
@@ -804,11 +1028,10 @@ dependencies <span class="token punctuation">{</span> <span class="token comment
     <link href="https://bearzpy.github.io/2017/03/23/Python/%E7%94%A8%20Python%20%E6%89%B9%E9%87%8F%E5%A4%84%E7%90%86%E5%9B%BE%E7%89%87/"/>
     <id>https://bearzpy.github.io/2017/03/23/Python/用 Python 批量处理图片/</id>
     <published>2017-03-23T12:47:56.000Z</published>
-    <updated>2017-05-10T05:52:25.920Z</updated>
+    <updated>2017-10-13T09:54:23.786Z</updated>
     
-    <content type="html"><![CDATA[<p>写博客，文档的时候常常要附上很多图片，但是图片的尺寸往往不符合我们的要求，手动一个一个修改尺寸再保存，太浪费时间了，既然学了 Python，当然就要物尽其用。本文实现了批量修改同级目录下的 image\src 文件夹下的所有图片，并输出到 image\output 文件夹下，可以设定具体像素，也可以只设定水平像素或者垂直像素, 另一边按原图比例进行缩放。</p>
-<h2 id="Python-批量处理图片大小"><a href="#Python-批量处理图片大小" class="headerlink" title="Python 批量处理图片大小"></a>Python 批量处理图片大小</h2><p>使用 Python 处理图片大小需要使用 PIL 库，PIL：Python Imaging Library，是一个图片处理库，需要自行安装。</p>
-<h3 id="PIL-读取图片大小"><a href="#PIL-读取图片大小" class="headerlink" title="PIL 读取图片大小"></a>PIL 读取图片大小</h3><p>下面是修改单张图片尺寸的函数。  </p>
+    <content type="html"><![CDATA[<h1 id="Python-批量处理图片大小"><a href="#Python-批量处理图片大小" class="headerlink" title="Python 批量处理图片大小"></a>Python 批量处理图片大小</h1><p>写博客，文档的时候常常要附上很多图片，但是图片的尺寸往往不符合我们的要求，手动一个一个修改尺寸再保存，太浪费时间了，既然学了 Python，当然就要物尽其用。本文实现了批量修改同级目录下的 image\src 文件夹下的所有图片，并输出到 image\output 文件夹下，可以设定具体像素，也可以只设定水平像素或者垂直像素, 另一边按原图比例进行缩放。使用 Python 处理图片大小需要使用 PIL 库，PIL：Python Imaging Library，是一个图片处理库，需要自行安装。</p>
+<h2 id="PIL-读取图片大小"><a href="#PIL-读取图片大小" class="headerlink" title="PIL 读取图片大小"></a>PIL 读取图片大小</h2><p>下面是修改单张图片尺寸的函数。  </p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
 set_img_type <span class="token operator">=</span> <span class="token string">""</span>
 
@@ -841,8 +1064,8 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
 <li>img.size 包含了两个值，比如（1080, 1920），第一个值是宽度（水平长度），第二值是高度（竖直长度）。</li>
 <li>set_img_type 如果为空，保持原图片类型，如果非空则保存成对应图片类型，比如 <code>set_img_type = &quot;png&quot;</code>，会把图片以 png 数据格式进行保存。</li>
 </ul>
-<h3 id="PIL-批量处理图片"><a href="#PIL-批量处理图片" class="headerlink" title="PIL 批量处理图片"></a>PIL 批量处理图片</h3><p>上面已经介绍了处理单张图片的方法，想要处理文件夹下的所有图片就要能遍历文件夹里所有的文件。这里使用递归遍历出所有的文件，再分别进行处理。  </p>
-<h4 id="使用递归遍历文件夹"><a href="#使用递归遍历文件夹" class="headerlink" title="使用递归遍历文件夹"></a>使用递归遍历文件夹</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">check_image</span><span class="token punctuation">(</span>root_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<h2 id="PIL-批量处理图片"><a href="#PIL-批量处理图片" class="headerlink" title="PIL 批量处理图片"></a>PIL 批量处理图片</h2><p>上面已经介绍了处理单张图片的方法，想要处理文件夹下的所有图片就要能遍历文件夹里所有的文件。这里使用递归遍历出所有的文件，再分别进行处理。  </p>
+<h3 id="使用递归遍历文件夹"><a href="#使用递归遍历文件夹" class="headerlink" title="使用递归遍历文件夹"></a>使用递归遍历文件夹</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">check_image</span><span class="token punctuation">(</span>root_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isdir<span class="token punctuation">(</span>root_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span>
 
@@ -854,7 +1077,7 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
             check_image<span class="token punctuation">(</span>path<span class="token punctuation">)</span>
 </code></pre>
 <p>代码简介：<br>判断当前文件夹中的每个元素，如果是文件夹则进入该文件夹递归调用，并重复读取判断操作。如果是文件，则在代码中的 TODO 标签处进行相应处理。注：这里默认 image\src 文件夹下不会出现非图片文件。</p>
-<h4 id="准备输出工作"><a href="#准备输出工作" class="headerlink" title="准备输出工作"></a>准备输出工作</h4><p>目标是把修改后的图片输出到 image\output 文件夹下，这里需要做三件事，在 output 目录下创建对应 src 目录下的子文件夹，生成图片保存的文件名（带路径），修改生成图片的后缀名。将递归代码修改如下，增加了 find_last_point 函数用于找到后缀名前的小数点来修改后缀名。</p>
+<h3 id="准备输出工作"><a href="#准备输出工作" class="headerlink" title="准备输出工作"></a>准备输出工作</h3><p>目标是把修改后的图片输出到 image\output 文件夹下，这里需要做三件事，在 output 目录下创建对应 src 目录下的子文件夹，生成图片保存的文件名（带路径），修改生成图片的后缀名。将递归代码修改如下，增加了 find_last_point 函数用于找到后缀名前的小数点来修改后缀名。</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os
 <span class="token keyword">import</span> os<span class="token punctuation">.</span>path
 
@@ -881,7 +1104,7 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
             <span class="token comment" spellcheck="true"># make dir in image\output</span>
             <span class="token keyword">if</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>out_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
                 os<span class="token punctuation">.</span>mkdir<span class="token punctuation">(</span>out_path<span class="token punctuation">)</span>
-                <span class="token keyword">print</span> out_path    
+                <span class="token keyword">print</span> out_path
             check_image<span class="token punctuation">(</span>path<span class="token punctuation">)</span>
 
 
@@ -895,7 +1118,7 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
             file_path <span class="token operator">=</span> file_path<span class="token punctuation">[</span> temp <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
     <span class="token keyword">return</span> position
 </code></pre>
-<h4 id="清理-output-文件夹"><a href="#清理-output-文件夹" class="headerlink" title="清理 output 文件夹"></a>清理 output 文件夹</h4><p>如果只生成不清理，output 文件夹会越来越臃肿，想要找到转换的图片还需要花额外的时间，所以这里选择程序刚开始就删除整个 output 文件夹，并新建一个空的 output 文件夹。</p>
+<h3 id="清理-output-文件夹"><a href="#清理-output-文件夹" class="headerlink" title="清理 output 文件夹"></a>清理 output 文件夹</h3><p>如果只生成不清理，output 文件夹会越来越臃肿，想要找到转换的图片还需要花额外的时间，所以这里选择程序刚开始就删除整个 output 文件夹，并新建一个空的 output 文件夹。</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os
 <span class="token keyword">import</span> os<span class="token punctuation">.</span>path
 <span class="token keyword">import</span> shutil
@@ -906,7 +1129,7 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
     <span class="token keyword">if</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>image_output_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
         os<span class="token punctuation">.</span>mkdir<span class="token punctuation">(</span>image_output_dir<span class="token punctuation">)</span>
 </code></pre>
-<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><p>PIL 不支持修改为 jpg 后缀，所以如果设置生成 jpg 文件，程序会自动修改成 jpeg 文件。</p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p>PIL 不支持修改为 jpg 后缀，所以如果设置生成 jpg 文件，程序会自动修改成 jpeg 文件。</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os
 <span class="token keyword">import</span> os<span class="token punctuation">.</span>path
 <span class="token keyword">import</span> shutil
@@ -1001,11 +1224,12 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
     test_run<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
+<hr>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;写博客，文档的时候常常要附上很多图片，但是图片的尺寸往往不符合我们的要求，手动一个一个修改尺寸再保存，太浪费时间了，既然学了 Python，当然就要物尽其用。本文实现了批量修改同级目录下的 image\src 文件夹下的所有图片，并输出到 image\output 文件夹下
+      &lt;h1 id=&quot;Python-批量处理图片大小&quot;&gt;&lt;a href=&quot;#Python-批量处理图片大小&quot; class=&quot;headerlink&quot; title=&quot;Python 批量处理图片大小&quot;&gt;&lt;/a&gt;Python 批量处理图片大小&lt;/h1&gt;&lt;p&gt;写博客，文档的时候常常要附上很多图片
     
     </summary>
     
@@ -1027,25 +1251,25 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
     <link href="https://bearzpy.github.io/2017/03/21/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1B%20%E8%A7%86%E5%9B%BE%E7%BB%84%20ViewGroups/"/>
     <id>https://bearzpy.github.io/2017/03/21/google study jams/Android入门-1B 视图组 ViewGroups/</id>
     <published>2017-03-21T10:33:12.000Z</published>
-    <updated>2017-03-28T09:18:47.861Z</updated>
+    <updated>2017-10-13T09:39:37.738Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/sj_logo.png" alt="sj_logo"></p>
-<p><a href="http://www.studyjamscn.com/" target="_blank" rel="external">Google StudyJams 官网</a></p>
-<h2 id="视图组-ViewGroup"><a href="#视图组-ViewGroup" class="headerlink" title="视图组 ViewGroup"></a>视图组 ViewGroup</h2><p>ViewGroup 是可以包含其他视图（子 View）的特殊视图。ViewGroup 是布局和视图容器的基类，布局文件是由 ViewGroup 拓展出来的。我们使用布局组合控制各个 View 在屏幕上显示的位置。  </p>
+    <content type="html"><![CDATA[<h1 id="视图组-ViewGroup"><a href="#视图组-ViewGroup" class="headerlink" title="视图组 ViewGroup"></a>视图组 ViewGroup</h1><p>ViewGroup 是可以包含其他视图（子 View）的特殊视图。ViewGroup 是布局和视图容器的基类，布局文件是由 ViewGroup 拓展出来的。我们使用布局组合控制各个 View 在屏幕上显示的位置。  </p>
 <p>常见布局 layout ：</p>
 <ul>
 <li>线性布局 LinearLayout</li>
 <li>相对布局 RelativeLayout</li>
 </ul>
-<h3 id="线性布局-LinearLayout"><a href="#线性布局-LinearLayout" class="headerlink" title="线性布局 LinearLayout"></a>线性布局 LinearLayout</h3><p>LinearLayout 是一个视图组，用于使所有子视图在单个方向（垂直或水平）保持对齐。 可以设置 android:orientation 属性指定布局方向。<br>LinearLayout 常见参数：</p>
+<h2 id="线性布局-LinearLayout"><a href="#线性布局-LinearLayout" class="headerlink" title="线性布局 LinearLayout"></a>线性布局 LinearLayout</h2><p>LinearLayout 是一个视图组，用于使所有子视图在单个方向（垂直或水平）保持对齐。 可以设置 android:orientation 属性指定布局方向。<br>LinearLayout 常见参数：</p>
 <ul>
 <li>android:orientation 指定布局方向，horizontal 水平，vertical 垂直。</li>
 <li>android:layout_gravity 子 View 受到 父 View 的重力方向。</li>
 <li>android:layout_weight 为各个子视图分配权重。</li>
 </ul>
 <p>android:layout_gravity 这里表示子 View 停靠在父 View 哪个位置。<br>android:layout_weight 根据视图应在屏幕上占据的空间量向视图分配“重要性”值。 权重值更大的视图可以填充父视图中任何剩余的空间。子视图可以指定权重值，然后系统会按照子视图声明的权重值的比例，将视图组中的任何剩余空间分配给子视图（优先分配固定长或者宽度的 View 需要的空间），默认权重为零。  </p>
-<p>在 LinearLayout 布局上需要注意子 View 的高度和宽度设置，选定正确的显示方式，才能让界面变得更加友好。<br>在下面的两幅图中，可以体会下设定的高度宽度值，对人机交互的影响。<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/LinearLayout_def_height.png" alt="LinearLayout_def_height"><br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/LinearLayout_def_width.png" alt="LinearLayout_def_width"></p>
-<h4 id="LinearLayout-布局示例"><a href="#LinearLayout-布局示例" class="headerlink" title="LinearLayout 布局示例"></a>LinearLayout 布局示例</h4><p>XML 代码</p>
+<p>在 LinearLayout 布局上需要注意子 View 的高度和宽度设置，选定正确的显示方式，才能让界面变得更加友好。<br>在下面的两幅图中，可以体会下设定的高度宽度值，对人机交互的影响。  </p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/LinearLayout_def_height.png" alt="LinearLayout_def_height"></p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/LinearLayout_def_width.png" alt="LinearLayout_def_width"></p>
+<h3 id="LinearLayout-布局示例"><a href="#LinearLayout-布局示例" class="headerlink" title="LinearLayout 布局示例"></a>LinearLayout 布局示例</h3><p>XML 代码</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LinearLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
@@ -1115,7 +1339,7 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
 </code></pre>
 <p>垂直和水平分布的显示效果:<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/linearlayout_vertical_weight.png" alt="linearlayout_vertical_weight ">  <img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/linearlayout_horizontal_weight.png" alt="linearlayout_horizontal_weight.png "></p>
 <p>为了表现出权重的效果，这里再加上一个 ImageView ，分布将这个 ImageView 的权重设为 1 和 2 ，查看不同的显示效果。<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/linearlayout_two_img.png" alt="linearlayout_two_img ">  <img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/linearlayout_different_weight.png" alt="linearlayout_different_weight.png ">  </p>
-<h4 id="LinearLayout-布局重力示例"><a href="#LinearLayout-布局重力示例" class="headerlink" title="LinearLayout 布局重力示例"></a>LinearLayout 布局重力示例</h4><p>修改 “Hi there!” 的 TextView ，增加 <code>android:layout_gravity=&quot;end&quot;</code> 将 TextView 停靠在 LinearLayout 布局的右侧。  </p>
+<h3 id="LinearLayout-布局重力示例"><a href="#LinearLayout-布局重力示例" class="headerlink" title="LinearLayout 布局重力示例"></a>LinearLayout 布局重力示例</h3><p>修改 “Hi there!” 的 TextView ，增加 <code>android:layout_gravity=&quot;end&quot;</code> 将 TextView 停靠在 LinearLayout 布局的右侧。  </p>
 <p>TextView XML 代码：</p>
 <pre class=" language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
         <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Hi there!<span class="token punctuation">"</span></span>
@@ -1126,7 +1350,7 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
         <span class="token attr-name"><span class="token namespace">android:</span>background</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#ccddff<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
 </code></pre>
 <p>显示效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/linearlayout_layout_gravity.png" alt="linearlayout_layout_gravity ">  </p>
-<h3 id="相对布局-RelativeLayout"><a href="#相对布局-RelativeLayout" class="headerlink" title="相对布局 RelativeLayout"></a>相对布局 RelativeLayout</h3><p>RelativeLayout 是一个视图组，用于使子视图在 RelativeLayout 布局中处于一个相对位置。RelativeLayout 布局有许多属性来控制各个子 View 之间的相对位置，比如对齐，居中，上下左右等。 具体参数参见 <a href="https://developer.android.com/reference/android/widget/RelativeLayout.LayoutParams.html" target="_blank" rel="external">RelativeLayout.LayoutParams</a>。   </p>
+<h2 id="相对布局-RelativeLayout"><a href="#相对布局-RelativeLayout" class="headerlink" title="相对布局 RelativeLayout"></a>相对布局 RelativeLayout</h2><p>RelativeLayout 是一个视图组，用于使子视图在 RelativeLayout 布局中处于一个相对位置。RelativeLayout 布局有许多属性来控制各个子 View 之间的相对位置，比如对齐，居中，上下左右等。 具体参数参见 <a href="https://developer.android.com/reference/android/widget/RelativeLayout.LayoutParams.html" target="_blank" rel="external">RelativeLayout.LayoutParams</a>。</p>
 <p>RelativeLayout 的参数例子：  </p>
 <ul>
 <li>android:layout_alignParentTop 如果值为 true ，子 View 会与 RelativeLayout 布局顶部对齐。</li>
@@ -1134,7 +1358,7 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
 <li>android:layout_below 填另一个兄弟（同级） View 的 id 索引号，此 View 会显示在兄弟 View 的下方。</li>
 <li>android:layout_toRightOf 填另一个兄弟（同级） View 的 id 索引号，此 View 会显示在兄弟 View 的右边。</li>
 </ul>
-<h4 id="RelativeLayout-布局示例"><a href="#RelativeLayout-布局示例" class="headerlink" title="RelativeLayout 布局示例"></a>RelativeLayout 布局示例</h4><p>布局 XML 代码 ：</p>
+<h3 id="RelativeLayout-布局示例"><a href="#RelativeLayout-布局示例" class="headerlink" title="RelativeLayout 布局示例"></a>RelativeLayout 布局示例</h3><p>布局 XML 代码 ：</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -1213,10 +1437,10 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
 </code></pre>
-<p>显示效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/relativeLayout_zhihu1.png" alt="relativeLayout_zhihu1 ">    </p>
+<p>显示效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/relativeLayout_zhihu1.png" alt="relativeLayout_zhihu1 "></p>
 <p>可以看见整个界面显示效果并不好，左侧的 View 都贴合在一起，View 的界限不容易辨识，为了得到更好的显示效果，我们需要引入内外边距的概念，将 View 之间分割开来。</p>
-<h3 id="设定内外边距"><a href="#设定内外边距" class="headerlink" title="设定内外边距"></a>设定内外边距</h3><p>内边距 padding 可用于以特定数量的像素弥补视图的内容，内边距告诉视图，在绘制视图自身时，要比所含内容大多少。<br>外边距 margin 定义了视图周围需要留出的空白区域(由父视图处理)，它决定了组件间的距离。<br>内边距和外边距在视图本身背景颜色为透明时，效果是相同的。但是如果该视图是可以触摸的，那么内边距会增加视图的触摸范围，而外边距则不会。本质上内边距留出的部分属于原视图，而外边距留出的部分属于父视图，我们需要根据具体情况选择使用内边距还是外边距。  </p>
-<h4 id="内外边距布局示例"><a href="#内外边距布局示例" class="headerlink" title="内外边距布局示例"></a>内外边距布局示例</h4><p>示例分别给两个 TextView 加上 16 dp 的 padding 和 margin 属性， 并加上不同背景颜色用以区分，可以更加方便的看出内外边距的不同。    </p>
+<h2 id="设定内外边距"><a href="#设定内外边距" class="headerlink" title="设定内外边距"></a>设定内外边距</h2><p>内边距 padding 可用于以特定数量的像素弥补视图的内容，内边距告诉视图，在绘制视图自身时，要比所含内容大多少。<br>外边距 margin 定义了视图周围需要留出的空白区域(由父视图处理)，它决定了组件间的距离。<br>内边距和外边距在视图本身背景颜色为透明时，效果是相同的。但是如果该视图是可以触摸的，那么内边距会增加视图的触摸范围，而外边距则不会。本质上内边距留出的部分属于原视图，而外边距留出的部分属于父视图，我们需要根据具体情况选择使用内边距还是外边距。  </p>
+<h3 id="内外边距布局示例"><a href="#内外边距布局示例" class="headerlink" title="内外边距布局示例"></a>内外边距布局示例</h3><p>示例分别给两个 TextView 加上 16 dp 的 padding 和 margin 属性， 并加上不同背景颜色用以区分，可以更加方便的看出内外边距的不同。</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -1240,9 +1464,10 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
 </code></pre>
-<p>示例效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/margin_padding.png" alt="margin_padding">  </p>
-<h4 id="内外边距实际使用示例"><a href="#内外边距实际使用示例" class="headerlink" title="内外边距实际使用示例"></a>内外边距实际使用示例</h4><p>使用内外边距来优化上面模拟的知乎私信列表界面，可以获得更好的视觉效果。  </p>
-<p>修改完的代码：   </p>
+<p>示例效果</p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/margin_padding.png" alt="margin_padding">  </p>
+<h3 id="内外边距实际使用示例"><a href="#内外边距实际使用示例" class="headerlink" title="内外边距实际使用示例"></a>内外边距实际使用示例</h3><p>使用内外边距来优化上面模拟的知乎私信列表界面，可以获得更好的视觉效果。  </p>
+<p>修改完的代码：</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
@@ -1298,13 +1523,14 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
 </code></pre>
-<p>修改完的效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/relativeLayout_zhihu2.png" alt="relativeLayout_zhihu2 ">  </p>
+<p>修改完的效果：  </p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/relativeLayout_zhihu2.png" alt="relativeLayout_zhihu2 ">  </p>
+<hr>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/sj_logo.png&quot; alt=&quot;sj_logo&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://
+      &lt;h1 id=&quot;视图组-ViewGroup&quot;&gt;&lt;a href=&quot;#视图组-ViewGroup&quot; class=&quot;headerlink&quot; title=&quot;视图组 ViewGroup&quot;&gt;&lt;/a&gt;视图组 ViewGroup&lt;/h1&gt;&lt;p&gt;ViewGroup 是可以包含其他视图（子 View
     
     </summary>
     
@@ -1314,8 +1540,6 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
       <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
       <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
-    
-      <category term="StudyJams" scheme="https://bearzpy.github.io/tags/StudyJams/"/>
     
       <category term="ViewGroups" scheme="https://bearzpy.github.io/tags/ViewGroups/"/>
     
@@ -1334,23 +1558,20 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
     <link href="https://bearzpy.github.io/2017/03/14/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1A%20%E5%88%9D%E8%AF%86%20View/"/>
     <id>https://bearzpy.github.io/2017/03/14/google study jams/Android入门-1A 初识 View/</id>
     <published>2017-03-14T13:08:38.000Z</published>
-    <updated>2017-03-28T09:18:50.232Z</updated>
+    <updated>2017-10-13T09:37:13.297Z</updated>
     
-    <content type="html"><![CDATA[<p>刚好看到了 Google 官方的 StudyJams 活动，也想知道 Google 是怎么推广 Android 技术的，就参加了。按活动要求提供学习笔记，记录如下。  </p>
-<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/sj_logo.png" alt="sj_logo"></p>
-<p><a href="http://www.studyjamscn.com/" target="_blank" rel="external">Google StudyJams 官网</a></p>
-<h2 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h2><p>View 简单的说就手机上能看到的内容，是生活中最常见的，也是 Android 开发中最先需要接触的。  </p>
-<h3 id="View-的相关概念"><a href="#View-的相关概念" class="headerlink" title="View 的相关概念"></a>View 的相关概念</h3><p>View 是一个屏幕用来展示内容的长方形。（ 类似于展示照片的相框 ）<br>屏幕上显示出的界面是由许多 Views 组合而成的，这种组合成为布局（ Layout ）。<br>屏幕展示给用户的查看操作的界面称为用户界面（ User Interface ）简称UI。  </p>
-<h3 id="最常见的三种-Views-："><a href="#最常见的三种-Views-：" class="headerlink" title="最常见的三种 Views ："></a>最常见的三种 Views ：</h3><p>都使用驼峰式命名（ CamelCase ）：单词间不空格，每个单词首字母大写，其余小写。</p>
+    <content type="html"><![CDATA[<h1 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h1><p>View 简单的说就手机上能看到的内容，是生活中最常见的，也是 Android 开发中最先需要接触的。  </p>
+<h2 id="View-的相关概念"><a href="#View-的相关概念" class="headerlink" title="View 的相关概念"></a>View 的相关概念</h2><p>View 是一个屏幕用来展示内容的长方形。（ 类似于展示照片的相框 ）<br>屏幕上显示出的界面是由许多 Views 组合而成的，这种组合成为布局（ Layout ）。<br>屏幕展示给用户的查看操作的界面称为用户界面（ User Interface ）简称UI。  </p>
+<h2 id="最常见的三种-Views-："><a href="#最常见的三种-Views-：" class="headerlink" title="最常见的三种 Views ："></a>最常见的三种 Views ：</h2><p>都使用驼峰式命名（ CamelCase ）：单词间不空格，每个单词首字母大写，其余小写。</p>
 <ul>
 <li>TextView 展示文字，如图上 A，B 组件。</li>
 <li>ImageView 展示图片，如图上 C 组件。</li>
-<li>Button 获取用户操作，如图上 D， E 组件。   </li>
+<li>Button 获取用户操作，如图上 D， E 组件。  </li>
 </ul>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/SelectViewsExample.png" alt="youtube image"></p>
-<h3 id="根据要求调节View的样式"><a href="#根据要求调节View的样式" class="headerlink" title="根据要求调节View的样式"></a>根据要求调节View的样式</h3><h4 id="XML-和-XMLV-相关概念"><a href="#XML-和-XMLV-相关概念" class="headerlink" title="XML 和 XMLV 相关概念"></a>XML 和 XMLV 相关概念</h4><p>在Android开发中布局文件是用 XML 编写的。<br>XML 是可扩展标记语言。<br>XMLV 就 XML 可视化器，用来把 XML 语言转换成界面显示。<br>国内可访问的在线 XMLV ： <a href="http://v.studyjams.cn/" target="_blank" rel="external">Android XMLV</a></p>
-<h4 id="TextVeiw-布局示例"><a href="#TextVeiw-布局示例" class="headerlink" title="TextVeiw 布局示例"></a>TextVeiw 布局示例</h4><p>TextView 显示效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/TextViewExample.png" alt="TextView image"></p>
-<p>XML  代码  </p>
+<h2 id="根据要求调节View的样式"><a href="#根据要求调节View的样式" class="headerlink" title="根据要求调节View的样式"></a>根据要求调节View的样式</h2><h3 id="XML-和-XMLV-相关概念"><a href="#XML-和-XMLV-相关概念" class="headerlink" title="XML 和 XMLV 相关概念"></a>XML 和 XMLV 相关概念</h3><p>在Android开发中布局文件是用 XML 编写的。<br>XML 是可扩展标记语言。<br>XMLV 就 XML 可视化器，用来把 XML 语言转换成界面显示。<br>国内可访问的在线 XMLV ： <a href="http://v.studyjams.cn/" target="_blank" rel="external">Android XMLV</a></p>
+<h3 id="TextVeiw-布局示例"><a href="#TextVeiw-布局示例" class="headerlink" title="TextVeiw 布局示例"></a>TextVeiw 布局示例</h3><p>TextView 显示效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/TextViewExample.png" alt="TextView image"></p>
+<p>XML 代码  </p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
   <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Hi there!<span class="token punctuation">"</span></span>
   <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
@@ -1370,10 +1591,10 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
 </ul>
 <p>注：  </p>
 <ul>
-<li>单位 dp 是密度无关像素（ density independent pixels ）， 使用 dp 可以在不同分辨率的屏幕上以相应的比例显示，更好的适配不同规格的屏幕。同时也可以更好的规定 UI 标准。 例如触摸类 View 长宽要大于等于 48 dp 。   </li>
-<li>单位 sp 与 dp 相似，并且比例无关，适用于字体。设置字体可以直接设置 sp 值。或者设置 textAppearance ，把应用字体大小与系统字体大小统一。<br>android:textAppearance=”?android:attr/textAppearanceSmall”</li>
+<li>单位 dp 是密度无关像素（ density independent pixels ）， 使用 dp 可以在不同分辨率的屏幕上以相应的比例显示，更好的适配不同规格的屏幕。同时也可以更好的规定 UI 标准。 例如触摸类 View 长宽要大于等于 48 dp 。</li>
+<li>单位 sp 与 dp 相似，并且比例无关，适用于字体。设置字体可以直接设置 sp 值。或者设置 textAppearance ，把应用字体大小与系统字体大小统一。(android:textAppearance=”?android:attr/textAppearanceSmall”)</li>
 </ul>
-<h4 id="ImageView-布局示例"><a href="#ImageView-布局示例" class="headerlink" title="ImageView 布局示例"></a>ImageView 布局示例</h4><p>ImageView 显示效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/ImageView.png" alt="ImageView image"></p>
+<h3 id="ImageView-布局示例"><a href="#ImageView-布局示例" class="headerlink" title="ImageView 布局示例"></a>ImageView 布局示例</h3><p>ImageView 显示效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/ImageView.png" alt="ImageView image"></p>
 <p>XML 代码</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ImageView</span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
@@ -1385,7 +1606,7 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
 <li>match_parent 代表将父 View 界面填充满。</li>
 <li>android:src 填入 ImageView 使用的图片地址。</li>
 </ul>
-<p>可以看出来，图片被压缩了，显示在屏幕中间，这个显示并没有达到我们的要求，我们可以使用 android:ScaleType 来修改图片的显示方式。ScaleType 设定的值可以从 Android 开发者官网获取：<a href="https://developer.android.com/reference/android/widget/ImageView.ScaleType.html" target="_blank" rel="external">ImageView.ScaleType 属性</a> 。<br>这里分别展示一下参数 center， centerCrop 的效果。  </p>
+<p>可以看出来，图片被压缩了，显示在屏幕中间，这个显示并没有达到我们的要求，我们可以使用 android:ScaleType 来修改图片的显示方式。ScaleType 设定的值可以从 Android 开发者官网获取：<a href="https://developer.android.com/reference/android/widget/ImageView.ScaleType.html" target="_blank" rel="external">ImageView.ScaleType 属性</a> 。<br>这里分别展示一下参数 center， centerCrop 的效果。</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ImageView</span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
@@ -1401,13 +1622,13 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
 </code></pre>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/ImageViewCenterCrop.png" alt="ImageViewCenterCrop "></p>
 <p>可以看到在使用 centerCrop 属性后，在屏幕的边界处没有任何的白边或者空余，这种情况下称为无边界图片，在打印技术中叫做全出血打印。</p>
-<h3 id="确定-View-在屏幕中的位置"><a href="#确定-View-在屏幕中的位置" class="headerlink" title="确定 View 在屏幕中的位置"></a>确定 View 在屏幕中的位置</h3><p>如果一个 View 包含了其他 View ，这个 View 被称为父 View。如果如果一个 View 被其他 View 包含，这个 View 被称为子 View。父 View 可以控制子 View 的位置。</p>
+<h2 id="确定-View-在屏幕中的位置"><a href="#确定-View-在屏幕中的位置" class="headerlink" title="确定 View 在屏幕中的位置"></a>确定 View 在屏幕中的位置</h2><p>如果一个 View 包含了其他 View ，这个 View 被称为父 View。如果如果一个 View 被其他 View 包含，这个 View 被称为子 View。父 View 可以控制子 View 的位置。</p>
+<hr>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;刚好看到了 Google 官方的 StudyJams 活动，也想知道 Google 是怎么推广 Android 技术的，就参加了。按活动要求提供学习笔记，记录如下。  &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://github.com/BearZPY/blog-img
+      &lt;h1 id=&quot;视图-View&quot;&gt;&lt;a href=&quot;#视图-View&quot; class=&quot;headerlink&quot; title=&quot;视图 View&quot;&gt;&lt;/a&gt;视图 View&lt;/h1&gt;&lt;p&gt;View 简单的说就手机上能看到的内容，是生活中最常见的，也是 Android 开发中最先需要接触的
     
     </summary>
     
@@ -1417,8 +1638,6 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
       <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
       <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
-    
-      <category term="StudyJams" scheme="https://bearzpy.github.io/tags/StudyJams/"/>
     
       <category term="View" scheme="https://bearzpy.github.io/tags/View/"/>
     
@@ -1499,21 +1718,20 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
     <link href="https://bearzpy.github.io/2017/03/07/git/%E4%BD%BF%E7%94%A8git%20clean%E6%B8%85%E7%90%86%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/"/>
     <id>https://bearzpy.github.io/2017/03/07/git/使用git clean清理工程文件/</id>
     <published>2017-03-07T11:03:22.000Z</published>
-    <updated>2017-03-13T06:07:03.639Z</updated>
+    <updated>2017-10-13T09:35:07.704Z</updated>
     
-    <content type="html"><![CDATA[<p>工程代码在编译的时候往往会生产很多的文件，在项目需要移动复制或者备份的时候这些文件是无用的，所以大部分IDE都提供了clean工程的功能， 但是有时候IDE提供的功能并不能满足我们的需求，所以往往需要使用其他的清理工具来完成我们的要求（例如编写 Windows 下的clean bat执行文件）。这里主要介绍使用git clean来给工程瘦身的方法。  </p>
-<h2 id="git-clean"><a href="#git-clean" class="headerlink" title="git clean"></a>git clean</h2><p>使用情景：Android studio（2.2.3） 编译时在build文件夹下生成了几十MB的mockable-android-XX.jar。然而AS提供的clean并没有清除这些文件， 导致clean后的工程还是占用了很大的体积。</p>
-<h4 id="使用前提"><a href="#使用前提" class="headerlink" title="使用前提"></a>使用前提</h4><p>项目需要使用git来管理，且重要的文件已经用git记录追踪。</p>
-<h4 id="命令介绍"><a href="#命令介绍" class="headerlink" title="命令介绍"></a>命令介绍</h4><p>git clean 用于清理git根目录下所有没有被track的文件和文件夹<br>使用 git clean -h 获取命令的帮助手册。<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_help.png" alt="help document"></p>
+    <content type="html"><![CDATA[<h1 id="git-clean"><a href="#git-clean" class="headerlink" title="git clean"></a>git clean</h1><p>工程代码在编译的时候往往会生产很多的文件，在项目需要移动复制或者备份的时候这些文件是无用的，所以大部分 IDE 都提供了 clean 工程的功能， 但是有时候 IDE 提供的功能并不能满足我们的需求，所以往往需要使用其他的清理工具来完成我们的要求（例如编写 Windows 下的 clean bat 执行文件）。这里主要介绍使用 git clean 来给工程瘦身的方法。<br>使用情景：Android studio（2.2.3） 编译时在build文件夹下生成了几十 MB 的mockable-android-XX.jar。然而 AS 提供的 clean 并没有清除这些文件， 导致 clean 后的工程还是占用了很大的体积。</p>
+<h2 id="使用前提"><a href="#使用前提" class="headerlink" title="使用前提"></a>使用前提</h2><p>项目需要使用 git 来管理，且重要的文件已经用 git 记录追踪。</p>
+<h2 id="命令介绍"><a href="#命令介绍" class="headerlink" title="命令介绍"></a>命令介绍</h2><p>git clean 用于清理 git 根目录下所有没有被 track 的文件和文件夹<br>使用 git clean -h 获取命令的帮助手册。<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_help.png" alt="help document"></p>
 <p>常用参数介绍：  </p>
 <ol>
 <li>-n  打印出需要清理的文件和文件夹（不会真的删除）</li>
 <li>-f  强制删除（并不是删除文件的意思）</li>
 <li>-d 删除整个文件夹（包括文件，-n 不会显示文件夹里面的文件）</li>
-<li>-x 对.gitignore文件中忽略的文件及文件夹进行清理（不加上-d参数的话只能清理文件）</li>
+<li>-x 对 .gitignore 文件中忽略的文件及文件夹进行清理（不加上-d参数的话只能清理文件）</li>
 </ol>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>使用git clean清除时最好先加上-n参数查看清理的对象，如果清理文件夹的话，需要明确文件夹里是否有重要的文件数据，避免误删。<br>-f 是强制删除，可以在-xd删除失败的时候加上。<br>不希望删除的文件加入git管理（add，commit）就可以了。</p>
-<h4 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h4><p>列举了清理Android Studio构建的APP项目TodoList所使用的指令输入和打印输出。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>使用 git clean 清除时最好先加上 -n 参数查看清理的对象，如果清理文件夹的话，需要明确文件夹里是否有重要的文件数据，避免误删。<br>-f 是强制删除，可以在 -xd 删除失败的时候加上。<br>不希望删除的文件加入git管理（add，commit）就可以了。</p>
+<h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><p>列举了清理 Android Studio 构建的 APP 项目 TodoList 所使用的指令输入和打印输出。</p>
 <pre class=" language-bash"><code class="language-bash">$ <span class="token function">git</span> clean -nd
 </code></pre>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_nd.png" alt="help document"></p>
@@ -1528,11 +1746,13 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_xd.png" alt="help document"></p>
 <pre class=" language-bash"><code class="language-bash">$ <span class="token function">git</span> clean -fxd
 </code></pre>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_fxd.png" alt="help document"></h2>]]></content>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/git/clean/git_clean_fxd.png" alt="help document"></p>
+<hr>
+]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;工程代码在编译的时候往往会生产很多的文件，在项目需要移动复制或者备份的时候这些文件是无用的，所以大部分IDE都提供了clean工程的功能， 但是有时候IDE提供的功能并不能满足我们的需求，所以往往需要使用其他的清理工具来完成我们的要求（例如编写 Windows 下的clea
+      &lt;h1 id=&quot;git-clean&quot;&gt;&lt;a href=&quot;#git-clean&quot; class=&quot;headerlink&quot; title=&quot;git clean&quot;&gt;&lt;/a&gt;git clean&lt;/h1&gt;&lt;p&gt;工程代码在编译的时候往往会生产很多的文件，在项目需要移动复制或者备份的时候这些文件是
     
     </summary>
     

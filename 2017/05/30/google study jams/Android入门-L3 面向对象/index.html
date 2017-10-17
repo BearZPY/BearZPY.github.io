@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#FF4081">
     <meta name="author" content="BearZPY">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,Android,Google,StudyJams">
+    <meta name="keywords" content="null,Android,Google">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -50,7 +50,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Android入门-L3 面向对象 | BearZPY Blog">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Google"> <meta property="og:article:tag" content="StudyJams"> 
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Google"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -234,7 +234,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为计分器添加-redo-和-undo"><span class="post-toc-number">1.</span> <span class="post-toc-text">为计分器添加 redo 和 undo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#类和对象"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">类和对象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redo-和-undo-涉及的内容"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">redo 和 undo 涉及的内容</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建-History-类来记录每次操作的内容"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">创建 History 类来记录每次操作的内容</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建一个链表来保存-History-类"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">创建一个链表来保存 History 类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#undo-实现"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">undo 实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redo-实现"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">redo 实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更新历史记录"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">更新历史记录</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#为计分器添加-redo-和-undo"><span class="post-toc-number">1.</span> <span class="post-toc-text">为计分器添加 redo 和 undo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#类和对象"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">类和对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redo-和-undo-涉及的内容"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">redo 和 undo 涉及的内容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建-History-类来记录每次操作的内容"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">创建 History 类来记录每次操作的内容</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建一个链表来保存-History-类"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">创建一个链表来保存 History 类</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undo-实现"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">undo 实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redo-实现"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">redo 实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更新历史记录"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">更新历史记录</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -322,7 +322,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Google/">Google</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/StudyJams/">StudyJams</a>
+        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Google/">Google</a>
     </ul>
     
 
@@ -395,9 +395,9 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="为计分器添加-redo-和-undo"><a href="#为计分器添加-redo-和-undo" class="headerlink" title="为计分器添加 redo 和 undo"></a>为计分器添加 redo 和 undo</h2><h3 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h3><p>类是对某一类事物的描述，是抽象的、概念上的定义；对象是实际存在的该类事物的个体，因而也称实例（Instance）。类和对象就如同概念和实物之间的关系一样，类就好比是一个模板，而对象就是该模板下的一个实例。</p>
-<h3 id="redo-和-undo-涉及的内容"><a href="#redo-和-undo-涉及的内容" class="headerlink" title="redo 和 undo 涉及的内容"></a>redo 和 undo 涉及的内容</h3><p>redo 和 undo 涉及到的主要是 Team A 和 Team B 的分数变化。如果想记录下两只队伍的分数变化，就需要记录下用户的每次交互，需要注意的是两只队伍的分数变化是关联的不是独立的，所以需要一个表来记录下某一次的操作是针对哪只队伍以及操作的分数。</p>
-<h3 id="创建-History-类来记录每次操作的内容"><a href="#创建-History-类来记录每次操作的内容" class="headerlink" title="创建 History 类来记录每次操作的内容"></a>创建 History 类来记录每次操作的内容</h3><p>在用户每一次操作的时候都需要创建一个 History 类，用以保存操作对象，操作的变化值。  </p>
+        <h1 id="为计分器添加-redo-和-undo"><a href="#为计分器添加-redo-和-undo" class="headerlink" title="为计分器添加 redo 和 undo"></a>为计分器添加 redo 和 undo</h1><h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p>类是对某一类事物的描述，是抽象的、概念上的定义；对象是实际存在的该类事物的个体，因而也称实例（Instance）。类和对象就如同概念和实物之间的关系一样，类就好比是一个模板，而对象就是该模板下的一个实例。</p>
+<h2 id="redo-和-undo-涉及的内容"><a href="#redo-和-undo-涉及的内容" class="headerlink" title="redo 和 undo 涉及的内容"></a>redo 和 undo 涉及的内容</h2><p>redo 和 undo 涉及到的主要是 Team A 和 Team B 的分数变化。如果想记录下两只队伍的分数变化，就需要记录下用户的每次交互，需要注意的是两只队伍的分数变化是关联的不是独立的，所以需要一个表来记录下某一次的操作是针对哪只队伍以及操作的分数。</p>
+<h2 id="创建-History-类来记录每次操作的内容"><a href="#创建-History-类来记录每次操作的内容" class="headerlink" title="创建 History 类来记录每次操作的内容"></a>创建 History 类来记录每次操作的内容</h2><p>在用户每一次操作的时候都需要创建一个 History 类，用以保存操作对象，操作的变化值。  </p>
 <p>History 类拥有的变量：</p>
 <ul>
 <li>type ：本次操作的队伍（A，B，A&amp;B）</li>
@@ -429,11 +429,17 @@
     <span class="token punctuation">}</span>
 </code></pre>
 <h3 id="创建一个链表来保存-History-类"><a href="#创建一个链表来保存-History-类" class="headerlink" title="创建一个链表来保存 History 类"></a>创建一个链表来保存 History 类</h3><ol>
-<li>创建 History 的 ArrayList ：<br>private ArrayList<history> historyRecord = new ArrayList&lt;&gt;();</history></li>
-<li>增加一条历史记录：<br>historyRecord.add(new History(TEAM_A_FLAG,2,0));</li>
-<li>去除一条历史记录：<br>historyRecord.remove(i);</li>
+<li><p>创建 History 的 ArrayList ：</p>
+<p> <code>private ArrayList&lt;History&gt; historyRecord = new ArrayList&lt;&gt;();</code></p>
+</li>
+<li><p>增加一条历史记录：</p>
+<p> <code>historyRecord.add(new History(TEAM_A_FLAG,2,0));</code></p>
+</li>
+<li><p>去除一条历史记录：</p>
+<p> <code>historyRecord.remove(i);</code></p>
+</li>
 </ol>
-<h3 id="undo-实现"><a href="#undo-实现" class="headerlink" title="undo 实现"></a>undo 实现</h3><p>undo 操作读取 historyRecord 中最后一次加入的 History 类，通过判定 type 的值来判断是哪只队伍的操，操作 Team A 值为 1，操作 Team B 值为 2，其他 type 值代表操作 Team A&amp;B 。根据 type 把 changeScoreTeamA，changeScoreTeamB 反馈到 scoreTeamA，scoreTeamB上。undo 操作需要将 historyRecord 中当前存储位置 startIndex 减少 1，来保证新的记录能够正常的存在 historyRecord 中。</p>
+<h2 id="undo-实现"><a href="#undo-实现" class="headerlink" title="undo 实现"></a>undo 实现</h2><p>undo 操作读取 historyRecord 中最后一次加入的 History 类，通过判定 type 的值来判断是哪只队伍的操，操作 Team A 值为 1，操作 Team B 值为 2，其他 type 值代表操作 Team A&amp;B 。根据 type 把 changeScoreTeamA，changeScoreTeamB 反馈到 scoreTeamA，scoreTeamB上。undo 操作需要将 historyRecord 中当前存储位置 startIndex 减少 1，来保证新的记录能够正常的存在 historyRecord 中。</p>
 <pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">unDo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         History temp<span class="token punctuation">;</span>
         temp <span class="token operator">=</span> historyRecord<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>startIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -452,7 +458,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="redo-实现"><a href="#redo-实现" class="headerlink" title="redo 实现"></a>redo 实现</h3><p>redo 操作读取 historyRecord 中上一次 undo 操作使用的 History 类，通过判定 type 的值来判断是哪只队伍的操，操作 Team A 值为 1，操作 Team B 值为 2，其他 type 值代表操作 Team A&amp;B 。根据 type 把 changeScoreTeamA，changeScoreTeamB 反馈到 scoreTeamA，scoreTeamB上。undo 操作需要将 historyRecord 中当前存储位置 startIndex 增加 1，来保证新的记录能够正常的存在 historyRecord 中。</p>
+<h2 id="redo-实现"><a href="#redo-实现" class="headerlink" title="redo 实现"></a>redo 实现</h2><p>redo 操作读取 historyRecord 中上一次 undo 操作使用的 History 类，通过判定 type 的值来判断是哪只队伍的操，操作 Team A 值为 1，操作 Team B 值为 2，其他 type 值代表操作 Team A&amp;B 。根据 type 把 changeScoreTeamA，changeScoreTeamB 反馈到 scoreTeamA，scoreTeamB上。undo 操作需要将 historyRecord 中当前存储位置 startIndex 增加 1，来保证新的记录能够正常的存在 historyRecord 中。</p>
 <pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">reDo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         startIndex<span class="token operator">++</span><span class="token punctuation">;</span>
         History temp<span class="token punctuation">;</span>
@@ -472,7 +478,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="更新历史记录"><a href="#更新历史记录" class="headerlink" title="更新历史记录"></a>更新历史记录</h3><p>用户每一次操作都要更新 historyRecord，其中有一个情况要特殊处理，即 undo 操作后记录的储存位置 startIndex 并不在 historyRecord 的最后 endIndex 这个时候需要删除 startIndex 到 endIndex 之间的不再需要的历史记录。</p>
+<h2 id="更新历史记录"><a href="#更新历史记录" class="headerlink" title="更新历史记录"></a>更新历史记录</h2><p>用户每一次操作都要更新 historyRecord，其中有一个情况要特殊处理，即 undo 操作后记录的储存位置 startIndex 并不在 historyRecord 的最后 endIndex 这个时候需要删除 startIndex 到 endIndex 之间的不再需要的历史记录。</p>
 <pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">updateHistoryRecord</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> endIndex<span class="token punctuation">;</span> i <span class="token operator">></span> startIndex <span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             historyRecord<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -481,6 +487,7 @@
         endIndex <span class="token operator">=</span> startIndex<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 </code></pre>
+<hr>
 
     
 
@@ -601,7 +608,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
             </ul>
         </li>
         
@@ -619,7 +626,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         

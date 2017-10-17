@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#FF4081">
     <meta name="author" content="BearZPY">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,Android,Google,StudyJams,View">
+    <meta name="keywords" content="null,Android,Google,View">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -50,7 +50,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Android入门-1A 初识 View | BearZPY Blog">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Google"> <meta property="og:article:tag" content="StudyJams"> <meta property="og:article:tag" content="View"> 
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Google"> <meta property="og:article:tag" content="View"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -234,7 +234,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#视图-View"><span class="post-toc-number">1.</span> <span class="post-toc-text">视图 View</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#View-的相关概念"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">View 的相关概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最常见的三种-Views-："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">最常见的三种 Views ：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#根据要求调节View的样式"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">根据要求调节View的样式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#XML-和-XMLV-相关概念"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">XML 和 XMLV 相关概念</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#TextVeiw-布局示例"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">TextVeiw 布局示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ImageView-布局示例"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">ImageView 布局示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#确定-View-在屏幕中的位置"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">确定 View 在屏幕中的位置</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#视图-View"><span class="post-toc-number">1.</span> <span class="post-toc-text">视图 View</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#View-的相关概念"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">View 的相关概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最常见的三种-Views-："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">最常见的三种 Views ：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#根据要求调节View的样式"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">根据要求调节View的样式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XML-和-XMLV-相关概念"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">XML 和 XMLV 相关概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TextVeiw-布局示例"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">TextVeiw 布局示例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageView-布局示例"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">ImageView 布局示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#确定-View-在屏幕中的位置"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">确定 View 在屏幕中的位置</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -322,7 +322,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Google/">Google</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/StudyJams/">StudyJams</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/View/">View</a>
+        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Google/">Google</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/View/">View</a>
     </ul>
     
 
@@ -395,21 +395,18 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>刚好看到了 Google 官方的 StudyJams 活动，也想知道 Google 是怎么推广 Android 技术的，就参加了。按活动要求提供学习笔记，记录如下。  </p>
-<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/sj_logo.png" alt="sj_logo"></p>
-<p><a href="http://www.studyjamscn.com/" target="_blank" rel="external">Google StudyJams 官网</a></p>
-<h2 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h2><p>View 简单的说就手机上能看到的内容，是生活中最常见的，也是 Android 开发中最先需要接触的。  </p>
-<h3 id="View-的相关概念"><a href="#View-的相关概念" class="headerlink" title="View 的相关概念"></a>View 的相关概念</h3><p>View 是一个屏幕用来展示内容的长方形。（ 类似于展示照片的相框 ）<br>屏幕上显示出的界面是由许多 Views 组合而成的，这种组合成为布局（ Layout ）。<br>屏幕展示给用户的查看操作的界面称为用户界面（ User Interface ）简称UI。  </p>
-<h3 id="最常见的三种-Views-："><a href="#最常见的三种-Views-：" class="headerlink" title="最常见的三种 Views ："></a>最常见的三种 Views ：</h3><p>都使用驼峰式命名（ CamelCase ）：单词间不空格，每个单词首字母大写，其余小写。</p>
+        <h1 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h1><p>View 简单的说就手机上能看到的内容，是生活中最常见的，也是 Android 开发中最先需要接触的。  </p>
+<h2 id="View-的相关概念"><a href="#View-的相关概念" class="headerlink" title="View 的相关概念"></a>View 的相关概念</h2><p>View 是一个屏幕用来展示内容的长方形。（ 类似于展示照片的相框 ）<br>屏幕上显示出的界面是由许多 Views 组合而成的，这种组合成为布局（ Layout ）。<br>屏幕展示给用户的查看操作的界面称为用户界面（ User Interface ）简称UI。  </p>
+<h2 id="最常见的三种-Views-："><a href="#最常见的三种-Views-：" class="headerlink" title="最常见的三种 Views ："></a>最常见的三种 Views ：</h2><p>都使用驼峰式命名（ CamelCase ）：单词间不空格，每个单词首字母大写，其余小写。</p>
 <ul>
 <li>TextView 展示文字，如图上 A，B 组件。</li>
 <li>ImageView 展示图片，如图上 C 组件。</li>
-<li>Button 获取用户操作，如图上 D， E 组件。   </li>
+<li>Button 获取用户操作，如图上 D， E 组件。  </li>
 </ul>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/SelectViewsExample.png" alt="youtube image"></p>
-<h3 id="根据要求调节View的样式"><a href="#根据要求调节View的样式" class="headerlink" title="根据要求调节View的样式"></a>根据要求调节View的样式</h3><h4 id="XML-和-XMLV-相关概念"><a href="#XML-和-XMLV-相关概念" class="headerlink" title="XML 和 XMLV 相关概念"></a>XML 和 XMLV 相关概念</h4><p>在Android开发中布局文件是用 XML 编写的。<br>XML 是可扩展标记语言。<br>XMLV 就 XML 可视化器，用来把 XML 语言转换成界面显示。<br>国内可访问的在线 XMLV ： <a href="http://v.studyjams.cn/" target="_blank" rel="external">Android XMLV</a></p>
-<h4 id="TextVeiw-布局示例"><a href="#TextVeiw-布局示例" class="headerlink" title="TextVeiw 布局示例"></a>TextVeiw 布局示例</h4><p>TextView 显示效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/TextViewExample.png" alt="TextView image"></p>
-<p>XML  代码  </p>
+<h2 id="根据要求调节View的样式"><a href="#根据要求调节View的样式" class="headerlink" title="根据要求调节View的样式"></a>根据要求调节View的样式</h2><h3 id="XML-和-XMLV-相关概念"><a href="#XML-和-XMLV-相关概念" class="headerlink" title="XML 和 XMLV 相关概念"></a>XML 和 XMLV 相关概念</h3><p>在Android开发中布局文件是用 XML 编写的。<br>XML 是可扩展标记语言。<br>XMLV 就 XML 可视化器，用来把 XML 语言转换成界面显示。<br>国内可访问的在线 XMLV ： <a href="http://v.studyjams.cn/" target="_blank" rel="external">Android XMLV</a></p>
+<h3 id="TextVeiw-布局示例"><a href="#TextVeiw-布局示例" class="headerlink" title="TextVeiw 布局示例"></a>TextVeiw 布局示例</h3><p>TextView 显示效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/TextViewExample.png" alt="TextView image"></p>
+<p>XML 代码  </p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
   <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Hi there!<span class="token punctuation">"</span></span>
   <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
@@ -429,10 +426,10 @@
 </ul>
 <p>注：  </p>
 <ul>
-<li>单位 dp 是密度无关像素（ density independent pixels ）， 使用 dp 可以在不同分辨率的屏幕上以相应的比例显示，更好的适配不同规格的屏幕。同时也可以更好的规定 UI 标准。 例如触摸类 View 长宽要大于等于 48 dp 。   </li>
-<li>单位 sp 与 dp 相似，并且比例无关，适用于字体。设置字体可以直接设置 sp 值。或者设置 textAppearance ，把应用字体大小与系统字体大小统一。<br>android:textAppearance=”?android:attr/textAppearanceSmall”</li>
+<li>单位 dp 是密度无关像素（ density independent pixels ）， 使用 dp 可以在不同分辨率的屏幕上以相应的比例显示，更好的适配不同规格的屏幕。同时也可以更好的规定 UI 标准。 例如触摸类 View 长宽要大于等于 48 dp 。</li>
+<li>单位 sp 与 dp 相似，并且比例无关，适用于字体。设置字体可以直接设置 sp 值。或者设置 textAppearance ，把应用字体大小与系统字体大小统一。(android:textAppearance=”?android:attr/textAppearanceSmall”)</li>
 </ul>
-<h4 id="ImageView-布局示例"><a href="#ImageView-布局示例" class="headerlink" title="ImageView 布局示例"></a>ImageView 布局示例</h4><p>ImageView 显示效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/ImageView.png" alt="ImageView image"></p>
+<h3 id="ImageView-布局示例"><a href="#ImageView-布局示例" class="headerlink" title="ImageView 布局示例"></a>ImageView 布局示例</h3><p>ImageView 显示效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/ImageView.png" alt="ImageView image"></p>
 <p>XML 代码</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ImageView</span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
@@ -444,7 +441,7 @@
 <li>match_parent 代表将父 View 界面填充满。</li>
 <li>android:src 填入 ImageView 使用的图片地址。</li>
 </ul>
-<p>可以看出来，图片被压缩了，显示在屏幕中间，这个显示并没有达到我们的要求，我们可以使用 android:ScaleType 来修改图片的显示方式。ScaleType 设定的值可以从 Android 开发者官网获取：<a href="https://developer.android.com/reference/android/widget/ImageView.ScaleType.html" target="_blank" rel="external">ImageView.ScaleType 属性</a> 。<br>这里分别展示一下参数 center， centerCrop 的效果。  </p>
+<p>可以看出来，图片被压缩了，显示在屏幕中间，这个显示并没有达到我们的要求，我们可以使用 android:ScaleType 来修改图片的显示方式。ScaleType 设定的值可以从 Android 开发者官网获取：<a href="https://developer.android.com/reference/android/widget/ImageView.ScaleType.html" target="_blank" rel="external">ImageView.ScaleType 属性</a> 。<br>这里分别展示一下参数 center， centerCrop 的效果。</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ImageView</span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
@@ -460,7 +457,8 @@
 </code></pre>
 <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1A/ImageViewCenterCrop.png" alt="ImageViewCenterCrop "></p>
 <p>可以看到在使用 centerCrop 属性后，在屏幕的边界处没有任何的白边或者空余，这种情况下称为无边界图片，在打印技术中叫做全出血打印。</p>
-<h3 id="确定-View-在屏幕中的位置"><a href="#确定-View-在屏幕中的位置" class="headerlink" title="确定 View 在屏幕中的位置"></a>确定 View 在屏幕中的位置</h3><p>如果一个 View 包含了其他 View ，这个 View 被称为父 View。如果如果一个 View 被其他 View 包含，这个 View 被称为子 View。父 View 可以控制子 View 的位置。</p>
+<h2 id="确定-View-在屏幕中的位置"><a href="#确定-View-在屏幕中的位置" class="headerlink" title="确定 View 在屏幕中的位置"></a>确定 View 在屏幕中的位置</h2><p>如果一个 View 包含了其他 View ，这个 View 被称为父 View。如果如果一个 View 被其他 View 包含，这个 View 被称为子 View。父 View 可以控制子 View 的位置。</p>
+<hr>
 
     
 
@@ -581,7 +579,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
             </ul>
         </li>
         
@@ -599,7 +597,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         

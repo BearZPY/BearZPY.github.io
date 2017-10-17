@@ -395,21 +395,21 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>网上找到的在 Android Studio 里生成 jar 包的帖子，基本都是生成 aar，或者是使用第三方库，并不符和需求。项目中 Service 使用 AIDL，AIDL 的版本很难管理，所以需要把编译 AIDL 所生成的 class 文件打包成 jar 包，方便客户端使用和版本管理。</p>
-<h1 id="Gradle-生成-Jar-包"><a href="#Gradle-生成-Jar-包" class="headerlink" title="Gradle 生成 Jar 包"></a>Gradle 生成 Jar 包</h1><h2 id="需要打包的-class-目录"><a href="#需要打包的-class-目录" class="headerlink" title="需要打包的 class 目录"></a>需要打包的 class 目录</h2><p>Android Studio 编译生成的 class 是在对应的 Module 目录下的。   </p>
-<p>PATH: {Module}/build/intermediates/classes/{ProductFlavors}/{BuildVariant}/{PackageName}/</p>
+        <h1 id="Gradle-生成-Jar-包"><a href="#Gradle-生成-Jar-包" class="headerlink" title="Gradle 生成 Jar 包"></a>Gradle 生成 Jar 包</h1><p>网上找到的在 Android Studio 里生成 jar 包的帖子，基本都是生成 aar，或者是使用第三方库，并不符和需求。项目中 Service 使用 AIDL，AIDL 的版本很难管理，所以需要把编译 AIDL 所生成的 class 文件打包成 jar 包，方便客户端使用和版本管理。</p>
+<h2 id="需要打包的-class-目录"><a href="#需要打包的-class-目录" class="headerlink" title="需要打包的 class 目录"></a>需要打包的 class 目录</h2><p>Android Studio 编译生成的 class 是在对应的 Module 目录下的。  </p>
+<p>PATH: {Module}/build/intermediates/classes/{ProductFlavors}/{BuildType}/{PackageName}/</p>
 <ul>
 <li>Module: 模块名称。</li>
 <li>ProductFlavors: 产品风味，如果没定义这个量就没有这层目录。</li>
-<li>BuildVariant: 编译变量。</li>
+<li>BuildType: 构建类型。</li>
 <li>PackageName: 需要打包的 class 的包名。</li>
 </ul>
+<p>Build Type + Product Flavor = Build Variant</p>
 <h2 id="生成-Jar-包的目录"><a href="#生成-Jar-包的目录" class="headerlink" title="生成 Jar 包的目录"></a>生成 Jar 包的目录</h2><p>Gradle 打出的 Jar 包默认存放在对应的 {Module}/build/libs 文件夹下。</p>
 <h2 id="删除生成的-Jar-包"><a href="#删除生成的-Jar-包" class="headerlink" title="删除生成的 Jar 包"></a>删除生成的 Jar 包</h2><p>Gradle 生成 Jar 包的同时可以对 Jar 包进行命名，在命名上有版本号的区分，比如生成的 Jar 包名字为 CloudService-V1.0.2.jar。在删除旧的 Jar 包的时候如果版本号变了，以文件名查找删除可能就找不到该文件，所以可以选择将整个 libs 文件夹删除。</p>
 <p>任务 clearLibsDir 用来清理生成 Jar 包。</p>
 <pre class=" language-java"><code class="language-java">task <span class="token function">clearLibsDir</span><span class="token punctuation">(</span>type<span class="token operator">:</span> Delete<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    def libsDirPath <span class="token operator">=</span> <span class="token string">'build/libs'</span>
-    delete libsDirPath
+    delete <span class="token string">'build/libs'</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h2 id="对生成的-class-打包"><a href="#对生成的-class-打包" class="headerlink" title="对生成的 class 打包"></a>对生成的 class 打包</h2><p>在 {Module} 文件夹下的 build.gradle 中添加 clearLibsDir 任务和 makeJar 任务，同步后执行 makeJar 任务就能生成需要的 Jar 包，makeJar 任务依赖于 clearLibsDir 任务，所以每次生成 Jar 包的时候都会把先清除旧的 Jar 包。</p>
@@ -426,6 +426,7 @@
     <span class="token comment" spellcheck="true">// exclude{ it.name.startsWith('R$');}</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<hr>
 
     
 
@@ -448,6 +449,14 @@
             <!-- Post Prev & Next Nav -->
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
+    
+        <a href="/2017/10/13/review/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -538,7 +547,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
             </ul>
         </li>
         
@@ -556,7 +565,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         

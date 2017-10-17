@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#FF4081">
     <meta name="author" content="BearZPY">
     <meta name="description" content="null">
-    <meta name="keywords" content="null,Android,Google,StudyJams,ViewGroups,LinearLayout,RelativeLayout,layout_padding,layout_margin">
+    <meta name="keywords" content="null,Android,Google,ViewGroups,LinearLayout,RelativeLayout,layout_padding,layout_margin">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -50,7 +50,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Android入门-1B 视图组 ViewGroups | BearZPY Blog">
     <meta property="og:description" content="null">
-    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Google"> <meta property="og:article:tag" content="StudyJams"> <meta property="og:article:tag" content="ViewGroups"> <meta property="og:article:tag" content="LinearLayout"> <meta property="og:article:tag" content="RelativeLayout"> <meta property="og:article:tag" content="layout_padding"> <meta property="og:article:tag" content="layout_margin"> 
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Google"> <meta property="og:article:tag" content="ViewGroups"> <meta property="og:article:tag" content="LinearLayout"> <meta property="og:article:tag" content="RelativeLayout"> <meta property="og:article:tag" content="layout_padding"> <meta property="og:article:tag" content="layout_margin"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -234,7 +234,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#视图组-ViewGroup"><span class="post-toc-number">1.</span> <span class="post-toc-text">视图组 ViewGroup</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线性布局-LinearLayout"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">线性布局 LinearLayout</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#LinearLayout-布局示例"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">LinearLayout 布局示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#LinearLayout-权重示例"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">LinearLayout 权重示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#LinearLayout-布局重力示例"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">LinearLayout 布局重力示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#相对布局-RelativeLayout"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">相对布局 RelativeLayout</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RelativeLayout-布局示例"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">RelativeLayout 布局示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RelativeLayout-实际使用"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">RelativeLayout 实际使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设定内外边距"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">设定内外边距</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内外边距布局示例"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">内外边距布局示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内外边距实际使用示例"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">内外边距实际使用示例</span></a></li></ol></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#视图组-ViewGroup"><span class="post-toc-number">1.</span> <span class="post-toc-text">视图组 ViewGroup</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#线性布局-LinearLayout"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">线性布局 LinearLayout</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LinearLayout-布局示例"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">LinearLayout 布局示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#LinearLayout-权重示例"><span class="post-toc-number">1.1.1.1.</span> <span class="post-toc-text">LinearLayout 权重示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LinearLayout-布局重力示例"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">LinearLayout 布局重力示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#相对布局-RelativeLayout"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">相对布局 RelativeLayout</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RelativeLayout-布局示例"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">RelativeLayout 布局示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RelativeLayout-实际使用"><span class="post-toc-number">1.2.1.1.</span> <span class="post-toc-text">RelativeLayout 实际使用</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设定内外边距"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">设定内外边距</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内外边距布局示例"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">内外边距布局示例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内外边距实际使用示例"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">内外边距实际使用示例</span></a></li></ol></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -322,7 +322,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Google/">Google</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/LinearLayout/">LinearLayout</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/RelativeLayout/">RelativeLayout</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/StudyJams/">StudyJams</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/ViewGroups/">ViewGroups</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/layout-margin/">layout_margin</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/layout-padding/">layout_padding</a>
+        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Google/">Google</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/LinearLayout/">LinearLayout</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/RelativeLayout/">RelativeLayout</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/ViewGroups/">ViewGroups</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/layout-margin/">layout_margin</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/layout-padding/">layout_padding</a>
     </ul>
     
 
@@ -395,23 +395,23 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/sj_logo.png" alt="sj_logo"></p>
-<p><a href="http://www.studyjamscn.com/" target="_blank" rel="external">Google StudyJams 官网</a></p>
-<h2 id="视图组-ViewGroup"><a href="#视图组-ViewGroup" class="headerlink" title="视图组 ViewGroup"></a>视图组 ViewGroup</h2><p>ViewGroup 是可以包含其他视图（子 View）的特殊视图。ViewGroup 是布局和视图容器的基类，布局文件是由 ViewGroup 拓展出来的。我们使用布局组合控制各个 View 在屏幕上显示的位置。  </p>
+        <h1 id="视图组-ViewGroup"><a href="#视图组-ViewGroup" class="headerlink" title="视图组 ViewGroup"></a>视图组 ViewGroup</h1><p>ViewGroup 是可以包含其他视图（子 View）的特殊视图。ViewGroup 是布局和视图容器的基类，布局文件是由 ViewGroup 拓展出来的。我们使用布局组合控制各个 View 在屏幕上显示的位置。  </p>
 <p>常见布局 layout ：</p>
 <ul>
 <li>线性布局 LinearLayout</li>
 <li>相对布局 RelativeLayout</li>
 </ul>
-<h3 id="线性布局-LinearLayout"><a href="#线性布局-LinearLayout" class="headerlink" title="线性布局 LinearLayout"></a>线性布局 LinearLayout</h3><p>LinearLayout 是一个视图组，用于使所有子视图在单个方向（垂直或水平）保持对齐。 可以设置 android:orientation 属性指定布局方向。<br>LinearLayout 常见参数：</p>
+<h2 id="线性布局-LinearLayout"><a href="#线性布局-LinearLayout" class="headerlink" title="线性布局 LinearLayout"></a>线性布局 LinearLayout</h2><p>LinearLayout 是一个视图组，用于使所有子视图在单个方向（垂直或水平）保持对齐。 可以设置 android:orientation 属性指定布局方向。<br>LinearLayout 常见参数：</p>
 <ul>
 <li>android:orientation 指定布局方向，horizontal 水平，vertical 垂直。</li>
 <li>android:layout_gravity 子 View 受到 父 View 的重力方向。</li>
 <li>android:layout_weight 为各个子视图分配权重。</li>
 </ul>
 <p>android:layout_gravity 这里表示子 View 停靠在父 View 哪个位置。<br>android:layout_weight 根据视图应在屏幕上占据的空间量向视图分配“重要性”值。 权重值更大的视图可以填充父视图中任何剩余的空间。子视图可以指定权重值，然后系统会按照子视图声明的权重值的比例，将视图组中的任何剩余空间分配给子视图（优先分配固定长或者宽度的 View 需要的空间），默认权重为零。  </p>
-<p>在 LinearLayout 布局上需要注意子 View 的高度和宽度设置，选定正确的显示方式，才能让界面变得更加友好。<br>在下面的两幅图中，可以体会下设定的高度宽度值，对人机交互的影响。<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/LinearLayout_def_height.png" alt="LinearLayout_def_height"><br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/LinearLayout_def_width.png" alt="LinearLayout_def_width"></p>
-<h4 id="LinearLayout-布局示例"><a href="#LinearLayout-布局示例" class="headerlink" title="LinearLayout 布局示例"></a>LinearLayout 布局示例</h4><p>XML 代码</p>
+<p>在 LinearLayout 布局上需要注意子 View 的高度和宽度设置，选定正确的显示方式，才能让界面变得更加友好。<br>在下面的两幅图中，可以体会下设定的高度宽度值，对人机交互的影响。  </p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/LinearLayout_def_height.png" alt="LinearLayout_def_height"></p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/LinearLayout_def_width.png" alt="LinearLayout_def_width"></p>
+<h3 id="LinearLayout-布局示例"><a href="#LinearLayout-布局示例" class="headerlink" title="LinearLayout 布局示例"></a>LinearLayout 布局示例</h3><p>XML 代码</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LinearLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
@@ -481,7 +481,7 @@
 </code></pre>
 <p>垂直和水平分布的显示效果:<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/linearlayout_vertical_weight.png" alt="linearlayout_vertical_weight ">  <img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/linearlayout_horizontal_weight.png" alt="linearlayout_horizontal_weight.png "></p>
 <p>为了表现出权重的效果，这里再加上一个 ImageView ，分布将这个 ImageView 的权重设为 1 和 2 ，查看不同的显示效果。<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/linearlayout_two_img.png" alt="linearlayout_two_img ">  <img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/linearlayout_different_weight.png" alt="linearlayout_different_weight.png ">  </p>
-<h4 id="LinearLayout-布局重力示例"><a href="#LinearLayout-布局重力示例" class="headerlink" title="LinearLayout 布局重力示例"></a>LinearLayout 布局重力示例</h4><p>修改 “Hi there!” 的 TextView ，增加 <code>android:layout_gravity=&quot;end&quot;</code> 将 TextView 停靠在 LinearLayout 布局的右侧。  </p>
+<h3 id="LinearLayout-布局重力示例"><a href="#LinearLayout-布局重力示例" class="headerlink" title="LinearLayout 布局重力示例"></a>LinearLayout 布局重力示例</h3><p>修改 “Hi there!” 的 TextView ，增加 <code>android:layout_gravity=&quot;end&quot;</code> 将 TextView 停靠在 LinearLayout 布局的右侧。  </p>
 <p>TextView XML 代码：</p>
 <pre class=" language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
         <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Hi there!<span class="token punctuation">"</span></span>
@@ -492,7 +492,7 @@
         <span class="token attr-name"><span class="token namespace">android:</span>background</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#ccddff<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
 </code></pre>
 <p>显示效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/linearlayout_layout_gravity.png" alt="linearlayout_layout_gravity ">  </p>
-<h3 id="相对布局-RelativeLayout"><a href="#相对布局-RelativeLayout" class="headerlink" title="相对布局 RelativeLayout"></a>相对布局 RelativeLayout</h3><p>RelativeLayout 是一个视图组，用于使子视图在 RelativeLayout 布局中处于一个相对位置。RelativeLayout 布局有许多属性来控制各个子 View 之间的相对位置，比如对齐，居中，上下左右等。 具体参数参见 <a href="https://developer.android.com/reference/android/widget/RelativeLayout.LayoutParams.html" target="_blank" rel="external">RelativeLayout.LayoutParams</a>。   </p>
+<h2 id="相对布局-RelativeLayout"><a href="#相对布局-RelativeLayout" class="headerlink" title="相对布局 RelativeLayout"></a>相对布局 RelativeLayout</h2><p>RelativeLayout 是一个视图组，用于使子视图在 RelativeLayout 布局中处于一个相对位置。RelativeLayout 布局有许多属性来控制各个子 View 之间的相对位置，比如对齐，居中，上下左右等。 具体参数参见 <a href="https://developer.android.com/reference/android/widget/RelativeLayout.LayoutParams.html" target="_blank" rel="external">RelativeLayout.LayoutParams</a>。</p>
 <p>RelativeLayout 的参数例子：  </p>
 <ul>
 <li>android:layout_alignParentTop 如果值为 true ，子 View 会与 RelativeLayout 布局顶部对齐。</li>
@@ -500,7 +500,7 @@
 <li>android:layout_below 填另一个兄弟（同级） View 的 id 索引号，此 View 会显示在兄弟 View 的下方。</li>
 <li>android:layout_toRightOf 填另一个兄弟（同级） View 的 id 索引号，此 View 会显示在兄弟 View 的右边。</li>
 </ul>
-<h4 id="RelativeLayout-布局示例"><a href="#RelativeLayout-布局示例" class="headerlink" title="RelativeLayout 布局示例"></a>RelativeLayout 布局示例</h4><p>布局 XML 代码 ：</p>
+<h3 id="RelativeLayout-布局示例"><a href="#RelativeLayout-布局示例" class="headerlink" title="RelativeLayout 布局示例"></a>RelativeLayout 布局示例</h3><p>布局 XML 代码 ：</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -579,10 +579,10 @@
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
 </code></pre>
-<p>显示效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/relativeLayout_zhihu1.png" alt="relativeLayout_zhihu1 ">    </p>
+<p>显示效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/relativeLayout_zhihu1.png" alt="relativeLayout_zhihu1 "></p>
 <p>可以看见整个界面显示效果并不好，左侧的 View 都贴合在一起，View 的界限不容易辨识，为了得到更好的显示效果，我们需要引入内外边距的概念，将 View 之间分割开来。</p>
-<h3 id="设定内外边距"><a href="#设定内外边距" class="headerlink" title="设定内外边距"></a>设定内外边距</h3><p>内边距 padding 可用于以特定数量的像素弥补视图的内容，内边距告诉视图，在绘制视图自身时，要比所含内容大多少。<br>外边距 margin 定义了视图周围需要留出的空白区域(由父视图处理)，它决定了组件间的距离。<br>内边距和外边距在视图本身背景颜色为透明时，效果是相同的。但是如果该视图是可以触摸的，那么内边距会增加视图的触摸范围，而外边距则不会。本质上内边距留出的部分属于原视图，而外边距留出的部分属于父视图，我们需要根据具体情况选择使用内边距还是外边距。  </p>
-<h4 id="内外边距布局示例"><a href="#内外边距布局示例" class="headerlink" title="内外边距布局示例"></a>内外边距布局示例</h4><p>示例分别给两个 TextView 加上 16 dp 的 padding 和 margin 属性， 并加上不同背景颜色用以区分，可以更加方便的看出内外边距的不同。    </p>
+<h2 id="设定内外边距"><a href="#设定内外边距" class="headerlink" title="设定内外边距"></a>设定内外边距</h2><p>内边距 padding 可用于以特定数量的像素弥补视图的内容，内边距告诉视图，在绘制视图自身时，要比所含内容大多少。<br>外边距 margin 定义了视图周围需要留出的空白区域(由父视图处理)，它决定了组件间的距离。<br>内边距和外边距在视图本身背景颜色为透明时，效果是相同的。但是如果该视图是可以触摸的，那么内边距会增加视图的触摸范围，而外边距则不会。本质上内边距留出的部分属于原视图，而外边距留出的部分属于父视图，我们需要根据具体情况选择使用内边距还是外边距。  </p>
+<h3 id="内外边距布局示例"><a href="#内外边距布局示例" class="headerlink" title="内外边距布局示例"></a>内外边距布局示例</h3><p>示例分别给两个 TextView 加上 16 dp 的 padding 和 margin 属性， 并加上不同背景颜色用以区分，可以更加方便的看出内外边距的不同。</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -606,9 +606,10 @@
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
 </code></pre>
-<p>示例效果<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/margin_padding.png" alt="margin_padding">  </p>
-<h4 id="内外边距实际使用示例"><a href="#内外边距实际使用示例" class="headerlink" title="内外边距实际使用示例"></a>内外边距实际使用示例</h4><p>使用内外边距来优化上面模拟的知乎私信列表界面，可以获得更好的视觉效果。  </p>
-<p>修改完的代码：   </p>
+<p>示例效果</p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/margin_padding.png" alt="margin_padding">  </p>
+<h3 id="内外边距实际使用示例"><a href="#内外边距实际使用示例" class="headerlink" title="内外边距实际使用示例"></a>内外边距实际使用示例</h3><p>使用内外边距来优化上面模拟的知乎私信列表界面，可以获得更好的视觉效果。  </p>
+<p>修改完的代码：</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
@@ -664,7 +665,9 @@
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
 </code></pre>
-<p>修改完的效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/relativeLayout_zhihu2.png" alt="relativeLayout_zhihu2 ">  </p>
+<p>修改完的效果：  </p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1B/relativeLayout_zhihu2.png" alt="relativeLayout_zhihu2 ">  </p>
+<hr>
 
     
 
@@ -785,7 +788,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
             </ul>
         </li>
         
@@ -803,7 +806,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
