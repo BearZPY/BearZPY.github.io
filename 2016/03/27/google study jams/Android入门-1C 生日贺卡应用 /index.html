@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!-- 
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.0 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Android入门-1C 生日贺卡应用 | 
+        
+        BearZPY Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#FF4081">
+    <meta name="author" content="BearZPY">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null,Android,Google">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="BearZPY Blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://bearzpy.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Android入门-1C 生日贺卡应用 | BearZPY Blog">
+    <meta property="og:description" content="null">
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Google"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #FF4081;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #3F51B5 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #3F51B5 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #3F51B5 !important;
+  }
+
+  .toTop {
+    background: #FF4081 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #FF4081;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #FF4081;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #FF4081;
+  }
+
+  .post-toc a:hover {
+    color: #FF4081;
+    text-decoration: underline;
+  }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #C5CAE9;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/queue.js"></script>
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#生日贺卡应用"><span class="post-toc-number">1.</span> <span class="post-toc-text">生日贺卡应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最终的应用界面"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">最终的应用界面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#相对布局基本界面"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">相对布局基本界面</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用-ImageView-布局"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">使用 ImageView 布局</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不使用-ImageView-布局"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">不使用 ImageView 布局</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改主题隐藏状态栏和-action-bar"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">修改主题隐藏状态栏和  action bar</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#隐藏状态栏，导航栏和-action-bar"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">隐藏状态栏，导航栏和  action bar</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用线性布局"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">使用线性布局</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Android入门-1C 生日贺卡应用
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/user.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>BearZPY</strong>
+        <span>3月 27, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADhElEQVR42u3ay24bMRAEQP//TydXA4ql7hlSFoLiSZDXXLJ0GMzj64/1bX0hwIEDBw4cOHDgwIHjgzm+4vWPjb59//j58b9mu/305ONus7vgwIEDB44bHC9C0dMLtHztZX46Q/JNchccOHDgwHGPIzlK+8rn4Ta/Unu2ghUHDhw4cHwAxywcJslbnqThwIEDB47/iSMPijloUhBMio84cODAgeNzONqjzI6YN6KS0P7LtVIcOHDgwLEeaPj8z2+d78CBAwcOHA8c7cqTrny3JOjmT9ZnwIEDBw4cRzlmZbtk0C1Prtr922TvxX/hwIEDB45rHJsS4Wa1wxBJgbL4qXDgwIEDx2WOs4G23aceRyhbUDhw4MCB4zZH3tS5EfDaAYg9JQ4cOHDgeA9H8oJZmpcTtwE+TwuHAw04cODAgWPBkYSlInSVQwmbQmH+DA4cOHDgeCfH5tDtKEN71X0B8cX3OHDgwIHjKMfzy+ThczaOkIzBndqn6MLhwIEDB441R3vhWbDcjz60b09+bBw4cODAcZYjv/ZscKFNw1rK5K8vKHHgwIEDx1GOfeKUlBpnu+XjETNoHDhw4MDxTo526GE/DHeqcVUHexw4cODAcYEjadXk7Zy8lbUfYti8BQcOHDhw3OBoL98eqH2ybVzt00UcOHDgwHGWo03J2uGGWSid/TzDMI8DBw4cOI5yJKFxlnS1iV/easqHG5Ib4cCBAweOsxxtGGtpNsNweXq2WThw4MCB4wZH0aRZlAJvjES0JcvhfAcOHDhw4Cg58nSopblR+GsTzrrthAMHDhw4jnLMCNqQOWsRbX7IenIQBw4cOHCMOPJXzgYa2vLi7Hp5SREHDhw4cNzmmA29HRsmuPBkW/TEgQMHDhy3OWZH3KRzZymTE+LAgQMHjt/l2JcF2+Lj5u1tqREHDhw4cNzm2KR2eYtok5jlQ3JRsMeBAwcOHEc52pUfqN2hDbptERAHDhw4cLyHow1U+yvlfG1IHiaNOHDgwIHjAkcSXHO+WTmvvXab7NUZLQ4cOHDgWHPkR8yTvX2JsB25aM+PAwcOHDg+gWM29NaGzw1ZXrjEgQMHDhyfw5EX43LENty2Zc3h5CAOHDhw4BhxtMlY0iJq07n8DHkR8EUZEQcOHDhwXODYNJNmwXLf1npOkxc0ceDAgQPHWQ4LBw4cOHDgwIEDBw4cH7b+AsXGSIGeyaXTAAAAAElFTkSuQmCC">
+        </ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Google/">Google</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Android入门-1C 生日贺卡应用&url=https://bearzpy.github.io//2016/03/27/google study jams/Android入门-1C 生日贺卡应用 /index.html&via=BearZPY" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://bearzpy.github.io//2016/03/27/google study jams/Android入门-1C 生日贺卡应用 /index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://bearzpy.github.io//2016/03/27/google study jams/Android入门-1C 生日贺卡应用 /index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://bearzpy.github.io//2016/03/27/google study jams/Android入门-1C 生日贺卡应用 /index.html&title=Android入门-1C 生日贺卡应用" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=BearZPY Blog&title=Android入门-1C 生日贺卡应用&summary=null&pics=https://bearzpy.github.io/img/favicon.png&url=https://bearzpy.github.io/2016/03/27/google study jams/Android入门-1C 生日贺卡应用 /index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="生日贺卡应用"><a href="#生日贺卡应用" class="headerlink" title="生日贺卡应用"></a>生日贺卡应用</h1><h2 id="最终的应用界面"><a href="#最终的应用界面" class="headerlink" title="最终的应用界面"></a>最终的应用界面</h2><p>界面设计选择隐藏了系统的状态栏，导航栏和应用的 action bar，使用相对布局，还添加部分 java 代码让应用进入沉浸式模式（Immersive Mode），在手机上显示的更有整体感。</p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_final_imageview_fullsreen_code.png" alt="RelativeLayout_final_imageview_fullsreen_code"></p>
+<h2 id="相对布局基本界面"><a href="#相对布局基本界面" class="headerlink" title="相对布局基本界面"></a>相对布局基本界面</h2><p>RelativeLayout 上把 Views 设置到相同的区域后会发生重叠的效果 ，XML 中先列出的 View 处于下方，后列出的 View 处于上方，这种重叠方式可以被我们使用以组合成我们需要的界面。对于相对简单的布局，我们可以使用多种方式来组合我们的界面，下面以两段文本和一张图片演示。</p>
+<h3 id="使用-ImageView-布局"><a href="#使用-ImageView-布局" class="headerlink" title="使用 ImageView 布局"></a>使用 ImageView 布局</h3><p>使用两个 TextView 和一个 ImageView 来布局。先列出 ImageView 选择  centerCrop 属性铺满 RelativeLayout 布局，再分别配置两个 TextView 的属性，分别置于左上角和右下角，这个时候 TextView 就都呈现在 ImageView 的上方，再增加 padding 属性进行调整。</p>
+<p>XML 代码：</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">xmlns:</span>tools</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/tools<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/activity_main<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">tools:</span>context</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.io.zhang.pengyu.greetingcrad.MainActivity<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ImageView</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>scaleType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>centerCrop<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@drawable/androidparty<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textColor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@color/colorAccent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textAppearance</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>?android:textAppearanceLarge<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>16dp<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Happy Birthday!<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textColor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@color/colorAccent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textAppearance</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>?android:textAppearanceMedium<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_alignParentBottom</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_alignParentEnd</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>16dp<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>From BearZPY!<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>显示效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_imageview.png" alt="RelativeLayout_imageview"></p>
+<h3 id="不使用-ImageView-布局"><a href="#不使用-ImageView-布局" class="headerlink" title="不使用 ImageView 布局"></a>不使用 ImageView 布局</h3><p>这里要提一个属性  <code>android:background=&quot;@drawable/androidparty&quot;</code> 这个属性可以为 View 和 View Group 增加背景，参数可以是颜色，也可以是图片。为 RelativeLayout 加上背景图片也能完成类似的布局，但是对背景图片的控制能力就不如 ImageView 了。</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">xmlns:</span>tools</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/tools<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/activity_main<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>background</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@drawable/androidparty<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">tools:</span>context</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.io.zhang.pengyu.greetingcrad.MainActivity<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textColor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@color/colorAccent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textAppearance</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>?android:textAppearanceLarge<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>16dp<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Happy Birthday!<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textColor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@color/colorAccent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textAppearance</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>?android:textAppearanceMedium<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_alignParentBottom</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_alignParentEnd</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>16dp<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>From BearZPY!<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>显示效果：<br><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_background.png" alt="RelativeLayout_background"></p>
+<h3 id="修改主题隐藏状态栏和-action-bar"><a href="#修改主题隐藏状态栏和-action-bar" class="headerlink" title="修改主题隐藏状态栏和  action bar"></a>修改主题隐藏状态栏和  action bar</h3><p>主题是指对整个 Activity 或应用而不是对单个  View （如上例所示）应用的样式。 以主题形式应用样式时，Activity 或应用中的每个视图都将应用其支持的每个样式属性。  </p>
+<p>默认工程生成的活动 Activity 是继承的 AppCompatActivity 的，<code>MainActivity extends AppCompatActivity</code>。把 AppCompatActivity 修改成 Activity，因为我们后续配置的主题文件与 AppCompatActivity 不兼容。</p>
+<p>然后我们需要修改 AndroidManifest.xml 文件来修改整个 app 的主题。默认 app 的主题是  <code>android:theme=&quot;@style/AppTheme&quot;</code> , 这里修改成 <code>&quot;@android:style/Theme.NoTitleBar.Fullscreen&quot;</code> 就可以隐藏状态栏了，同时也没有了 action bar。  </p>
+<p>显示效果：<br>左图是 ImageView，右图是 background  </p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_imageview_fullsreen_theme.png" alt="RelativeLayout_imageview_fullsreen_theme">  <img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_background_fullsreen_theme.png" alt="RelativeLayout_background_fullsreen_theme"></p>
+<h3 id="隐藏状态栏，导航栏和-action-bar"><a href="#隐藏状态栏，导航栏和-action-bar" class="headerlink" title="隐藏状态栏，导航栏和  action bar"></a>隐藏状态栏，导航栏和  action bar</h3><p>上面是通过 theme 的方式隐藏状态栏，修改了 action bar，但是我们离全屏还差一个导航栏。这里我们要通过 java 代码的方式来修改，这个就更加方便了，在 MainActivity  中添加一段设置属性的代码就能达到这个效果（通过这种方式不需要去修改主题）。这个代码需要在 Android 5.0 上才能有效果，其实就是 material design 设计特性。<br>增加代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> android<span class="token punctuation">.</span>os<span class="token punctuation">.</span>Build<span class="token punctuation">;</span>
+<span class="token keyword">import</span> android<span class="token punctuation">.</span>os<span class="token punctuation">.</span>Bundle<span class="token punctuation">;</span>
+<span class="token keyword">import</span> android<span class="token punctuation">.</span>support<span class="token punctuation">.</span>v7<span class="token punctuation">.</span>app<span class="token punctuation">.</span>AppCompatActivity<span class="token punctuation">;</span>
+<span class="token keyword">import</span> android<span class="token punctuation">.</span>view<span class="token punctuation">.</span>View<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onWindowFocusChanged</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> hasFocus<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onWindowFocusChanged</span><span class="token punctuation">(</span>hasFocus<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>hasFocus <span class="token operator">&amp;&amp;</span> Build<span class="token punctuation">.</span>VERSION<span class="token punctuation">.</span>SDK_INT <span class="token operator">>=</span> <span class="token number">19</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            View decorView <span class="token operator">=</span> <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDecorView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            decorView<span class="token punctuation">.</span><span class="token function">setSystemUiVisibility</span><span class="token punctuation">(</span>
+                    View<span class="token punctuation">.</span>SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            <span class="token operator">|</span> View<span class="token punctuation">.</span>SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            <span class="token operator">|</span> View<span class="token punctuation">.</span>SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            <span class="token operator">|</span> View<span class="token punctuation">.</span>SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            <span class="token operator">|</span> View<span class="token punctuation">.</span>SYSTEM_UI_FLAG_FULLSCREEN
+                            <span class="token operator">|</span> View<span class="token punctuation">.</span>SYSTEM_UI_FLAG_IMMERSIVE_STICKY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>显示效果：</p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_imageview_fullsreen_code.png" alt="RelativeLayout_imageview_fullsreen_code">  <img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/RelativeLayout_background_fullsreen_code.png" alt="RelativeLayout_background_fullsreen_code"></p>
+<h2 id="使用线性布局"><a href="#使用线性布局" class="headerlink" title="使用线性布局"></a>使用线性布局</h2><p>线性布局其实也是能实现类似上面简单的界面的，但是可操作性比较弱，背景使用 background 属性配置，TextView 需要使用 gravity， layout_gravity， layout_weight 属性来组合，实现起来不如 RelativeLayout 方便，这里只展示下显示效果，就不贴相关代码了。</p>
+<p><img src="https://github.com/BearZPY/blog-img-repository/raw/master/google_study_jams/1C/LinearLayout_background_fullsreen_theme.png" alt="LinearLayout_background_fullsreen_theme"></p>
+<hr>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2016/05/12/google study jams/Android入门-L2 应用交互/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/03/21/google study jams/Android入门-1B 视图组 ViewGroups/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/user.jpg" alt="BearZPY's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        965006619@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/BearZPY" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;BearZPY Blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>

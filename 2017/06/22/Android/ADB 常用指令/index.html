@@ -396,6 +396,18 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h1 id="ADB-常用指令"><a href="#ADB-常用指令" class="headerlink" title="ADB 常用指令"></a>ADB 常用指令</h1><ol>
+<li><p>显示连接到计算机的设备</p>
+<p> <code>adb devices</code></p>
+</li>
+<li><p>多设备连接时指定操作设备</p>
+<p> <code>adb -s &quot;设备SN&quot; &quot;Cmd&quot;</code></p>
+</li>
+<li><p>安装 APK</p>
+<p> <code>adb install -r test.apk</code></p>
+</li>
+<li><p>卸载 APK</p>
+<p> <code>adb uninstall com.example.android.background</code></p>
+</li>
 <li><p>PC 传文件到 Android</p>
 <p> <code>adb push ./thing.zip /storage/sdcard0/</code></p>
 </li>
@@ -403,13 +415,28 @@
 <p> <code>adb pull /storage/sdcard0/thing.zip ./</code></p>
 </li>
 <li><p>启动指定 App 的指定 Activity</p>
-<p> <code>adb shell am start -n com.android.settings/com.android.settings.Settings</code></p>
-</li>
-<li><p>启动指定 App 的指定 Activity</p>
-<p> <code>adb shell am start -n com.android.settings/com.android.settings.Settings</code></p>
+<p> <code>adb shell am start -n com.android.settings/com.android.settings.Settings</code>、</p>
 </li>
 <li><p>关闭指定 App</p>
 <p> <code>adb shell am force-stop com.android.settings</code></p>
+</li>
+<li><p>清除指定 App 数据</p>
+<p> <code>adb shell pm clear com.example.android.background</code></p>
+</li>
+<li><p>查看第三方应用</p>
+<p> <code>adb shell pm list packages -3</code></p>
+</li>
+<li><p>手机电量</p>
+<p> <code>adb shell dumpsys battery set level 100</code></p>
+</li>
+<li><p>模拟手机从 USB 充电器上拔掉 Android 6.0 以上</p>
+<p> <code>adb shell dumpsys battery unplug</code></p>
+</li>
+<li><p>重新插入手机 Android 6.0 以上</p>
+<p> <code>adb shell dumpsys battery reset</code></p>
+</li>
+<li><p>切换系统为非充电状态</p>
+<p> <code>adb shell dumpsys battery set status 1</code></p>
 </li>
 </ol>
 <hr>
@@ -533,7 +560,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">3</span></a>
             </ul>
         </li>
         
@@ -551,7 +578,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         

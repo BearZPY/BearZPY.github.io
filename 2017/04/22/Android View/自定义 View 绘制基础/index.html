@@ -435,38 +435,38 @@
         canvas<span class="token punctuation">.</span><span class="token function">drawText</span><span class="token punctuation">(</span><span class="token string">"Hello World!"</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> paint<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="Canvas-常用方法"><a href="#Canvas-常用方法" class="headerlink" title="Canvas 常用方法"></a>Canvas 常用方法</h3><ul>
+<h3 id="Canvas-常用方法"><a href="#Canvas-常用方法" class="headerlink" title="Canvas 常用方法"></a>Canvas 常用方法</h3><ol>
 <li><p>drawColor(@ColorInt int color)  </p>
-<p>  颜色填充，在整个绘制区域统一涂上指定的颜色。<br>  注：drawRGB，drawARGB 也能达到这个效果，一般用于在绘制之前设置底色，或者在绘制之后为界面设置半透明蒙版。</p>
+<p> 颜色填充，在整个绘制区域统一涂上指定的颜色。<br> 注：drawRGB，drawARGB 也能达到这个效果，一般用于在绘制之前设置底色，或者在绘制之后为界面设置半透明蒙版。</p>
 </li>
 <li><p>drawCircle(float centerX, float centerY, float radius, Paint paint)</p>
-<p>  画圆，centerX centerY 是圆心的坐标，第三个参数 radius 是圆的半径，单位都是像素，paint 提供基本信息之外的所有风格信息，例如颜色、线条粗细、阴影等。</p>
+<p> 画圆，centerX centerY 是圆心的坐标，第三个参数 radius 是圆的半径，单位都是像素，paint 提供基本信息之外的所有风格信息，例如颜色、线条粗细、阴影等。</p>
 </li>
 <li><p>drawRect(float left, float top, float right, float bottom, Paint paint)</p>
-<p>  画矩形，left, top, right, bottom 是矩形四条边的坐标。还有 drawRect(RectF rect, Paint paint) 和 drawRect(Rect rect, Paint paint) 两个重载方法。</p>
+<p> 画矩形，left, top, right, bottom 是矩形四条边的坐标。还有 drawRect(RectF rect, Paint paint) 和 drawRect(Rect rect, Paint paint) 两个重载方法。</p>
 </li>
 <li><p>drawPoint(float x, float y, Paint paint)</p>
-<p>  画点，x，y 是点的坐标，点的大小可以通过 paint.setStrokeWidth(width) 来设置；点的形状可以通过  paint.setStrokeCap(cap) 来设置。</p>
+<p> 画点，x，y 是点的坐标，点的大小可以通过 paint.setStrokeWidth(width) 来设置；点的形状可以通过  paint.setStrokeCap(cap) 来设置。</p>
 </li>
 <li><p>drawOval(float left, float top, float right, float bottom, Paint paint)</p>
-<p>  画椭圆，只能绘制横着的或者竖着的椭圆，不能绘制斜的，left, top, right, bottom 是这个椭圆的左、上、右、下四个边界点的坐标。重载方法 drawOval(RectF rect, Paint paint)。</p>
+<p> 画椭圆，只能绘制横着的或者竖着的椭圆，不能绘制斜的，left, top, right, bottom 是这个椭圆的左、上、右、下四个边界点的坐标。重载方法 drawOval(RectF rect, Paint paint)。</p>
 </li>
 <li><p>drawLine(float startX, float startY, float stopX, float stopY, Paint paint)</p>
-<p>  画线，startX, startY, stopX, stopY 分别是线的起点和终点坐标。drawLines(float[] pts, int offset, int count, Paint paint) / drawLines(float[] pts, Paint paint) 画线（批量）。</p>
+<p> 画线，startX, startY, stopX, stopY 分别是线的起点和终点坐标。drawLines(float[] pts, int offset, int count, Paint paint) / drawLines(float[] pts, Paint paint) 画线（批量）。</p>
 </li>
 <li><p>drawRoundRect(float left, float top, float right, float bottom, float rx, float ry, Paint paint)</p>
-<p>  画圆角矩形，重载方法 drawRoundRect(RectF rect, float rx, float ry, Paint paint)。</p>
+<p> 画圆角矩形，重载方法 drawRoundRect(RectF rect, float rx, float ry, Paint paint)。</p>
 </li>
 <li><p>drawArc(float left, float top, float right, float bottom, float startAngle, float sweepAngle, boolean useCenter, Paint paint)</p>
-<p>  绘制弧形或扇形，drawArc() 是使用一个椭圆来描述弧形的。left, top, right, bottom 描述的是这个弧形所在的椭圆；startAngle 是弧形的起始角度（x 轴的正向，即正右的方向，是 0 度的位置；顺时针为正角度，逆时针为负角度），sweepAngle 是弧形划过的角度；useCenter 表示是否连接到圆心，如果不连接到圆心，就是弧形，如果连接到圆心，就是扇形。</p>
+<p> 绘制弧形或扇形，drawArc() 是使用一个椭圆来描述弧形的。left, top, right, bottom 描述的是这个弧形所在的椭圆；startAngle 是弧形的起始角度（x 轴的正向，即正右的方向，是 0 度的位置；顺时针为正角度，逆时针为负角度），sweepAngle 是弧形划过的角度；useCenter 表示是否连接到圆心，如果不连接到圆心，就是弧形，如果连接到圆心，就是扇形。</p>
 </li>
 <li><p>drawBitmap(Bitmap bitmap, float left, float top, Paint paint)</p>
-<p>  画 Bitmap，left 和 top 是要把 bitmap 绘制到的位置坐标。</p>
+<p> 画 Bitmap，left 和 top 是要把 bitmap 绘制到的位置坐标。</p>
 </li>
 <li><p>drawText(String text, float x, float y, Paint paint) 绘制文字</p>
-<p>  x 和 y 是绘制的起点坐标。</p>
+<p> x 和 y 是绘制的起点坐标。</p>
 </li>
-</ul>
+</ol>
 <h3 id="Canvas-drawPath-自定义图形"><a href="#Canvas-drawPath-自定义图形" class="headerlink" title="Canvas.drawPath() 自定义图形"></a>Canvas.drawPath() 自定义图形</h3><p>drawPath() 可以绘制自定义图形，用于常用方法满足不了的时候，画出自定义图形。Path 有两类方法，一类是直接描述路径的，另一类是辅助的设置或计算。</p>
 <pre class=" language-java"><code class="language-java">    Paint paint <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Paint</span><span class="token punctuation">(</span>Paint<span class="token punctuation">.</span>ANTI_ALIAS_FLAG<span class="token punctuation">)</span><span class="token punctuation">;</span>
     Path path <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Path</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -550,7 +550,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/05/12/google study jams/Android入门-L2 应用交互/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/05/31/google study jams/Firebase AdMob 横幅广告/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -564,7 +564,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2017/04/06/gradle/Gradle 基础介绍/" id="post_nav-older" class="next-content">
+        <a href="/2017/04/22/Android View/自定义 View Paint 详解/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
@@ -647,7 +647,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">3</span></a>
             </ul>
         </li>
         
@@ -665,7 +665,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/categories/Gradle/">Gradle<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">git<span class="sidebar_archives-count">2</span></a>
             </ul>
         </li>
         
