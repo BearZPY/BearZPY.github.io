@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/"/>
-  <updated>2017-10-17T08:10:09.854Z</updated>
-  <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/</id>
+  <link href="https://bearzpy.github.io/"/>
+  <updated>2018-03-06T02:51:26.012Z</updated>
+  <id>https://bearzpy.github.io/</id>
   
   <author>
     <name>BearZPY</name>
@@ -16,9 +16,167 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Android 条码扫描</title>
+    <link href="https://bearzpy.github.io/2017/08/14/Android/Android%20%E6%9D%A1%E7%A0%81%E6%89%AB%E6%8F%8F/"/>
+    <id>https://bearzpy.github.io/2017/08/14/Android/Android 条码扫描/</id>
+    <published>2017-08-14T09:08:43.000Z</published>
+    <updated>2018-03-06T02:51:26.012Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Android-条码扫描"><a href="#Android-条码扫描" class="headerlink" title="Android 条码扫描"></a>Android 条码扫描</h1><p>Android 应用经常会遇到扫码的需求，目前使用的库主要是 ZXing 和 Zbar，本文主要讲述的是 ZXing 的使用。ZXing 官方例子是非常庞大的，考虑的方面也比较全，初学者理解上会有一定的困难，本文主要是帮助初学者理解 ZXing 库的使用。</p>
+<h2 id="确定扫码功能的核心"><a href="#确定扫码功能的核心" class="headerlink" title="确定扫码功能的核心"></a>确定扫码功能的核心</h2><p>扫码功能可以很简单的分为拍摄和解码两大部分，拍摄功能很容易理解，就是拍摄一帧包含二维码的图像，而解码又分两部分，即对一帧图像里面条码的定位，以及对条码内容的解析。ZXing 已经帮我们完成了解码的两个部分，这是扫码功能的核心。而拍摄的功能可以由我们自行定制，我们需要做的只是提供一帧帧图像给 ZXing 的解码器。</p>
+<h2 id="拍摄功能"><a href="#拍摄功能" class="headerlink" title="拍摄功能"></a>拍摄功能</h2><p>Android 实现拍摄设计到两个组件（Camera，和 View），其中最核心的是 Camera 的配置，View 主要负责显示拍摄的内容（在前置扫码需求下，View 甚至是可以不可见的），这部分都不涉及到 ZXing 的使用，这里只讲解最基本的的功能实现，取景框等放到最后理解。</p>
+<h3 id="Camera-的基本参数配置"><a href="#Camera-的基本参数配置" class="headerlink" title="Camera 的基本参数配置"></a>Camera 的基本参数配置</h3><ul>
+<li>选择使用的摄像头</li>
+<li>设置拍摄图像的显示组件（SurfaceHolder）</li>
+<li>选择对焦的模式</li>
+<li>确定预览图像的大小（eg：1280*720）</li>
+<li>设置摄像头的预览方向（成像方向）</li>
+<li>设置单次预览图像的回调</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>SurfaceHolder holder<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> mCamera <span class="token operator">==</span> null <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mCamera <span class="token operator">=</span> Camera<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            mCamera<span class="token punctuation">.</span><span class="token function">setPreviewDisplay</span><span class="token punctuation">(</span> holder <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mCamera<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            mCamera <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mCamera <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            Log<span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span>LOG_TAG<span class="token punctuation">,</span><span class="token string">"surfaceChanged: mCamera == null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>callback <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                callback<span class="token punctuation">.</span><span class="token function">onCameraOpenFailed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        mCameraParameters <span class="token operator">=</span> mCamera<span class="token punctuation">.</span><span class="token function">getParameters</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mCameraParameters<span class="token punctuation">.</span><span class="token function">setFocusMode</span><span class="token punctuation">(</span> Camera<span class="token punctuation">.</span>Parameters<span class="token punctuation">.</span>FOCUS_MODE_AUTO <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mCameraParameters<span class="token punctuation">.</span><span class="token function">setPreviewSize</span><span class="token punctuation">(</span> <span class="token number">1280</span><span class="token punctuation">,</span> <span class="token number">720</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        cameraResolution<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">1280</span><span class="token punctuation">;</span>
+        cameraResolution<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">720</span><span class="token punctuation">;</span>
+        mCamera<span class="token punctuation">.</span><span class="token function">setParameters</span><span class="token punctuation">(</span> mCameraParameters <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mCamera<span class="token punctuation">.</span><span class="token function">setDisplayOrientation</span><span class="token punctuation">(</span> <span class="token number">90</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mCamera<span class="token punctuation">.</span><span class="token function">startPreview</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mCamera<span class="token punctuation">.</span><span class="token function">cancelAutoFocus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mCamera<span class="token punctuation">.</span><span class="token function">setAutoFocusMoveCallback</span><span class="token punctuation">(</span> <span class="token keyword">new</span> <span class="token class-name">AutoFocusMoveCallbackImp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        previewCallbackImp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PreviewCallbackImp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// Camera 返回一帧的预览图像，在此回调中，进行图像解码</span>
+        mCamera<span class="token punctuation">.</span><span class="token function">setOneShotPreviewCallback</span><span class="token punctuation">(</span>previewCallbackImp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mCamera <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mCamera<span class="token punctuation">.</span><span class="token function">stopPreview</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mCamera<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mCamera <span class="token operator">=</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="View-的参数配置"><a href="#View-的参数配置" class="headerlink" title="View 的参数配置"></a>View 的参数配置</h3><p>显示拍摄内容需要使用控件 SurfaceView，这个控件需要通过 SurfaceHolder 来与摄像头连接起来。当需要拍摄时创建 SurfaceView，此时 SurfaceHolder 需要打开摄像头进行拍摄。当拍摄结束时销毁 SurfaceView，，此时 SurfaceHolder 关闭摄像头预览并释放资源。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 创建 SurfaceView 后添加 SurfaceHolder 以显示拍摄内容</span>
+surfaceView<span class="token punctuation">.</span><span class="token function">getHolder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addCallback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">SurfaceHolderCallbackImp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 随着 SurfaceView 的生命周期控制摄像头资源的使用和释放</span>
+<span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">SurfaceHolderCallbackImp</span> <span class="token keyword">implements</span> <span class="token class-name">SurfaceHolder<span class="token punctuation">.</span>Callback</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">surfaceCreated</span><span class="token punctuation">(</span>SurfaceHolder holder<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">surfaceChanged</span><span class="token punctuation">(</span>SurfaceHolder holder<span class="token punctuation">,</span> <span class="token keyword">int</span> format<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        CameraManager<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>holder<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">surfaceDestroyed</span><span class="token punctuation">(</span>SurfaceHolder holder<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        CameraManager<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="解码功能"><a href="#解码功能" class="headerlink" title="解码功能"></a>解码功能</h2><p>解码功能就完全是 ZXing 库提供的了，我们需要按照我们自己的需求初始化 ZXing 的解码器，并将图像数据以正确的格式传给解码器。</p>
+<h3 id="ZXing-解码器配置"><a href="#ZXing-解码器配置" class="headerlink" title="ZXing 解码器配置"></a>ZXing 解码器配置</h3><ul>
+<li>配置解码的格式（只针对需要的格式解码可以提高速度）</li>
+<li>设置特征点回调（特征点可以选择是否需要现在图像上）</li>
+<li>配置字符集，配置解码精度等等（可选）</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 多格式解码器，如果只处理一种格式完全可以使用对应的解码器，以提高速度</span>
+<span class="token keyword">private</span> MultiFormatReader qrcodeReader <span class="token operator">=</span> null<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">initQRCodeReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Vector<span class="token operator">&lt;</span>BarcodeFormat<span class="token operator">></span> decodeFormats <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vector</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    decodeFormats<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>BarcodeFormat<span class="token punctuation">.</span>QR_CODE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    decodeFormats<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>BarcodeFormat<span class="token punctuation">.</span>DATA_MATRIX<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    Hashtable<span class="token operator">&lt;</span>DecodeHintType<span class="token punctuation">,</span> Object<span class="token operator">></span> hints <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Hashtable</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    hints<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span> DecodeHintType<span class="token punctuation">.</span>POSSIBLE_FORMATS<span class="token punctuation">,</span> decodeFormats <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    hints<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span> DecodeHintType<span class="token punctuation">.</span>NEED_RESULT_POINT_CALLBACK<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">ResultPointCallbackImp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    qrcodeReader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MultiFormatReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    qrcodeReader<span class="token punctuation">.</span><span class="token function">setHints</span><span class="token punctuation">(</span> hints <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="拍摄图像处理"><a href="#拍摄图像处理" class="headerlink" title="拍摄图像处理"></a>拍摄图像处理</h3><p>拍摄完成的图像并不是可以直接送给解码器的，我们要对其进行提取亮度，二值化操作才行。在处理的过程中，我们可以对图像进行裁剪，配合裁剪可以实现取景框的功能。Android 相机预览默认格式是 yuv420sp，编码成 YUV 的所有像素格式里，yuv420sp 占用的空间是最小的。我们通过 PlanarYUVLuminanceSource 来提取亮度。提取亮度之后需要进行二值化操作，此处常见的二值化方法有两种，分别是 HybridBinarizer 和 GlobalHistogramBinarizer。其中 HybridBinarizer 继承自 GlobalHistogramBinarizer，识别精度要比 GlobalHistogramBinarizer 好，但是速度比其低。实际使用中应该根据具体需求去选择。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handlePreviewFrame</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token punctuation">,</span><span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 提取亮度，此处可选择是否做裁剪</span>
+    PlanarYUVLuminanceSource source <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PlanarYUVLuminanceSource</span><span class="token punctuation">(</span> data<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">,</span>
+            <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 配置二值化算法</span>
+    BinaryBitmap bitmap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BinaryBitmap</span><span class="token punctuation">(</span> <span class="token keyword">new</span> <span class="token class-name">HybridBinarizer</span><span class="token punctuation">(</span> source <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//BinaryBitmap bitmap = new BinaryBitmap( new GlobalHistogramBinarizer( source ) );</span>
+
+    <span class="token comment" spellcheck="true">// 解码</span>
+    Result result <span class="token operator">=</span> null<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> qrcodeReader <span class="token operator">!=</span> null <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            result <span class="token operator">=</span> qrcodeReader<span class="token punctuation">.</span><span class="token function">decodeWithState</span><span class="token punctuation">(</span> bitmap <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">NotFoundException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//LogError( "NotFoundException: " + e );</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            qrcodeReader<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> result <span class="token operator">!=</span> null <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 扫描完成解码成功</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span> scannerCallback <span class="token operator">!=</span> null <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            scannerCallback<span class="token punctuation">.</span><span class="token function">onScanSuccess</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="ZXing-官方例子补充"><a href="#ZXing-官方例子补充" class="headerlink" title="ZXing 官方例子补充"></a>ZXing 官方例子补充</h2><p>ZXing 的官方库中考虑了很多内容，所以在上述基本功能上添加了如下内容，只要先理解了核心功能，这些拓展功能的理解就相对容易多了。</p>
+<pre><code>* 长时间无活动自动销毁机制，避免耗电 InactivityTimer
+* 扫描完成蜂鸣器提醒机制 BeepManager
+* 设置取景框，裁剪无用区域 ViewfinderView
+* 首次使用确定最佳的聚焦模式并保存
+* 首次使用计算最佳摄像头预览大小并保存
+* 扫描发现的特征点显示在屏幕上
+* 从相册中获取图片扫码（RGB格式）
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Android-条码扫描&quot;&gt;&lt;a href=&quot;#Android-条码扫描&quot; class=&quot;headerlink&quot; title=&quot;Android 条码扫描&quot;&gt;&lt;/a&gt;Android 条码扫描&lt;/h1&gt;&lt;p&gt;Android 应用经常会遇到扫码的需求，目前使用的库主要是
+    
+    </summary>
+    
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+    
+      <category term="ZXing" scheme="https://bearzpy.github.io/tags/ZXing/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Gradle 混淆 APK 配置</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/07/13/gradle/Gradle%20%E6%B7%B7%E6%B7%86%20APK%20%E9%85%8D%E7%BD%AE/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/07/13/gradle/Gradle 混淆 APK 配置/</id>
+    <link href="https://bearzpy.github.io/2017/07/13/gradle/Gradle%20%E6%B7%B7%E6%B7%86%20APK%20%E9%85%8D%E7%BD%AE/"/>
+    <id>https://bearzpy.github.io/2017/07/13/gradle/Gradle 混淆 APK 配置/</id>
     <published>2017-07-13T10:14:43.000Z</published>
     <updated>2017-10-17T08:10:09.854Z</updated>
     
@@ -144,23 +302,23 @@
     
     </summary>
     
-      <category term="Gradle" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Gradle/"/>
+      <category term="Gradle" scheme="https://bearzpy.github.io/categories/Gradle/"/>
     
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
-      <category term="Gradle" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Gradle/"/>
+      <category term="Gradle" scheme="https://bearzpy.github.io/tags/Gradle/"/>
     
-      <category term="Android Studio" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android-Studio/"/>
+      <category term="Android Studio" scheme="https://bearzpy.github.io/tags/Android-Studio/"/>
     
-      <category term="Jar" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Jar/"/>
+      <category term="Jar" scheme="https://bearzpy.github.io/tags/Jar/"/>
     
   </entry>
   
   <entry>
     <title>Gradle 生成 Jar 包</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/06/23/gradle/Gradle%20%E7%94%9F%E6%88%90%20Jar%20%E5%8C%85/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/06/23/gradle/Gradle 生成 Jar 包/</id>
+    <link href="https://bearzpy.github.io/2017/06/23/gradle/Gradle%20%E7%94%9F%E6%88%90%20Jar%20%E5%8C%85/"/>
+    <id>https://bearzpy.github.io/2017/06/23/gradle/Gradle 生成 Jar 包/</id>
     <published>2017-06-23T08:04:43.000Z</published>
     <updated>2017-10-17T07:33:15.481Z</updated>
     
@@ -214,23 +372,23 @@
     
     </summary>
     
-      <category term="Gradle" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Gradle/"/>
+      <category term="Gradle" scheme="https://bearzpy.github.io/categories/Gradle/"/>
     
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
-      <category term="Gradle" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Gradle/"/>
+      <category term="Gradle" scheme="https://bearzpy.github.io/tags/Gradle/"/>
     
-      <category term="Android Studio" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android-Studio/"/>
+      <category term="Android Studio" scheme="https://bearzpy.github.io/tags/Android-Studio/"/>
     
-      <category term="Jar" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Jar/"/>
+      <category term="Jar" scheme="https://bearzpy.github.io/tags/Jar/"/>
     
   </entry>
   
   <entry>
     <title>ADB 常用指令</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/06/22/Android/ADB%20%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/06/22/Android/ADB 常用指令/</id>
+    <link href="https://bearzpy.github.io/2017/06/22/Android/ADB%20%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+    <id>https://bearzpy.github.io/2017/06/22/Android/ADB 常用指令/</id>
     <published>2017-06-22T03:01:27.000Z</published>
     <updated>2017-11-02T06:15:15.634Z</updated>
     
@@ -289,19 +447,19 @@
     
     </summary>
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
-      <category term="ADB" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/ADB/"/>
+      <category term="ADB" scheme="https://bearzpy.github.io/tags/ADB/"/>
     
   </entry>
   
   <entry>
     <title>常用 git 指令</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/06/22/git/%E5%B8%B8%E7%94%A8%20git%20%E6%8C%87%E4%BB%A4/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/06/22/git/常用 git 指令/</id>
+    <link href="https://bearzpy.github.io/2017/06/22/git/%E5%B8%B8%E7%94%A8%20git%20%E6%8C%87%E4%BB%A4/"/>
+    <id>https://bearzpy.github.io/2017/06/22/git/常用 git 指令/</id>
     <published>2017-06-22T02:55:02.000Z</published>
     <updated>2018-03-01T01:12:18.186Z</updated>
     
@@ -327,17 +485,17 @@
     
     </summary>
     
-      <category term="git" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/git/"/>
+      <category term="git" scheme="https://bearzpy.github.io/categories/git/"/>
     
     
-      <category term="git" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/git/"/>
+      <category term="git" scheme="https://bearzpy.github.io/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>Android Firebase AdMob 横幅广告</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/05/31/google%20study%20jams/Firebase%20AdMob%20%E6%A8%AA%E5%B9%85%E5%B9%BF%E5%91%8A/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/05/31/google study jams/Firebase AdMob 横幅广告/</id>
+    <link href="https://bearzpy.github.io/2017/05/31/google%20study%20jams/Firebase%20AdMob%20%E6%A8%AA%E5%B9%85%E5%B9%BF%E5%91%8A/"/>
+    <id>https://bearzpy.github.io/2017/05/31/google study jams/Firebase AdMob 横幅广告/</id>
     <published>2017-05-31T06:56:42.000Z</published>
     <updated>2018-03-01T01:46:09.284Z</updated>
     
@@ -516,23 +674,23 @@ dependencies <span class="token punctuation">{</span>
     
     </summary>
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
-      <category term="Google" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Google/"/>
+      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
     
-      <category term="AdMob" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/AdMob/"/>
+      <category term="AdMob" scheme="https://bearzpy.github.io/tags/AdMob/"/>
     
-      <category term="Firebase" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Firebase/"/>
+      <category term="Firebase" scheme="https://bearzpy.github.io/tags/Firebase/"/>
     
   </entry>
   
   <entry>
     <title>自定义 View Paint 详解</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/04/22/Android%20View/%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20Paint%20%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/04/22/Android View/自定义 View Paint 详解/</id>
+    <link href="https://bearzpy.github.io/2017/04/22/Android%20View/%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20Paint%20%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://bearzpy.github.io/2017/04/22/Android View/自定义 View Paint 详解/</id>
     <published>2017-04-22T03:01:27.000Z</published>
     <updated>2017-10-19T07:32:01.789Z</updated>
     
@@ -546,19 +704,19 @@ dependencies <span class="token punctuation">{</span>
     
     </summary>
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
-      <category term="View" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/View/"/>
+      <category term="View" scheme="https://bearzpy.github.io/tags/View/"/>
     
   </entry>
   
   <entry>
     <title>自定义 View 绘制基础</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/04/22/Android%20View/%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E7%BB%98%E5%88%B6%E5%9F%BA%E7%A1%80/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/04/22/Android View/自定义 View 绘制基础/</id>
+    <link href="https://bearzpy.github.io/2017/04/22/Android%20View/%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E7%BB%98%E5%88%B6%E5%9F%BA%E7%A1%80/"/>
+    <id>https://bearzpy.github.io/2017/04/22/Android View/自定义 View 绘制基础/</id>
     <published>2017-04-22T03:01:27.000Z</published>
     <updated>2017-10-17T06:59:45.524Z</updated>
     
@@ -702,19 +860,19 @@ dependencies <span class="token punctuation">{</span>
     
     </summary>
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
-      <category term="View" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/View/"/>
+      <category term="View" scheme="https://bearzpy.github.io/tags/View/"/>
     
   </entry>
   
   <entry>
     <title>Gradle 基础介绍</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/04/06/gradle/Gradle%20%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/04/06/gradle/Gradle 基础介绍/</id>
+    <link href="https://bearzpy.github.io/2017/04/06/gradle/Gradle%20%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://bearzpy.github.io/2017/04/06/gradle/Gradle 基础介绍/</id>
     <published>2017-04-06T10:39:10.000Z</published>
     <updated>2017-10-13T09:50:05.757Z</updated>
     
@@ -855,19 +1013,19 @@ dependencies <span class="token punctuation">{</span> <span class="token comment
     
     </summary>
     
-      <category term="Gradle" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Gradle/"/>
+      <category term="Gradle" scheme="https://bearzpy.github.io/categories/Gradle/"/>
     
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
-      <category term="Gradle" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Gradle/"/>
+      <category term="Gradle" scheme="https://bearzpy.github.io/tags/Gradle/"/>
     
   </entry>
   
   <entry>
     <title>用 Python 批量处理图片大小</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/03/23/Python/%E7%94%A8%20Python%20%E6%89%B9%E9%87%8F%E5%A4%84%E7%90%86%E5%9B%BE%E7%89%87/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/03/23/Python/用 Python 批量处理图片/</id>
+    <link href="https://bearzpy.github.io/2017/03/23/Python/%E7%94%A8%20Python%20%E6%89%B9%E9%87%8F%E5%A4%84%E7%90%86%E5%9B%BE%E7%89%87/"/>
+    <id>https://bearzpy.github.io/2017/03/23/Python/用 Python 批量处理图片/</id>
     <published>2017-03-23T12:47:56.000Z</published>
     <updated>2017-10-13T09:54:23.786Z</updated>
     
@@ -1074,181 +1232,23 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
     
     </summary>
     
-      <category term="Python" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Python/"/>
+      <category term="Python" scheme="https://bearzpy.github.io/categories/Python/"/>
     
     
-      <category term="Python" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Python/"/>
+      <category term="Python" scheme="https://bearzpy.github.io/tags/Python/"/>
     
-      <category term="Python2" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Python2/"/>
+      <category term="Python2" scheme="https://bearzpy.github.io/tags/Python2/"/>
     
-      <category term="图片处理" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
+      <category term="图片处理" scheme="https://bearzpy.github.io/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
     
-      <category term="实用工具" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 条码扫描</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/03/14/Android/Android%20%E6%9D%A1%E7%A0%81%E6%89%AB%E6%8F%8F/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/03/14/Android/Android 条码扫描/</id>
-    <published>2017-03-14T09:08:43.000Z</published>
-    <updated>2018-03-01T03:22:04.196Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Android-条码扫描"><a href="#Android-条码扫描" class="headerlink" title="Android 条码扫描"></a>Android 条码扫描</h1><p>Android 应用经常会遇到扫码的需求，目前使用的库主要是 ZXing 和 Zbar，本文主要讲述的是 ZXing 的使用。ZXing 官方例子是非常庞大的，考虑的方面也比较全，初学者理解上会有一定的困难，本文主要是帮助初学者理解 ZXing 库的使用。</p>
-<h2 id="确定扫码功能的核心"><a href="#确定扫码功能的核心" class="headerlink" title="确定扫码功能的核心"></a>确定扫码功能的核心</h2><p>扫码功能可以很简单的分为拍摄和解码两大部分，拍摄功能很容易理解，就是拍摄一帧包含二维码的图像，而解码又分两部分，即对一帧图像里面条码的定位，以及对条码内容的解析。ZXing 已经帮我们完成了解码的两个部分，这是扫码功能的核心。而拍摄的功能可以由我们自行定制，我们需要做的只是提供一帧帧图像给 ZXing 的解码器。</p>
-<h2 id="拍摄功能"><a href="#拍摄功能" class="headerlink" title="拍摄功能"></a>拍摄功能</h2><p>Android 实现拍摄设计到两个组件（Camera，和 View），其中最核心的是 Camera 的配置，View 主要负责显示拍摄的内容（在前置扫码需求下，View 甚至是可以不可见的），这部分都不涉及到 ZXing 的使用，这里只讲解最基本的的功能实现，取景框等放到最后理解。</p>
-<h3 id="Camera-的基本参数配置"><a href="#Camera-的基本参数配置" class="headerlink" title="Camera 的基本参数配置"></a>Camera 的基本参数配置</h3><ul>
-<li>选择使用的摄像头</li>
-<li>设置拍摄图像的显示组件（SurfaceHolder）</li>
-<li>选择对焦的模式</li>
-<li>确定预览图像的大小（eg：1280*720）</li>
-<li>设置摄像头的预览方向（成像方向）</li>
-<li>设置单次预览图像的回调</li>
-</ul>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>SurfaceHolder holder<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span> mCamera <span class="token operator">==</span> null <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        mCamera <span class="token operator">=</span> Camera<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">try</span> <span class="token punctuation">{</span>
-            mCamera<span class="token punctuation">.</span><span class="token function">setPreviewDisplay</span><span class="token punctuation">(</span> holder <span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            mCamera<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            mCamera <span class="token operator">=</span> null<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>mCamera <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            Log<span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span>LOG_TAG<span class="token punctuation">,</span><span class="token string">"surfaceChanged: mCamera == null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>callback <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                callback<span class="token punctuation">.</span><span class="token function">onCameraOpenFailed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        mCameraParameters <span class="token operator">=</span> mCamera<span class="token punctuation">.</span><span class="token function">getParameters</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        mCameraParameters<span class="token punctuation">.</span><span class="token function">setFocusMode</span><span class="token punctuation">(</span> Camera<span class="token punctuation">.</span>Parameters<span class="token punctuation">.</span>FOCUS_MODE_AUTO <span class="token punctuation">)</span><span class="token punctuation">;</span>
-        mCameraParameters<span class="token punctuation">.</span><span class="token function">setPreviewSize</span><span class="token punctuation">(</span> <span class="token number">1280</span><span class="token punctuation">,</span> <span class="token number">720</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-        cameraResolution<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">1280</span><span class="token punctuation">;</span>
-        cameraResolution<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">720</span><span class="token punctuation">;</span>
-        mCamera<span class="token punctuation">.</span><span class="token function">setParameters</span><span class="token punctuation">(</span> mCameraParameters <span class="token punctuation">)</span><span class="token punctuation">;</span>
-        mCamera<span class="token punctuation">.</span><span class="token function">setDisplayOrientation</span><span class="token punctuation">(</span> <span class="token number">90</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-        mCamera<span class="token punctuation">.</span><span class="token function">startPreview</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        mCamera<span class="token punctuation">.</span><span class="token function">cancelAutoFocus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        mCamera<span class="token punctuation">.</span><span class="token function">setAutoFocusMoveCallback</span><span class="token punctuation">(</span> <span class="token keyword">new</span> <span class="token class-name">AutoFocusMoveCallbackImp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-        previewCallbackImp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PreviewCallbackImp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">// Camera 返回一帧的预览图像，在此回调中，进行图像解码</span>
-        mCamera<span class="token punctuation">.</span><span class="token function">setOneShotPreviewCallback</span><span class="token punctuation">(</span>previewCallbackImp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>mCamera <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        mCamera<span class="token punctuation">.</span><span class="token function">stopPreview</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        mCamera<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        mCamera <span class="token operator">=</span> null<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h3 id="View-的参数配置"><a href="#View-的参数配置" class="headerlink" title="View 的参数配置"></a>View 的参数配置</h3><p>显示拍摄内容需要使用控件 SurfaceView，这个控件需要通过 SurfaceHolder 来与摄像头连接起来。当需要拍摄时创建 SurfaceView，此时 SurfaceHolder 需要打开摄像头进行拍摄。当拍摄结束时销毁 SurfaceView，，此时 SurfaceHolder 关闭摄像头预览并释放资源。</p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 创建 SurfaceView 后添加 SurfaceHolder 以显示拍摄内容</span>
-surfaceView<span class="token punctuation">.</span><span class="token function">getHolder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addCallback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">SurfaceHolderCallbackImp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// 随着 SurfaceView 的生命周期控制摄像头资源的使用和释放</span>
-<span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">SurfaceHolderCallbackImp</span> <span class="token keyword">implements</span> <span class="token class-name">SurfaceHolder<span class="token punctuation">.</span>Callback</span> <span class="token punctuation">{</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">surfaceCreated</span><span class="token punctuation">(</span>SurfaceHolder holder<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">surfaceChanged</span><span class="token punctuation">(</span>SurfaceHolder holder<span class="token punctuation">,</span> <span class="token keyword">int</span> format<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        CameraManager<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>holder<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">surfaceDestroyed</span><span class="token punctuation">(</span>SurfaceHolder holder<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        CameraManager<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h2 id="解码功能"><a href="#解码功能" class="headerlink" title="解码功能"></a>解码功能</h2><p>解码功能就完全是 ZXing 库提供的了，我们需要按照我们自己的需求初始化 ZXing 的解码器，并将图像数据以正确的格式传给解码器。</p>
-<h3 id="ZXing-解码器配置"><a href="#ZXing-解码器配置" class="headerlink" title="ZXing 解码器配置"></a>ZXing 解码器配置</h3><ul>
-<li>配置解码的格式（只针对需要的格式解码可以提高速度）</li>
-<li>设置特征点回调（特征点可以选择是否需要现在图像上）</li>
-<li>配置字符集，配置解码精度等等（可选）</li>
-</ul>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 多格式解码器，如果只处理一种格式完全可以使用对应的解码器，以提高速度</span>
-<span class="token keyword">private</span> MultiFormatReader qrcodeReader <span class="token operator">=</span> null<span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">initQRCodeReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    Vector<span class="token operator">&lt;</span>BarcodeFormat<span class="token operator">></span> decodeFormats <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vector</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    decodeFormats<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>BarcodeFormat<span class="token punctuation">.</span>QR_CODE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    decodeFormats<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>BarcodeFormat<span class="token punctuation">.</span>DATA_MATRIX<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    Hashtable<span class="token operator">&lt;</span>DecodeHintType<span class="token punctuation">,</span> Object<span class="token operator">></span> hints <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Hashtable</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    hints<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span> DecodeHintType<span class="token punctuation">.</span>POSSIBLE_FORMATS<span class="token punctuation">,</span> decodeFormats <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    hints<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span> DecodeHintType<span class="token punctuation">.</span>NEED_RESULT_POINT_CALLBACK<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">ResultPointCallbackImp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    qrcodeReader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MultiFormatReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    qrcodeReader<span class="token punctuation">.</span><span class="token function">setHints</span><span class="token punctuation">(</span> hints <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h3 id="拍摄图像处理"><a href="#拍摄图像处理" class="headerlink" title="拍摄图像处理"></a>拍摄图像处理</h3><p>拍摄完成的图像并不是可以直接送给解码器的，我们要对其进行提取亮度，二值化操作才行。在处理的过程中，我们可以对图像进行裁剪，配合裁剪可以实现取景框的功能。Android 相机预览默认格式是 yuv420sp，编码成 YUV 的所有像素格式里，yuv420sp 占用的空间是最小的。我们通过 PlanarYUVLuminanceSource 来提取亮度。提取亮度之后需要进行二值化操作，此处常见的二值化方法有两种，分别是 HybridBinarizer 和 GlobalHistogramBinarizer。其中 HybridBinarizer 继承自 GlobalHistogramBinarizer，识别精度要比 GlobalHistogramBinarizer 好，但是速度比其低。实际使用中应该根据具体需求去选择。</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handlePreviewFrame</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token punctuation">,</span><span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 提取亮度，此处可选择是否做裁剪</span>
-    PlanarYUVLuminanceSource source <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PlanarYUVLuminanceSource</span><span class="token punctuation">(</span> data<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">,</span>
-            <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">// 配置二值化算法</span>
-    BinaryBitmap bitmap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BinaryBitmap</span><span class="token punctuation">(</span> <span class="token keyword">new</span> <span class="token class-name">HybridBinarizer</span><span class="token punctuation">(</span> source <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">//BinaryBitmap bitmap = new BinaryBitmap( new GlobalHistogramBinarizer( source ) );</span>
-
-    <span class="token comment" spellcheck="true">// 解码</span>
-    Result result <span class="token operator">=</span> null<span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span> qrcodeReader <span class="token operator">!=</span> null <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">try</span> <span class="token punctuation">{</span>
-            result <span class="token operator">=</span> qrcodeReader<span class="token punctuation">.</span><span class="token function">decodeWithState</span><span class="token punctuation">(</span> bitmap <span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">NotFoundException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//LogError( "NotFoundException: " + e );</span>
-        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
-            qrcodeReader<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span> result <span class="token operator">!=</span> null <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// 扫描完成解码成功</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span> scannerCallback <span class="token operator">!=</span> null <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            scannerCallback<span class="token punctuation">.</span><span class="token function">onScanSuccess</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h2 id="ZXing-官方例子补充"><a href="#ZXing-官方例子补充" class="headerlink" title="ZXing 官方例子补充"></a>ZXing 官方例子补充</h2><p>ZXing 的官方库中考虑了很多内容，所以在上述基本功能上添加了如下内容，只要先理解了核心功能，这些拓展功能的理解就相对容易多了。</p>
-<pre><code>* 长时间无活动自动销毁机制，避免耗电 InactivityTimer
-* 扫描完成蜂鸣器提醒机制 BeepManager
-* 设置取景框，裁剪无用区域 ViewfinderView
-* 首次使用确定最佳的聚焦模式并保存
-* 首次使用计算最佳摄像头预览大小并保存
-* 扫描发现的特征点显示在屏幕上
-* 从相册中获取图片扫码（RGB格式）
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Android-条码扫描&quot;&gt;&lt;a href=&quot;#Android-条码扫描&quot; class=&quot;headerlink&quot; title=&quot;Android 条码扫描&quot;&gt;&lt;/a&gt;Android 条码扫描&lt;/h1&gt;&lt;p&gt;Android 应用经常会遇到扫码的需求，目前使用的库主要是
-    
-    </summary>
-    
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
-    
-      <category term="ZXing" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/ZXing/"/>
+      <category term="实用工具" scheme="https://bearzpy.github.io/tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>使用git clean清理工程文件</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/03/07/git/%E4%BD%BF%E7%94%A8git%20clean%E6%B8%85%E7%90%86%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/03/07/git/使用git clean清理工程文件/</id>
+    <link href="https://bearzpy.github.io/2017/03/07/git/%E4%BD%BF%E7%94%A8git%20clean%E6%B8%85%E7%90%86%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/"/>
+    <id>https://bearzpy.github.io/2017/03/07/git/使用git clean清理工程文件/</id>
     <published>2017-03-07T11:03:22.000Z</published>
     <updated>2017-10-13T09:35:07.704Z</updated>
     
@@ -1288,21 +1288,21 @@ surfaceView<span class="token punctuation">.</span><span class="token function">
     
     </summary>
     
-      <category term="git" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/git/"/>
+      <category term="git" scheme="https://bearzpy.github.io/categories/git/"/>
     
     
-      <category term="git" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/git/"/>
+      <category term="git" scheme="https://bearzpy.github.io/tags/git/"/>
     
-      <category term="clean project" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/clean-project/"/>
+      <category term="clean project" scheme="https://bearzpy.github.io/tags/clean-project/"/>
     
-      <category term="android studio" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/android-studio/"/>
+      <category term="android studio" scheme="https://bearzpy.github.io/tags/android-studio/"/>
     
   </entry>
   
   <entry>
     <title>Android入门-L3 面向对象</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/05/30/google%20study%20jams/Android%E5%85%A5%E9%97%A8-L3%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/05/30/google study jams/Android入门-L3 面向对象/</id>
+    <link href="https://bearzpy.github.io/2016/05/30/google%20study%20jams/Android%E5%85%A5%E9%97%A8-L3%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    <id>https://bearzpy.github.io/2016/05/30/google study jams/Android入门-L3 面向对象/</id>
     <published>2016-05-30T06:25:52.000Z</published>
     <updated>2018-03-01T01:18:03.362Z</updated>
     
@@ -1407,19 +1407,19 @@ surfaceView<span class="token punctuation">.</span><span class="token function">
     
     </summary>
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
-      <category term="Google" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Google/"/>
+      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
     
   </entry>
   
   <entry>
     <title>Android入门-L2 应用交互</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/05/12/google%20study%20jams/Android%E5%85%A5%E9%97%A8-L2%20%E5%BA%94%E7%94%A8%E4%BA%A4%E4%BA%92/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/05/12/google study jams/Android入门-L2 应用交互/</id>
+    <link href="https://bearzpy.github.io/2016/05/12/google%20study%20jams/Android%E5%85%A5%E9%97%A8-L2%20%E5%BA%94%E7%94%A8%E4%BA%A4%E4%BA%92/"/>
+    <id>https://bearzpy.github.io/2016/05/12/google study jams/Android入门-L2 应用交互/</id>
     <published>2016-05-12T10:33:12.000Z</published>
     <updated>2018-03-01T01:18:26.380Z</updated>
     
@@ -1447,19 +1447,19 @@ surfaceView<span class="token punctuation">.</span><span class="token function">
     
     </summary>
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
-      <category term="Google" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Google/"/>
+      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
     
   </entry>
   
   <entry>
     <title>Android入门-1C 生日贺卡应用</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/03/27/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1C%20%E7%94%9F%E6%97%A5%E8%B4%BA%E5%8D%A1%E5%BA%94%E7%94%A8%20/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/03/27/google study jams/Android入门-1C 生日贺卡应用 /</id>
+    <link href="https://bearzpy.github.io/2016/03/27/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1C%20%E7%94%9F%E6%97%A5%E8%B4%BA%E5%8D%A1%E5%BA%94%E7%94%A8%20/"/>
+    <id>https://bearzpy.github.io/2016/03/27/google study jams/Android入门-1C 生日贺卡应用 /</id>
     <published>2016-03-27T07:17:02.000Z</published>
     <updated>2018-03-01T01:18:03.362Z</updated>
     
@@ -1582,19 +1582,19 @@ surfaceView<span class="token punctuation">.</span><span class="token function">
     
     </summary>
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
-      <category term="Google" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Google/"/>
+      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
     
   </entry>
   
   <entry>
     <title>Android入门-1B 视图组 ViewGroups</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/03/21/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1B%20%E8%A7%86%E5%9B%BE%E7%BB%84%20ViewGroups/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/03/21/google study jams/Android入门-1B 视图组 ViewGroups/</id>
+    <link href="https://bearzpy.github.io/2016/03/21/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1B%20%E8%A7%86%E5%9B%BE%E7%BB%84%20ViewGroups/"/>
+    <id>https://bearzpy.github.io/2016/03/21/google study jams/Android入门-1B 视图组 ViewGroups/</id>
     <published>2016-03-21T10:33:12.000Z</published>
     <updated>2018-03-01T01:18:03.362Z</updated>
     
@@ -1879,29 +1879,29 @@ surfaceView<span class="token punctuation">.</span><span class="token function">
     
     </summary>
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
-      <category term="Google" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Google/"/>
+      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
     
-      <category term="ViewGroups" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/ViewGroups/"/>
+      <category term="ViewGroups" scheme="https://bearzpy.github.io/tags/ViewGroups/"/>
     
-      <category term="LinearLayout" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/LinearLayout/"/>
+      <category term="LinearLayout" scheme="https://bearzpy.github.io/tags/LinearLayout/"/>
     
-      <category term="RelativeLayout" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/RelativeLayout/"/>
+      <category term="RelativeLayout" scheme="https://bearzpy.github.io/tags/RelativeLayout/"/>
     
-      <category term="layout_padding" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/layout-padding/"/>
+      <category term="layout_padding" scheme="https://bearzpy.github.io/tags/layout-padding/"/>
     
-      <category term="layout_margin" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/layout-margin/"/>
+      <category term="layout_margin" scheme="https://bearzpy.github.io/tags/layout-margin/"/>
     
   </entry>
   
   <entry>
     <title>Android入门-1A 初识 View</title>
-    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/03/14/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1A%20%E5%88%9D%E8%AF%86%20View/"/>
-    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/03/14/google study jams/Android入门-1A 初识 View/</id>
+    <link href="https://bearzpy.github.io/2016/03/14/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1A%20%E5%88%9D%E8%AF%86%20View/"/>
+    <id>https://bearzpy.github.io/2016/03/14/google study jams/Android入门-1A 初识 View/</id>
     <published>2016-03-14T13:08:38.000Z</published>
     <updated>2018-03-01T01:14:28.512Z</updated>
     
@@ -1977,14 +1977,14 @@ surfaceView<span class="token punctuation">.</span><span class="token function">
     
     </summary>
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
+      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
     
-      <category term="View" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/View/"/>
+      <category term="View" scheme="https://bearzpy.github.io/tags/View/"/>
     
-      <category term="Google" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Google/"/>
+      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
     
   </entry>
   
