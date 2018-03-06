@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://bearzpy.github.io/"/>
-  <updated>2017-10-20T08:53:48.500Z</updated>
-  <id>https://bearzpy.github.io/</id>
+  <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/"/>
+  <updated>2017-10-17T08:10:09.854Z</updated>
+  <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/</id>
   
   <author>
     <name>BearZPY</name>
@@ -16,75 +16,9 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://bearzpy.github.io/2018/03/01/Android%20View/%E5%BE%85%E6%95%B4%E7%90%86/"/>
-    <id>https://bearzpy.github.io/2018/03/01/Android View/待整理/</id>
-    <published>2018-03-01T03:22:30.689Z</published>
-    <updated>2017-10-20T08:53:48.500Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="待整理"><a href="#待整理" class="headerlink" title="待整理"></a>待整理</h1><ol>
-<li>Canvas.translate(float dx, float dy) 平移</li>
-</ol>
-<p>参数里的 dx 和 dy 表示横向和纵向的位移。</p>
-<ol>
-<li>Canvas.save() 和 Canvas.restore() 来保存恢复绘制范围</li>
-</ol>
-<p>当我们对画布进行旋转，缩放，平移等操作的时候其实我们是想对特定的元素进行操作，比如图片，一个矩形等，但是当你用canvas的方法来进行这些操作的时候，其实是对整个画布进行了操作，那么之后在画布上的元素都会受到影响，所以我们在操作之前调用canvas.save()来保存画布当前的状态，当操作之后取出之前保存过的状态，这样就不会对其他的元素进行影响</p>
-<ol>
-<li>Canvas.rotate(float degrees, float px, float py) 旋转</li>
-</ol>
-<p>参数里的 degrees 是旋转角度，单位是度（也就是一周有 360° 的那个单位），方向是顺时针为正向； px 和 py 是轴心的位置。</p>
-<ol>
-<li>范围裁切有两个方法： clipRect() 和 clipPath()。裁切方法之后的绘制代码，都会被限制在裁切范围内。</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;待整理&quot;&gt;&lt;a href=&quot;#待整理&quot; class=&quot;headerlink&quot; title=&quot;待整理&quot;&gt;&lt;/a&gt;待整理&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;Canvas.translate(float dx, float dy) 平移&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;参数里的 d
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Gradle 混淆生成的 Jar 包</title>
-    <link href="https://bearzpy.github.io/2017/09/15/gradle/Gradle%20%E6%B7%B7%E6%B7%86%E7%94%9F%E6%88%90%E7%9A%84%20Jar%20%E5%8C%85/"/>
-    <id>https://bearzpy.github.io/2017/09/15/gradle/Gradle 混淆生成的 Jar 包/</id>
-    <published>2017-09-15T05:04:43.000Z</published>
-    <updated>2017-10-24T09:07:29.903Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Gradle-混淆生成的-Jar-包"><a href="#Gradle-混淆生成的-Jar-包" class="headerlink" title="Gradle 混淆生成的 Jar 包"></a>Gradle 混淆生成的 Jar 包</h1><p>关于如何使用 Gradle 生成 Jar 包之前已经写过了，本篇的内容是如何对生成的 Jar 包进行混淆。</p>
-<p>## </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Gradle-混淆生成的-Jar-包&quot;&gt;&lt;a href=&quot;#Gradle-混淆生成的-Jar-包&quot; class=&quot;headerlink&quot; title=&quot;Gradle 混淆生成的 Jar 包&quot;&gt;&lt;/a&gt;Gradle 混淆生成的 Jar 包&lt;/h1&gt;&lt;p&gt;关于如何使用
-    
-    </summary>
-    
-      <category term="Gradle" scheme="https://bearzpy.github.io/categories/Gradle/"/>
-    
-    
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
-    
-      <category term="Gradle" scheme="https://bearzpy.github.io/tags/Gradle/"/>
-    
-      <category term="Android Studio" scheme="https://bearzpy.github.io/tags/Android-Studio/"/>
-    
-      <category term="Jar" scheme="https://bearzpy.github.io/tags/Jar/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Gradle 混淆 APK 配置</title>
-    <link href="https://bearzpy.github.io/2017/07/13/gradle/Gradle%20%E6%B7%B7%E6%B7%86%20APK%20%E9%85%8D%E7%BD%AE/"/>
-    <id>https://bearzpy.github.io/2017/07/13/gradle/Gradle 混淆 APK 配置/</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/07/13/gradle/Gradle%20%E6%B7%B7%E6%B7%86%20APK%20%E9%85%8D%E7%BD%AE/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/07/13/gradle/Gradle 混淆 APK 配置/</id>
     <published>2017-07-13T10:14:43.000Z</published>
     <updated>2017-10-17T08:10:09.854Z</updated>
     
@@ -210,23 +144,23 @@
     
     </summary>
     
-      <category term="Gradle" scheme="https://bearzpy.github.io/categories/Gradle/"/>
+      <category term="Gradle" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Gradle/"/>
     
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
     
-      <category term="Gradle" scheme="https://bearzpy.github.io/tags/Gradle/"/>
+      <category term="Gradle" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Gradle/"/>
     
-      <category term="Android Studio" scheme="https://bearzpy.github.io/tags/Android-Studio/"/>
+      <category term="Android Studio" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android-Studio/"/>
     
-      <category term="Jar" scheme="https://bearzpy.github.io/tags/Jar/"/>
+      <category term="Jar" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Jar/"/>
     
   </entry>
   
   <entry>
     <title>Gradle 生成 Jar 包</title>
-    <link href="https://bearzpy.github.io/2017/06/23/gradle/Gradle%20%E7%94%9F%E6%88%90%20Jar%20%E5%8C%85/"/>
-    <id>https://bearzpy.github.io/2017/06/23/gradle/Gradle 生成 Jar 包/</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/06/23/gradle/Gradle%20%E7%94%9F%E6%88%90%20Jar%20%E5%8C%85/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/06/23/gradle/Gradle 生成 Jar 包/</id>
     <published>2017-06-23T08:04:43.000Z</published>
     <updated>2017-10-17T07:33:15.481Z</updated>
     
@@ -280,23 +214,23 @@
     
     </summary>
     
-      <category term="Gradle" scheme="https://bearzpy.github.io/categories/Gradle/"/>
+      <category term="Gradle" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Gradle/"/>
     
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
     
-      <category term="Gradle" scheme="https://bearzpy.github.io/tags/Gradle/"/>
+      <category term="Gradle" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Gradle/"/>
     
-      <category term="Android Studio" scheme="https://bearzpy.github.io/tags/Android-Studio/"/>
+      <category term="Android Studio" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android-Studio/"/>
     
-      <category term="Jar" scheme="https://bearzpy.github.io/tags/Jar/"/>
+      <category term="Jar" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Jar/"/>
     
   </entry>
   
   <entry>
     <title>ADB 常用指令</title>
-    <link href="https://bearzpy.github.io/2017/06/22/Android/ADB%20%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
-    <id>https://bearzpy.github.io/2017/06/22/Android/ADB 常用指令/</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/06/22/Android/ADB%20%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/06/22/Android/ADB 常用指令/</id>
     <published>2017-06-22T03:01:27.000Z</published>
     <updated>2017-11-02T06:15:15.634Z</updated>
     
@@ -355,19 +289,19 @@
     
     </summary>
     
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
     
-      <category term="ADB" scheme="https://bearzpy.github.io/tags/ADB/"/>
+      <category term="ADB" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/ADB/"/>
     
   </entry>
   
   <entry>
     <title>常用 git 指令</title>
-    <link href="https://bearzpy.github.io/2017/06/22/git/%E5%B8%B8%E7%94%A8%20git%20%E6%8C%87%E4%BB%A4/"/>
-    <id>https://bearzpy.github.io/2017/06/22/git/常用 git 指令/</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/06/22/git/%E5%B8%B8%E7%94%A8%20git%20%E6%8C%87%E4%BB%A4/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/06/22/git/常用 git 指令/</id>
     <published>2017-06-22T02:55:02.000Z</published>
     <updated>2018-03-01T01:12:18.186Z</updated>
     
@@ -393,17 +327,17 @@
     
     </summary>
     
-      <category term="git" scheme="https://bearzpy.github.io/categories/git/"/>
+      <category term="git" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/git/"/>
     
     
-      <category term="git" scheme="https://bearzpy.github.io/tags/git/"/>
+      <category term="git" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>Android Firebase AdMob 横幅广告</title>
-    <link href="https://bearzpy.github.io/2017/05/31/google%20study%20jams/Firebase%20AdMob%20%E6%A8%AA%E5%B9%85%E5%B9%BF%E5%91%8A/"/>
-    <id>https://bearzpy.github.io/2017/05/31/google study jams/Firebase AdMob 横幅广告/</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/05/31/google%20study%20jams/Firebase%20AdMob%20%E6%A8%AA%E5%B9%85%E5%B9%BF%E5%91%8A/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/05/31/google study jams/Firebase AdMob 横幅广告/</id>
     <published>2017-05-31T06:56:42.000Z</published>
     <updated>2018-03-01T01:46:09.284Z</updated>
     
@@ -582,23 +516,49 @@ dependencies <span class="token punctuation">{</span>
     
     </summary>
     
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
     
-      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
+      <category term="Google" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Google/"/>
     
-      <category term="AdMob" scheme="https://bearzpy.github.io/tags/AdMob/"/>
+      <category term="AdMob" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/AdMob/"/>
     
-      <category term="Firebase" scheme="https://bearzpy.github.io/tags/Firebase/"/>
+      <category term="Firebase" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Firebase/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自定义 View Paint 详解</title>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/04/22/Android%20View/%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20Paint%20%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/04/22/Android View/自定义 View Paint 详解/</id>
+    <published>2017-04-22T03:01:27.000Z</published>
+    <updated>2017-10-19T07:32:01.789Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Paint"><a href="#Paint" class="headerlink" title="Paint"></a>Paint</h1><hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Paint&quot;&gt;&lt;a href=&quot;#Paint&quot; class=&quot;headerlink&quot; title=&quot;Paint&quot;&gt;&lt;/a&gt;Paint&lt;/h1&gt;&lt;hr&gt;
+
+    
+    </summary>
+    
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
+    
+      <category term="View" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/View/"/>
     
   </entry>
   
   <entry>
     <title>自定义 View 绘制基础</title>
-    <link href="https://bearzpy.github.io/2017/04/22/Android%20View/%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E7%BB%98%E5%88%B6%E5%9F%BA%E7%A1%80/"/>
-    <id>https://bearzpy.github.io/2017/04/22/Android View/自定义 View 绘制基础/</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/04/22/Android%20View/%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20%E7%BB%98%E5%88%B6%E5%9F%BA%E7%A1%80/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/04/22/Android View/自定义 View 绘制基础/</id>
     <published>2017-04-22T03:01:27.000Z</published>
     <updated>2017-10-17T06:59:45.524Z</updated>
     
@@ -742,45 +702,19 @@ dependencies <span class="token punctuation">{</span>
     
     </summary>
     
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
     
-      <category term="View" scheme="https://bearzpy.github.io/tags/View/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>自定义 View Paint 详解</title>
-    <link href="https://bearzpy.github.io/2017/04/22/Android%20View/%E8%87%AA%E5%AE%9A%E4%B9%89%20View%20Paint%20%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://bearzpy.github.io/2017/04/22/Android View/自定义 View Paint 详解/</id>
-    <published>2017-04-22T03:01:27.000Z</published>
-    <updated>2017-10-19T07:32:01.789Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Paint"><a href="#Paint" class="headerlink" title="Paint"></a>Paint</h1><hr>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Paint&quot;&gt;&lt;a href=&quot;#Paint&quot; class=&quot;headerlink&quot; title=&quot;Paint&quot;&gt;&lt;/a&gt;Paint&lt;/h1&gt;&lt;hr&gt;
-
-    
-    </summary>
-    
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
-    
-      <category term="View" scheme="https://bearzpy.github.io/tags/View/"/>
+      <category term="View" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/View/"/>
     
   </entry>
   
   <entry>
     <title>Gradle 基础介绍</title>
-    <link href="https://bearzpy.github.io/2017/04/06/gradle/Gradle%20%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/"/>
-    <id>https://bearzpy.github.io/2017/04/06/gradle/Gradle 基础介绍/</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/04/06/gradle/Gradle%20%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/04/06/gradle/Gradle 基础介绍/</id>
     <published>2017-04-06T10:39:10.000Z</published>
     <updated>2017-10-13T09:50:05.757Z</updated>
     
@@ -921,19 +855,19 @@ dependencies <span class="token punctuation">{</span> <span class="token comment
     
     </summary>
     
-      <category term="Gradle" scheme="https://bearzpy.github.io/categories/Gradle/"/>
+      <category term="Gradle" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Gradle/"/>
     
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
     
-      <category term="Gradle" scheme="https://bearzpy.github.io/tags/Gradle/"/>
+      <category term="Gradle" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Gradle/"/>
     
   </entry>
   
   <entry>
     <title>用 Python 批量处理图片大小</title>
-    <link href="https://bearzpy.github.io/2017/03/23/Python/%E7%94%A8%20Python%20%E6%89%B9%E9%87%8F%E5%A4%84%E7%90%86%E5%9B%BE%E7%89%87/"/>
-    <id>https://bearzpy.github.io/2017/03/23/Python/用 Python 批量处理图片/</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/03/23/Python/%E7%94%A8%20Python%20%E6%89%B9%E9%87%8F%E5%A4%84%E7%90%86%E5%9B%BE%E7%89%87/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/03/23/Python/用 Python 批量处理图片/</id>
     <published>2017-03-23T12:47:56.000Z</published>
     <updated>2017-10-13T09:54:23.786Z</updated>
     
@@ -1140,23 +1074,23 @@ set_img_type <span class="token operator">=</span> <span class="token string">""
     
     </summary>
     
-      <category term="Python" scheme="https://bearzpy.github.io/categories/Python/"/>
+      <category term="Python" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Python/"/>
     
     
-      <category term="Python" scheme="https://bearzpy.github.io/tags/Python/"/>
+      <category term="Python" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Python/"/>
     
-      <category term="Python2" scheme="https://bearzpy.github.io/tags/Python2/"/>
+      <category term="Python2" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Python2/"/>
     
-      <category term="图片处理" scheme="https://bearzpy.github.io/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
+      <category term="图片处理" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
     
-      <category term="实用工具" scheme="https://bearzpy.github.io/tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
+      <category term="实用工具" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>Android 条码扫描</title>
-    <link href="https://bearzpy.github.io/2017/03/14/Android/Android%20%E6%9D%A1%E7%A0%81%E6%89%AB%E6%8F%8F/"/>
-    <id>https://bearzpy.github.io/2017/03/14/Android/Android 条码扫描/</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/03/14/Android/Android%20%E6%9D%A1%E7%A0%81%E6%89%AB%E6%8F%8F/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/03/14/Android/Android 条码扫描/</id>
     <published>2017-03-14T09:08:43.000Z</published>
     <updated>2018-03-01T03:22:04.196Z</updated>
     
@@ -1302,19 +1236,19 @@ surfaceView<span class="token punctuation">.</span><span class="token function">
     
     </summary>
     
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
     
-      <category term="ZXing" scheme="https://bearzpy.github.io/tags/ZXing/"/>
+      <category term="ZXing" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/ZXing/"/>
     
   </entry>
   
   <entry>
     <title>使用git clean清理工程文件</title>
-    <link href="https://bearzpy.github.io/2017/03/07/git/%E4%BD%BF%E7%94%A8git%20clean%E6%B8%85%E7%90%86%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/"/>
-    <id>https://bearzpy.github.io/2017/03/07/git/使用git clean清理工程文件/</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/03/07/git/%E4%BD%BF%E7%94%A8git%20clean%E6%B8%85%E7%90%86%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2017/03/07/git/使用git clean清理工程文件/</id>
     <published>2017-03-07T11:03:22.000Z</published>
     <updated>2017-10-13T09:35:07.704Z</updated>
     
@@ -1354,21 +1288,21 @@ surfaceView<span class="token punctuation">.</span><span class="token function">
     
     </summary>
     
-      <category term="git" scheme="https://bearzpy.github.io/categories/git/"/>
+      <category term="git" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/git/"/>
     
     
-      <category term="git" scheme="https://bearzpy.github.io/tags/git/"/>
+      <category term="git" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/git/"/>
     
-      <category term="clean project" scheme="https://bearzpy.github.io/tags/clean-project/"/>
+      <category term="clean project" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/clean-project/"/>
     
-      <category term="android studio" scheme="https://bearzpy.github.io/tags/android-studio/"/>
+      <category term="android studio" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/android-studio/"/>
     
   </entry>
   
   <entry>
     <title>Android入门-L3 面向对象</title>
-    <link href="https://bearzpy.github.io/2016/05/30/google%20study%20jams/Android%E5%85%A5%E9%97%A8-L3%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
-    <id>https://bearzpy.github.io/2016/05/30/google study jams/Android入门-L3 面向对象/</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/05/30/google%20study%20jams/Android%E5%85%A5%E9%97%A8-L3%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/05/30/google study jams/Android入门-L3 面向对象/</id>
     <published>2016-05-30T06:25:52.000Z</published>
     <updated>2018-03-01T01:18:03.362Z</updated>
     
@@ -1473,19 +1407,19 @@ surfaceView<span class="token punctuation">.</span><span class="token function">
     
     </summary>
     
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
     
-      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
+      <category term="Google" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Google/"/>
     
   </entry>
   
   <entry>
     <title>Android入门-L2 应用交互</title>
-    <link href="https://bearzpy.github.io/2016/05/12/google%20study%20jams/Android%E5%85%A5%E9%97%A8-L2%20%E5%BA%94%E7%94%A8%E4%BA%A4%E4%BA%92/"/>
-    <id>https://bearzpy.github.io/2016/05/12/google study jams/Android入门-L2 应用交互/</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/05/12/google%20study%20jams/Android%E5%85%A5%E9%97%A8-L2%20%E5%BA%94%E7%94%A8%E4%BA%A4%E4%BA%92/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/05/12/google study jams/Android入门-L2 应用交互/</id>
     <published>2016-05-12T10:33:12.000Z</published>
     <updated>2018-03-01T01:18:26.380Z</updated>
     
@@ -1513,19 +1447,19 @@ surfaceView<span class="token punctuation">.</span><span class="token function">
     
     </summary>
     
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
     
-      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
+      <category term="Google" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Google/"/>
     
   </entry>
   
   <entry>
     <title>Android入门-1C 生日贺卡应用</title>
-    <link href="https://bearzpy.github.io/2016/03/27/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1C%20%E7%94%9F%E6%97%A5%E8%B4%BA%E5%8D%A1%E5%BA%94%E7%94%A8%20/"/>
-    <id>https://bearzpy.github.io/2016/03/27/google study jams/Android入门-1C 生日贺卡应用 /</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/03/27/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1C%20%E7%94%9F%E6%97%A5%E8%B4%BA%E5%8D%A1%E5%BA%94%E7%94%A8%20/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/03/27/google study jams/Android入门-1C 生日贺卡应用 /</id>
     <published>2016-03-27T07:17:02.000Z</published>
     <updated>2018-03-01T01:18:03.362Z</updated>
     
@@ -1648,19 +1582,19 @@ surfaceView<span class="token punctuation">.</span><span class="token function">
     
     </summary>
     
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
     
-      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
+      <category term="Google" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Google/"/>
     
   </entry>
   
   <entry>
     <title>Android入门-1B 视图组 ViewGroups</title>
-    <link href="https://bearzpy.github.io/2016/03/21/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1B%20%E8%A7%86%E5%9B%BE%E7%BB%84%20ViewGroups/"/>
-    <id>https://bearzpy.github.io/2016/03/21/google study jams/Android入门-1B 视图组 ViewGroups/</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/03/21/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1B%20%E8%A7%86%E5%9B%BE%E7%BB%84%20ViewGroups/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/03/21/google study jams/Android入门-1B 视图组 ViewGroups/</id>
     <published>2016-03-21T10:33:12.000Z</published>
     <updated>2018-03-01T01:18:03.362Z</updated>
     
@@ -1945,29 +1879,29 @@ surfaceView<span class="token punctuation">.</span><span class="token function">
     
     </summary>
     
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
     
-      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
+      <category term="Google" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Google/"/>
     
-      <category term="ViewGroups" scheme="https://bearzpy.github.io/tags/ViewGroups/"/>
+      <category term="ViewGroups" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/ViewGroups/"/>
     
-      <category term="LinearLayout" scheme="https://bearzpy.github.io/tags/LinearLayout/"/>
+      <category term="LinearLayout" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/LinearLayout/"/>
     
-      <category term="RelativeLayout" scheme="https://bearzpy.github.io/tags/RelativeLayout/"/>
+      <category term="RelativeLayout" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/RelativeLayout/"/>
     
-      <category term="layout_padding" scheme="https://bearzpy.github.io/tags/layout-padding/"/>
+      <category term="layout_padding" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/layout-padding/"/>
     
-      <category term="layout_margin" scheme="https://bearzpy.github.io/tags/layout-margin/"/>
+      <category term="layout_margin" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/layout-margin/"/>
     
   </entry>
   
   <entry>
     <title>Android入门-1A 初识 View</title>
-    <link href="https://bearzpy.github.io/2016/03/14/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1A%20%E5%88%9D%E8%AF%86%20View/"/>
-    <id>https://bearzpy.github.io/2016/03/14/google study jams/Android入门-1A 初识 View/</id>
+    <link href="https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/03/14/google%20study%20jams/Android%E5%85%A5%E9%97%A8-1A%20%E5%88%9D%E8%AF%86%20View/"/>
+    <id>https://pengyuzhang.coding.me/PengyuZhang.coding.io/2016/03/14/google study jams/Android入门-1A 初识 View/</id>
     <published>2016-03-14T13:08:38.000Z</published>
     <updated>2018-03-01T01:14:28.512Z</updated>
     
@@ -2043,14 +1977,14 @@ surfaceView<span class="token punctuation">.</span><span class="token function">
     
     </summary>
     
-      <category term="Android" scheme="https://bearzpy.github.io/categories/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://bearzpy.github.io/tags/Android/"/>
+      <category term="Android" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Android/"/>
     
-      <category term="View" scheme="https://bearzpy.github.io/tags/View/"/>
+      <category term="View" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/View/"/>
     
-      <category term="Google" scheme="https://bearzpy.github.io/tags/Google/"/>
+      <category term="Google" scheme="https://pengyuzhang.coding.me/PengyuZhang.coding.io/tags/Google/"/>
     
   </entry>
   
