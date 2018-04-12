@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            用 Python 批量处理图片大小 | 
+        
+        BearZPY Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content="null,Python,Python2,图片处理,实用工具">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+        
+            <link rel="stylesheet" href="/css/fontawesome.min.css">
+        
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?ezyEvm8ST5CGfpA+kFFi1g==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="BearZPY Blog">
+    <meta name="msapplication-starturl" content="https://bearzpy.github.io/2016/08/22/Python/用 Python 批量处理图片/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="BearZPY Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://bearzpy.github.io/2016/08/22/Python/用 Python 批量处理图片/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="用 Python 批量处理图片大小 | BearZPY Blog">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="Python"> <meta property="og:article:tag" content="Python2"> <meta property="og:article:tag" content="图片处理"> <meta property="og:article:tag" content="实用工具"> 
+
+    
+        <meta property="article:published_time" content="Mon Aug 22 2016 21:32:56 GMT+0800">
+        <meta property="article:modified_time" content="Thu Mar 08 2018 10:00:29 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://bearzpy.github.io/2016/08/22/Python/用 Python 批量处理图片/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://bearzpy.github.io/2016/08/22/Python/用 Python 批量处理图片/index.html",
+    "headline": "用 Python 批量处理图片大小",
+    "datePublished": "Mon Aug 22 2016 21:32:56 GMT+0800",
+    "dateModified": "Thu Mar 08 2018 10:00:29 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "BearZPY",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/user.jpg"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "BearZPY Blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",Python,Python2,图片处理,实用工具null",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Isolation" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+                    <!-- Isolation Header -->
+                    <header class="header">
+    <div class="header-wrapper">
+        <!-- Header Copyright -->
+        <div class="header-copyright">
+            <div class="header-site">
+                ©&nbsp;
+                <script type="text/javascript">
+                    var fd = new Date();
+                    document.write(fd.getFullYear());
+                </script>
+                &nbsp;BearZPY Blog
+            </div>
+            <!--
+            I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+            It will not impact the appearance and can give developers a lot of support :)
+
+            很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+            它不会影响美观并可以给开发者很大的支持。 :)
+            -->
+            <div>
+                Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a>
+                <br>
+                Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a>
+            </div>
+        </div>
+
+        <!-- Header Title -->
+        <span class="header-title header-item">
+            <a href="/" title="BearZPY Blog">
+                BearZPY Blog
+            </a>
+        </span>
+
+        <p class="header-slogan header-item">
+        
+            
+                Hi, nice to meet you
+            
+        
+        </p>
+
+        <!-- Header Nav -->
+        <nav class="header-nav header-item">
+            <span class="header-nav-item">
+                <a href="/" title="Home">
+                    <span>主页</span>
+                </a>
+            </span>
+
+            <!-- Pages  -->
+            
+                <span class="header-nav-item">
+                    <a href="/tags" title="标签">
+                        <span>标签</span>
+                    </a>
+                </span>
+            
+                <span class="header-nav-item">
+                    <a href="/timeline" title="时间轴">
+                        <span>时间轴</span>
+                    </a>
+                </span>
+            
+            
+        </nav>
+
+        <!-- Header SNS -->
+        <div class="header-item header-sns_list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/BearZPY" target="_blank">
+            <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+        </a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+    </div>
+</header>
+
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+
+                    <!-- Post TOC -->
+
+    
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+
+
+    <!-- Isolation Post Header -->
+    <!-- Post thumbnail -->
+    
+        <!-- Post Header Info -->
+        <div class="post-header_info without-thumbnail">
+            <!-- Author Avatar & Name -->
+            <img src="/img/user.jpg" class="avatar-img" width="44px" height="44px" alt="BearZPY's avatar">
+            <span class="name-span">BearZPY</span>
+        </div>
+
+        <!-- Null Thumbnail -->
+        <div class="post_thumbnail-null">
+    
+        </div>
+
+
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+
+    
+        <div class="post-content_wrapper">
+            <p class="post-title">
+                用 Python 批量处理图片大小
+            </p>
+            <h1 id="Python-批量处理图片大小"><a href="#Python-批量处理图片大小" class="headerlink" title="Python 批量处理图片大小"></a>Python 批量处理图片大小</h1><p>写博客，文档的时候常常要附上很多图片，但是图片的尺寸往往不符合我们的要求，手动一个一个修改尺寸再保存，太浪费时间了，既然学了 Python，当然就要物尽其用。本文实现了批量修改同级目录下的 image\src 文件夹下的所有图片，并输出到 image\output 文件夹下，可以设定具体像素，也可以只设定水平像素或者垂直像素, 另一边按原图比例进行缩放。使用 Python 处理图片大小需要使用 PIL 库，PIL：Python Imaging Library，是一个图片处理库，需要自行安装。</p>
+<h2 id="PIL-读取图片大小"><a href="#PIL-读取图片大小" class="headerlink" title="PIL 读取图片大小"></a>PIL 读取图片大小</h2><p>下面是修改单张图片尺寸的函数。  </p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+set_img_type <span class="token operator">=</span> <span class="token string">""</span>
+
+<span class="token keyword">def</span> <span class="token function">resize_image</span><span class="token punctuation">(</span>filein<span class="token punctuation">,</span> fileout<span class="token punctuation">,</span> set_horizontal_length<span class="token punctuation">,</span> set_vertical_length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> set_vertical_length <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">and</span> set_horizontal_length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span>
+        img <span class="token operator">=</span> Image<span class="token punctuation">.</span>open<span class="token punctuation">(</span>filein<span class="token punctuation">)</span>
+        img_size <span class="token operator">=</span> img<span class="token punctuation">.</span>size
+        img_horizontal_length <span class="token operator">=</span> img_size<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        img_vertical_length <span class="token operator">=</span> img_size<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> set_vertical_length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            set_vertical_length <span class="token operator">=</span> set_horizontal_length <span class="token operator">*</span> img_vertical_length <span class="token operator">/</span> img_horizontal_length
+        <span class="token keyword">if</span> set_horizontal_length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            set_horizontal_length <span class="token operator">=</span> set_vertical_length <span class="token operator">*</span> img_horizontal_length <span class="token operator">/</span> img_vertical_length
+        <span class="token keyword">print</span> img_horizontal_length<span class="token punctuation">,</span> img_vertical_length
+        <span class="token keyword">print</span> set_horizontal_length<span class="token punctuation">,</span> set_vertical_length
+        <span class="token comment" spellcheck="true"># resize image with high-quality</span>
+        out <span class="token operator">=</span> img<span class="token punctuation">.</span>resize<span class="token punctuation">(</span><span class="token punctuation">(</span>set_horizontal_length<span class="token punctuation">,</span> set_vertical_length<span class="token punctuation">)</span><span class="token punctuation">,</span> Image<span class="token punctuation">.</span>ANTIALIAS<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> set_img_type <span class="token operator">==</span> <span class="token string">""</span><span class="token punctuation">:</span>
+            out<span class="token punctuation">.</span>save<span class="token punctuation">(</span>fileout<span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            out<span class="token punctuation">.</span>save<span class="token punctuation">(</span>fileout<span class="token punctuation">,</span> set_img_type<span class="token punctuation">)</span>
+</code></pre>
+<p>代码简介  </p>
+<ul>
+<li>filein 图片输入文件名（带路径）。</li>
+<li>fileout 图片输出文件名（带路径）。</li>
+<li>set_horizontal_length 希望修改成的水平长度，如果为 0，自动使用原图比例和设定的竖直长度计算该值。</li>
+<li>set_vertical_length 希望修改成的竖直长度，如果为 0，自动使用原图比例和设定的水平长度计算该值。</li>
+<li>img.size 包含了两个值，比如（1080, 1920），第一个值是宽度（水平长度），第二值是高度（竖直长度）。</li>
+<li>set_img_type 如果为空，保持原图片类型，如果非空则保存成对应图片类型，比如 <code>set_img_type = &quot;png&quot;</code>，会把图片以 png 数据格式进行保存。</li>
+</ul>
+<h2 id="PIL-批量处理图片"><a href="#PIL-批量处理图片" class="headerlink" title="PIL 批量处理图片"></a>PIL 批量处理图片</h2><p>上面已经介绍了处理单张图片的方法，想要处理文件夹下的所有图片就要能遍历文件夹里所有的文件。这里使用递归遍历出所有的文件，再分别进行处理。  </p>
+<h3 id="使用递归遍历文件夹"><a href="#使用递归遍历文件夹" class="headerlink" title="使用递归遍历文件夹"></a>使用递归遍历文件夹</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">check_image</span><span class="token punctuation">(</span>root_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isdir<span class="token punctuation">(</span>root_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span>
+
+    <span class="token keyword">for</span> lists <span class="token keyword">in</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span>root_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>root_dir<span class="token punctuation">,</span> lists<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isfile<span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># TODO: resize image.</span>
+        <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isdir<span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            check_image<span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+</code></pre>
+<p>代码简介：<br>判断当前文件夹中的每个元素，如果是文件夹则进入该文件夹递归调用，并重复读取判断操作。如果是文件，则在代码中的 TODO 标签处进行相应处理。注：这里默认 image\src 文件夹下不会出现非图片文件。</p>
+<h3 id="准备输出工作"><a href="#准备输出工作" class="headerlink" title="准备输出工作"></a>准备输出工作</h3><p>目标是把修改后的图片输出到 image\output 文件夹下，这里需要做三件事，在 output 目录下创建对应 src 目录下的子文件夹，生成图片保存的文件名（带路径），修改生成图片的后缀名。将递归代码修改如下，增加了 find_last_point 函数用于找到后缀名前的小数点来修改后缀名。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> os<span class="token punctuation">.</span>path
+
+<span class="token keyword">def</span> <span class="token function">check_image</span><span class="token punctuation">(</span>root_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isdir<span class="token punctuation">(</span>root_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span>
+
+    <span class="token keyword">for</span> lists <span class="token keyword">in</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span>root_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>root_dir<span class="token punctuation">,</span> lists<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># handle output path of dir and file</span>
+        out_path <span class="token operator">=</span> image_output_dir <span class="token operator">+</span> path<span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+        <span class="token keyword">print</span> path
+
+        <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isfile<span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># handle output file name</span>
+            point_position <span class="token operator">=</span> find_last_point<span class="token punctuation">(</span>out_path<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token operator">not</span> set_img_type <span class="token operator">==</span> <span class="token string">""</span><span class="token punctuation">:</span>
+                out_path <span class="token operator">=</span> out_path<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>point_position <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> set_img_type
+                <span class="token keyword">print</span> out_path
+            <span class="token comment" spellcheck="true"># resize image.</span>
+            resize_image<span class="token punctuation">(</span>path<span class="token punctuation">,</span> out_path<span class="token punctuation">,</span> horizontal_length<span class="token punctuation">,</span> vertical_length<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isdir<span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># make dir in image\output</span>
+            <span class="token keyword">if</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>out_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                os<span class="token punctuation">.</span>mkdir<span class="token punctuation">(</span>out_path<span class="token punctuation">)</span>
+                <span class="token keyword">print</span> out_path
+            check_image<span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">find_last_point</span><span class="token punctuation">(</span>file_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    position <span class="token operator">=</span> <span class="token number">0</span>
+    temp <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">while</span> temp <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+        temp <span class="token operator">=</span> file_path<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> temp <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+            position <span class="token operator">=</span> temp
+            file_path <span class="token operator">=</span> file_path<span class="token punctuation">[</span> temp <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> position
+</code></pre>
+<h3 id="清理-output-文件夹"><a href="#清理-output-文件夹" class="headerlink" title="清理 output 文件夹"></a>清理 output 文件夹</h3><p>如果只生成不清理，output 文件夹会越来越臃肿，想要找到转换的图片还需要花额外的时间，所以这里选择程序刚开始就删除整个 output 文件夹，并新建一个空的 output 文件夹。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> os<span class="token punctuation">.</span>path
+<span class="token keyword">import</span> shutil
+
+<span class="token keyword">def</span> <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>image_output_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        shutil<span class="token punctuation">.</span>rmtree<span class="token punctuation">(</span>image_output_dir<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>image_output_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        os<span class="token punctuation">.</span>mkdir<span class="token punctuation">(</span>image_output_dir<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p>PIL 不支持修改为 jpg 后缀，所以如果设置生成 jpg 文件，程序会自动修改成 jpeg 文件。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> os<span class="token punctuation">.</span>path
+<span class="token keyword">import</span> shutil
+<span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+
+horizontal_length <span class="token operator">=</span> <span class="token number">260</span>
+vertical_length <span class="token operator">=</span> <span class="token number">0</span>
+image_src_dir <span class="token operator">=</span> r<span class="token string">"image\src"</span>
+image_output_dir <span class="token operator">=</span> r<span class="token string">"image\output"</span>
+set_img_type <span class="token operator">=</span> <span class="token string">""</span>
+<span class="token comment" spellcheck="true"># set_img_type = "bmp"</span>
+<span class="token comment" spellcheck="true"># set_img_type = "jpeg"</span>
+<span class="token comment" spellcheck="true"># set_img_type = "png"</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>image_output_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        shutil<span class="token punctuation">.</span>rmtree<span class="token punctuation">(</span>image_output_dir<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>image_output_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        os<span class="token punctuation">.</span>mkdir<span class="token punctuation">(</span>image_output_dir<span class="token punctuation">)</span>
+    <span class="token keyword">global</span> set_img_type
+    <span class="token keyword">if</span> set_img_type <span class="token operator">==</span> <span class="token string">"jpg"</span><span class="token punctuation">:</span>
+        set_img_type <span class="token operator">=</span> <span class="token string">"jpeg"</span>
+    check_image<span class="token punctuation">(</span>image_src_dir<span class="token punctuation">)</span>
+    <span class="token keyword">print</span> <span class="token string">"finish."</span>
+
+
+<span class="token keyword">def</span> <span class="token function">resize_image</span><span class="token punctuation">(</span>filein<span class="token punctuation">,</span> fileout<span class="token punctuation">,</span> set_horizontal_length<span class="token punctuation">,</span> set_vertical_length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> set_vertical_length <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">and</span> set_horizontal_length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span>
+        img <span class="token operator">=</span> Image<span class="token punctuation">.</span>open<span class="token punctuation">(</span>filein<span class="token punctuation">)</span>
+        img_size <span class="token operator">=</span> img<span class="token punctuation">.</span>size
+        img_horizontal_length <span class="token operator">=</span> img_size<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        img_vertical_length <span class="token operator">=</span> img_size<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> set_vertical_length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            set_vertical_length <span class="token operator">=</span> set_horizontal_length <span class="token operator">*</span> img_vertical_length <span class="token operator">/</span> img_horizontal_length
+        <span class="token keyword">if</span> set_horizontal_length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            set_horizontal_length <span class="token operator">=</span> set_vertical_length <span class="token operator">*</span> img_horizontal_length <span class="token operator">/</span> img_vertical_length
+        <span class="token keyword">print</span> img_horizontal_length<span class="token punctuation">,</span> img_vertical_length
+        <span class="token keyword">print</span> set_horizontal_length<span class="token punctuation">,</span> set_vertical_length
+        <span class="token comment" spellcheck="true"># resize image with high-quality</span>
+        out <span class="token operator">=</span> img<span class="token punctuation">.</span>resize<span class="token punctuation">(</span><span class="token punctuation">(</span>set_horizontal_length<span class="token punctuation">,</span> set_vertical_length<span class="token punctuation">)</span><span class="token punctuation">,</span> Image<span class="token punctuation">.</span>ANTIALIAS<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> set_img_type <span class="token operator">==</span> <span class="token string">""</span><span class="token punctuation">:</span>
+            out<span class="token punctuation">.</span>save<span class="token punctuation">(</span>fileout<span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            out<span class="token punctuation">.</span>save<span class="token punctuation">(</span>fileout<span class="token punctuation">,</span> set_img_type<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">check_image</span><span class="token punctuation">(</span>root_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isdir<span class="token punctuation">(</span>root_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span>
+
+    <span class="token keyword">for</span> lists <span class="token keyword">in</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span>root_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>root_dir<span class="token punctuation">,</span> lists<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># handle output path of dir and file</span>
+        out_path <span class="token operator">=</span> image_output_dir <span class="token operator">+</span> path<span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+        <span class="token keyword">print</span> path
+
+        <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isfile<span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># handle output file name</span>
+            point_position <span class="token operator">=</span> find_last_point<span class="token punctuation">(</span>out_path<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token operator">not</span> set_img_type <span class="token operator">==</span> <span class="token string">""</span><span class="token punctuation">:</span>
+                out_path <span class="token operator">=</span> out_path<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>point_position <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> set_img_type
+                <span class="token keyword">print</span> out_path
+            <span class="token comment" spellcheck="true"># resize image.</span>
+            resize_image<span class="token punctuation">(</span>path<span class="token punctuation">,</span> out_path<span class="token punctuation">,</span> horizontal_length<span class="token punctuation">,</span> vertical_length<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isdir<span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># make dir in image\output</span>
+            <span class="token keyword">if</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>out_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                os<span class="token punctuation">.</span>mkdir<span class="token punctuation">(</span>out_path<span class="token punctuation">)</span>
+                <span class="token keyword">print</span> out_path
+            check_image<span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">find_last_point</span><span class="token punctuation">(</span>file_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    position <span class="token operator">=</span> <span class="token number">0</span>
+    temp <span class="token operator">=</span> <span class="token number">0</span>
+    i <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">while</span> temp <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+        temp <span class="token operator">=</span> file_path<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> temp <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+              position <span class="token operator">=</span> position <span class="token operator">+</span> temp
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+              position <span class="token operator">=</span> position <span class="token operator">+</span> temp <span class="token operator">+</span> <span class="token number">1</span>
+            file_path <span class="token operator">=</span> file_path<span class="token punctuation">[</span>temp<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+            i <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> position
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    test_run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<hr>
+
+            
+        </div>
+    
+</div>
+
+
+                
+                    <!-- Paradox Post Info -->
+                    
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2016/09/25/SQL/SQLite 基本操作/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/07/10/Java/面向对象设计原则/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?wgjW/HuQG9JDgvPDPoRAng==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
